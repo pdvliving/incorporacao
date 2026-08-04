@@ -454,10 +454,8 @@
         <label>Segmento</label>
         <select id="filtroSegmento" onchange="aplicarFiltros()">
           <option value="">Todos</option>
-          <option value="Lançado">Lançado</option>
-          <option value="Previsto">Previsto</option>
-          <option value="Coringa">Coringa</option>
-          <option value="Em contratação">Em contratação</option>
+          <option value="Full">Full</option>
+          <option value="Padrão">Padrão</option>
         </select>
       </div>
 
@@ -510,45 +508,38 @@
       <div class="kpi-sub">projetos no landbank</div>
     </div>
 
+'indicador quadrado
     <div class="kpi-card">
       <div class="kpi-label">VGV Nominal 100%</div>
       <div class="kpi-value">R$ 2.311M</div>
       <div class="kpi-sub">R$ milhões</div>
     </div>
 
+'indicador quadrado
     <div class="kpi-card">
       <div class="kpi-label">VGV Nom %CBR</div>
       <div class="kpi-value">R$ 2.256M</div>
       <div class="kpi-sub">R$ milhões</div>
     </div>
 
+'indicador quadrado
     <div class="kpi-card">
       <div class="kpi-label">VGV VP %CBR</div>
       <div class="kpi-value">R$ 1.698M</div>
       <div class="kpi-sub">R$ milhões</div>
     </div>
 
+'indicador quadrado
     <div class="kpi-card">
       <div class="kpi-label">Nº de Unidades</div>
       <div class="kpi-value">3.669</div>
       <div class="kpi-sub">unidades totais</div>
     </div>
 
-    <div class="kpi-card">
-      <div class="kpi-label">Tempo Médio p/ Lançamento</div>
-      <div class="kpi-value">20m</div>
-      <div class="kpi-sub">meses (passagem → lançamento)</div>
-    </div>
-  </div>
-
-  <div class="aviso-kpi">
-    ⚠️ Atenção: indicadores consideram apenas <strong style="margin:0 4px">Lançado</strong> e <strong style="margin:0 4px">Previsto</strong>. Coringa e Em contratação são excluídos.
-  </div>
-
-  <div class="section-label">Linha do Tempo — Meeting → Lançamento</div>
+  <div class="section-label">Linha do Tempo — Demolição  → Início de Obra</div>
   <div class="gantt-box">
     <div class="gantt-header">
-      <div class="gantt-title">📅 Gantt de Lançamentos</div>
+      <div class="gantt-title">📅 Gantt de Obra</div>
       <div class="gantt-controls">
         <button class="gantt-btn" onclick="zoomGantt(-1)">− Zoom</button>
         <button class="gantt-btn" onclick="zoomGantt(1)">+ Zoom</button>
@@ -835,7 +826,6 @@ function renderTabela(lista) {
       <td><button class="expand-btn" id="btn-${p.id}" onclick="toggleDetalhe(${p.id})">+</button></td>
       <td><strong>${p.terreno}</strong><br><span style="font-size:11px;color:var(--text-light);">${p.bairro}</span></td>
       <td><select class="select-seg"><option>${p.segmento}</option><option>Padrão</option><option>Full</option></select></td>
-      <td>${p.coordenacao}</td>
       <td>${p.doninho}</td>
       <td>${statusTag(p.status)}${p.isCoringa ? '<br><span style="font-size:10px;background:#eee2f5;color:#8a63a3;border-radius:10px;padding:2px 8px;">+Coringa</span>' : ''}</td>
       <td style="font-size:12px;">${p.mix}</td>
@@ -879,18 +869,20 @@ function toggleDetalhe(id) {
 
 function aplicarFiltros() {
   const ano = document.getElementById('filtroAno').value;
-  const status = document.getElementById('filtroStatus').value;
-  const coord = document.getElementById('filtroCoordenacao').value;
-  const doninho = document.getElementById('filtroDoninho').value;
   const seg = document.getElementById('filtroSegmento').value;
+  const doninho = document.getElementById('filtroDoninho').value;
+  const status = document.getElementById('filtroStatus').value;
+  const Etapa = document.getElementById('filtroEtapa').value;
+  const Forn = document.getElementById('filtroFornecedores').value;
   const busca = document.getElementById('filtroBusca').value.toLowerCase();
 
   projetosFiltrados = projetos.filter(p => {
     if (ano && p.anoLancamento != ano) return false;
-    if (status && p.status !== status) return false;
-    if (coord && p.coordenacao !== coord) return false;
-    if (doninho && p.doninho !== doninho) return false;
     if (seg && p.segmento !== seg) return false;
+    if (doninho && p.doninho !== doninho) return false;
+    if (status && p.status !== status) return false;
+    if (etapa && p.etapa !== etapa) return false;
+    if (fornecedores && p.fornecedores !== fornecedores) return false;
     if (busca && !p.terreno.toLowerCase().includes(busca) && !p.bairro.toLowerCase().includes(busca)) return false;
     return true;
   });
@@ -902,7 +894,7 @@ function aplicarFiltros() {
 
 function limparFiltros() {
   document.getElementById('filtroAno').value = '';
-  document.getElementById('filtroStatus').value = '';
+  document.getElementById('filtroSegmento').value = '';
   document.getElementById('filtroDoninho').value = '';
   document.getElementById('filtroStatus').value = '';
   document.getElementById('filtroEtapa').value = '';
