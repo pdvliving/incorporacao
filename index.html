@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title> PDV Living - Eng. Incorporação</title>
+<title>PDV Living - Eng. Incorporação</title>
 <style>
   :root {
     --verde: #5f6f52;
@@ -220,19 +220,6 @@
     margin-top: 4px;
   }
 
-  .aviso-kpi {
-    background: #f3e8cf;
-    border: 1px solid #ddc9a1;
-    border-radius: 6px;
-    padding: 10px 16px;
-    font-size: 12px;
-    color: #6d5736;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
   .tag-status {
     display: inline-block;
     padding: 2px 10px;
@@ -245,6 +232,10 @@
   .tag-previsto { background: #dde8f3; color: var(--previsto); }
   .tag-coringa { background: #eee2f5; color: var(--coringa); }
   .tag-contratacao { background: #e9e0d6; color: var(--contratacao); }
+
+  .tag-nao-iniciado { background: #efe7dc; color: #7a6246; }
+  .tag-em-andamento { background: #fff0d6; color: #9a6a00; }
+  .tag-finalizado { background: #e0efdf; color: #3f7a42; }
 
   .gantt-box {
     background: var(--verde);
@@ -276,6 +267,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-wrap: wrap;
   }
 
   .gantt-btn {
@@ -297,6 +289,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    flex-wrap: wrap;
   }
 
   .legend-item {
@@ -321,13 +314,14 @@
     background: var(--white);
     border: 1px solid var(--bege-dark);
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow-x: auto;
     box-shadow: var(--shadow);
     margin-bottom: 24px;
   }
 
   .tabela-projetos {
     width: 100%;
+    min-width: 1700px;
     border-collapse: collapse;
   }
 
@@ -352,6 +346,7 @@
     border-bottom: 1px solid var(--bege-dark);
     font-size: 13px;
     vertical-align: middle;
+    white-space: nowrap;
   }
 
   .tabela-projetos tr:last-child td {
@@ -426,7 +421,6 @@
 </style>
 </head>
 <body>
-
 <div class="header">
   <div class="header-left">
     <div class="logo">
@@ -463,7 +457,7 @@
         <label>Doninho</label>
         <select id="filtroDoninho" onchange="aplicarFiltros()">
           <option value="">Todas</option>
-         <option value="Denis Pimentel">Denis Pimentel</option>
+          <option value="Denis Pimentel">Denis Pimentel</option>
           <option value="Giulia Oliveira">Giulia Oliveira</option>
           <option value="Akemi Yoshikawa">Akemi Yoshikawa</option>
         </select>
@@ -503,40 +497,37 @@
   <div class="section-label">Indicadores</div>
   <div class="kpi-grid" id="kpiGrid">
     <div class="kpi-card destaque">
-      <div class="kpi-label">Lançamentos Previstos</div>
+      <div class="kpi-label">Projetos Filtrados</div>
       <div class="kpi-value" id="kpiLancamentos">9</div>
-      <div class="kpi-sub">projetos no landbank</div>
+      <div class="kpi-sub">projetos no dashboard</div>
     </div>
-
 
     <div class="kpi-card">
-      <div class="kpi-label">VGV Nominal 100%</div>
-      <div class="kpi-value">R$ 2.311M</div>
-      <div class="kpi-sub">R$ milhões</div>
+      <div class="kpi-label">Em andamento</div>
+      <div class="kpi-value" id="kpiAndamento">0</div>
+      <div class="kpi-sub">status de execução</div>
     </div>
-
 
     <div class="kpi-card">
-      <div class="kpi-label">VGV Nom %CBR</div>
-      <div class="kpi-value">R$ 2.256M</div>
-      <div class="kpi-sub">R$ milhões</div>
+      <div class="kpi-label">Não iniciado</div>
+      <div class="kpi-value" id="kpiNaoIniciado">0</div>
+      <div class="kpi-sub">status de execução</div>
     </div>
-
 
     <div class="kpi-card">
-      <div class="kpi-label">VGV VP %CBR</div>
-      <div class="kpi-value">R$ 1.698M</div>
-      <div class="kpi-sub">R$ milhões</div>
+      <div class="kpi-label">Finalizado</div>
+      <div class="kpi-value" id="kpiFinalizado">0</div>
+      <div class="kpi-sub">status de execução</div>
     </div>
-
 
     <div class="kpi-card">
-      <div class="kpi-label">Nº de Unidades</div>
-      <div class="kpi-value">3.669</div>
-      <div class="kpi-sub">unidades totais</div>
+      <div class="kpi-label">Terrenos Full</div>
+      <div class="kpi-value" id="kpiFull">0</div>
+      <div class="kpi-sub">segmento</div>
     </div>
+  </div>
 
-  <div class="section-label">Linha do Tempo — Demolição  → Início de Obra</div>
+  <div class="section-label">Linha do Tempo — Demolição → Início de Obra</div>
   <div class="gantt-box">
     <div class="gantt-header">
       <div class="gantt-title">📅 Gantt de Obra</div>
@@ -568,15 +559,15 @@
           <th>Coordenação</th>
           <th>Doninho</th>
           <th>Status</th>
-          <th>Posse do primeiro lote e do ultimo</th>
-          <th>Inicio de demolição</th>
-          <th>Termino de demolição</th>
-          <th>Inicio de PDV</th>
+          <th>Posse do primeiro lote e do último</th>
+          <th>Início de demolição</th>
+          <th>Término de demolição</th>
+          <th>Início de PDV</th>
           <th>Finalização de PDV</th>
           <th>Meeting</th>
           <th>Demolição PDV</th>
           <th>Início pré obra</th>
-          <th>Início Obra</th>
+          <th>Início obra</th>
         </tr>
       </thead>
       <tbody id="tbodyProjetos"></tbody>
@@ -591,130 +582,256 @@
 <script>
 const projetos = [
   {
-    id: 1, terreno: "Ouvidor Peleja", bairro: "Vila Mariana", status: "Lançado",
-    segmento: "Padrão", coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
-    mix: "69, 79, 88 e 93m²", reunPassagem: "01/10/2024", meeting: "28/01/2026",
-    lancamento: "21/02/2026", anoLancamento: 2026,
-    unid: 207, nom100: 214, nomCBR: 214,
-    ganttInicio: 1, ganttFim: 2,
+    id: 1,
+    terreno: "Ouvidor Peleja",
+    bairro: "Vila Mariana",
+    statusMacro: "Lançado",
+    segmento: "Padrão",
+    coordenacao: "Denis Pimentel",
+    doninho: "Denis Pimentel",
+    statusExecucao: "Em andamento",
+    posseLotes: "01/10/2024",
+    inicioDemolicao: "05/10/2024",
+    terminoDemolicao: "20/11/2024",
+    inicioPDV: "10/12/2024",
+    finalizacaoPDV: "15/01/2025",
+    meeting: "28/01/2026",
+    demolicaoPDV: "05/02/2026",
+    inicioPreObra: "10/02/2026",
+    inicioObra: "21/02/2026",
+    anoLancamento: 2026,
+    ganttInicio: 1,
+    ganttFim: 2,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "Demolição", farol: "g", status: "Concluída" },
+      { assunto: "PDV", farol: "a", status: "Em validação final" },
+      { assunto: "Pré Obra", farol: "a", status: "Mobilização em andamento" },
+      { assunto: "Vizinhos", farol: "g", status: "Comunicação realizada" }
     ]
   },
   {
-    id: 2, terreno: "Rua Butantã", bairro: "Pinheiros", status: "Lançado",
-    segmento: "Full", coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
-    mix: "24 e 37m²", reunPassagem: "08/02/2024", meeting: "06/04/2026",
-    lancamento: "18/04/2026", anoLancamento: 2026,
-    unid: 745, nom100: 243, nomCBR: 243,
-    ganttInicio: 3, ganttFim: 4,
+    id: 2,
+    terreno: "Rua Butantã",
+    bairro: "Pinheiros",
+    statusMacro: "Lançado",
+    segmento: "Full",
+    coordenacao: "Artur Dorfman",
+    doninho: "Giulia Oliveira",
+    statusExecucao: "Não iniciado",
+    posseLotes: "08/02/2024",
+    inicioDemolicao: "—",
+    terminoDemolicao: "—",
+    inicioPDV: "—",
+    finalizacaoPDV: "—",
+    meeting: "06/04/2026",
+    demolicaoPDV: "—",
+    inicioPreObra: "—",
+    inicioObra: "18/04/2026",
+    anoLancamento: 2026,
+    ganttInicio: 3,
+    ganttFim: 4,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "Demolição", farol: "a", status: "A iniciar" },
+      { assunto: "PDV", farol: "a", status: "Planejamento inicial" },
+      { assunto: "Terreno parado", farol: "a", status: "Aguardando gatilho" },
+      { assunto: "Status/observação", farol: "a", status: "Sem impeditivo crítico" }
     ]
   },
   {
-    id: 3, terreno: "Fernandes Moreira II", bairro: "Chácara S. Antônio", status: "Lançado",
-    segmento: "Full", coordenacao: "Artur Dorfman", doninho: "Akemi Yoshikawa",
-    mix: "77, 89, 127 e 139m²", reunPassagem: "06/12/2023", meeting: "23/04/2026",
-    lancamento: "16/05/2026", anoLancamento: 2026,
-    unid: 317, nom100: 389, nomCBR: 389,
-    ganttInicio: 4, ganttFim: 5,
+    id: 3,
+    terreno: "Fernandes Moreira II",
+    bairro: "Chácara S. Antônio",
+    statusMacro: "Lançado",
+    segmento: "Full",
+    coordenacao: "Artur Dorfman",
+    doninho: "Akemi Yoshikawa",
+    statusExecucao: "Finalizado",
+    posseLotes: "06/12/2023",
+    inicioDemolicao: "10/01/2024",
+    terminoDemolicao: "28/02/2024",
+    inicioPDV: "05/03/2024",
+    finalizacaoPDV: "20/04/2024",
+    meeting: "23/04/2026",
+    demolicaoPDV: "25/04/2026",
+    inicioPreObra: "01/05/2026",
+    inicioObra: "16/05/2026",
+    anoLancamento: 2026,
+    ganttInicio: 4,
+    ganttFim: 5,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "PDV", farol: "g", status: "Concluído" },
+      { assunto: "Pré Obra", farol: "g", status: "Concluída" },
+      { assunto: "Vizinhos", farol: "g", status: "Tratativas encerradas" },
+      { assunto: "Status/observação", farol: "g", status: "Fluxo finalizado" }
     ]
   },
   {
-    id: 4, terreno: "Chicago", bairro: "Brooklin", status: "Lançado",
-    segmento: "Padrão", coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
-    mix: "65 e 82m²", reunPassagem: "15/03/2024", meeting: "20/05/2026",
-    lancamento: "14/06/2026", anoLancamento: 2026,
-    unid: 280, nom100: 310, nomCBR: 310,
-    ganttInicio: 5, ganttFim: 6,
+    id: 4,
+    terreno: "Chicago",
+    bairro: "Brooklin",
+    statusMacro: "Lançado",
+    segmento: "Padrão",
+    coordenacao: "Denis Pimentel",
+    doninho: "Denis Pimentel",
+    statusExecucao: "Em andamento",
+    posseLotes: "15/03/2024",
+    inicioDemolicao: "20/03/2024",
+    terminoDemolicao: "30/04/2024",
+    inicioPDV: "10/05/2024",
+    finalizacaoPDV: "30/05/2024",
+    meeting: "20/05/2026",
+    demolicaoPDV: "01/06/2026",
+    inicioPreObra: "05/06/2026",
+    inicioObra: "14/06/2026",
+    anoLancamento: 2026,
+    ganttInicio: 5,
+    ganttFim: 6,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "PDV", farol: "g", status: "Executado" },
+      { assunto: "Demolição", farol: "g", status: "Concluída" },
+      { assunto: "Pré Obra", farol: "a", status: "Checklist parcial" },
+      { assunto: "Status/observação", farol: "a", status: "Acompanhamento semanal" }
     ]
   },
   {
-    id: 5, terreno: "Guaratuba", bairro: "Conceição", status: "Previsto",
-    segmento: "Padrão", coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
-    mix: "55 e 70m²", reunPassagem: "—", meeting: "—",
-    lancamento: "Set/2026", anoLancamento: 2026,
-    unid: 320, nom100: 280, nomCBR: 280,
-    ganttInicio: 8, ganttFim: 8,
+    id: 5,
+    terreno: "Guaratuba",
+    bairro: "Conceição",
+    statusMacro: "Previsto",
+    segmento: "Padrão",
+    coordenacao: "Denis Pimentel",
+    doninho: "Denis Pimentel",
+    statusExecucao: "Não iniciado",
+    posseLotes: "—",
+    inicioDemolicao: "—",
+    terminoDemolicao: "—",
+    inicioPDV: "—",
+    finalizacaoPDV: "—",
+    meeting: "—",
+    demolicaoPDV: "—",
+    inicioPreObra: "—",
+    inicioObra: "Set/2026",
+    anoLancamento: 2026,
+    ganttInicio: 8,
+    ganttFim: 8,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "Demolição", farol: "a", status: "Não iniciada" },
+      { assunto: "PDV", farol: "a", status: "Não iniciado" },
+      { assunto: "Pré Obra", farol: "a", status: "Sem mobilização" },
+      { assunto: "Terreno parado", farol: "a", status: "Aguardando avanço" }
     ]
   },
   {
-    id: 6, terreno: "Antônio das Chagas", bairro: "Chácara S. Antônio", status: "Previsto",
-    segmento: "Full", coordenacao: "Artur Dorfman", doninho: "Akemi Yoshikawa",
-    mix: "90 e 110m²", reunPassagem: "—", meeting: "—",
-    lancamento: "Out/2026", anoLancamento: 2026,
-    unid: 210, nom100: 350, nomCBR: 350,
-    ganttInicio: 9, ganttFim: 9,
+    id: 6,
+    terreno: "Antônio das Chagas",
+    bairro: "Chácara S. Antônio",
+    statusMacro: "Previsto",
+    segmento: "Full",
+    coordenacao: "Artur Dorfman",
+    doninho: "Akemi Yoshikawa",
+    statusExecucao: "Em andamento",
+    posseLotes: "—",
+    inicioDemolicao: "—",
+    terminoDemolicao: "—",
+    inicioPDV: "—",
+    finalizacaoPDV: "—",
+    meeting: "—",
+    demolicaoPDV: "—",
+    inicioPreObra: "—",
+    inicioObra: "Out/2026",
+    anoLancamento: 2026,
+    ganttInicio: 9,
+    ganttFim: 9,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "PDV", farol: "a", status: "Em contratação" },
+      { assunto: "Demolição", farol: "a", status: "Programação preliminar" },
+      { assunto: "Vizinhos", farol: "g", status: "Mapeamento realizado" },
+      { assunto: "Status/observação", farol: "a", status: "Dependências externas" }
     ]
   },
   {
-    id: 7, terreno: "Canário Moema", bairro: "Moema", status: "Previsto",
-    segmento: "Full", coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
-    mix: "100 e 130m²", reunPassagem: "—", meeting: "—",
-    lancamento: "Nov/2026", anoLancamento: 2026,
-    unid: 180, nom100: 420, nomCBR: 420,
-    ganttInicio: 10, ganttFim: 10,
+    id: 7,
+    terreno: "Canário Moema",
+    bairro: "Moema",
+    statusMacro: "Previsto",
+    segmento: "Full",
+    coordenacao: "Artur Dorfman",
+    doninho: "Giulia Oliveira",
+    statusExecucao: "Não iniciado",
+    posseLotes: "—",
+    inicioDemolicao: "—",
+    terminoDemolicao: "—",
+    inicioPDV: "—",
+    finalizacaoPDV: "—",
+    meeting: "—",
+    demolicaoPDV: "—",
+    inicioPreObra: "—",
+    inicioObra: "Nov/2026",
+    anoLancamento: 2026,
+    ganttInicio: 10,
+    ganttFim: 10,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "Pré Obra", farol: "a", status: "Não iniciada" },
+      { assunto: "PDV", farol: "a", status: "Aguardando definição" },
+      { assunto: "Vizinhos", farol: "a", status: "Sem acionamento" },
+      { assunto: "Status/observação", farol: "a", status: "Em planejamento" }
     ]
   },
   {
-    id: 8, terreno: "Dona Inácia Uchôa I", bairro: "Vila Mariana", status: "Previsto",
-    segmento: "Padrão", coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
-    mix: "60 e 75m²", reunPassagem: "—", meeting: "—",
-    lancamento: "Dez/2026", anoLancamento: 2026,
-    unid: 290, nom100: 260, nomCBR: 260,
-    ganttInicio: 11, ganttFim: 12,
+    id: 8,
+    terreno: "Dona Inácia Uchôa I",
+    bairro: "Vila Mariana",
+    statusMacro: "Previsto",
+    segmento: "Padrão",
+    coordenacao: "Denis Pimentel",
+    doninho: "Denis Pimentel",
+    statusExecucao: "Em andamento",
+    posseLotes: "—",
+    inicioDemolicao: "—",
+    terminoDemolicao: "—",
+    inicioPDV: "—",
+    finalizacaoPDV: "—",
+    meeting: "—",
+    demolicaoPDV: "—",
+    inicioPreObra: "—",
+    inicioObra: "Dez/2026",
+    anoLancamento: 2026,
+    ganttInicio: 11,
+    ganttFim: 12,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "Demolição", farol: "a", status: "Em preparação" },
+      { assunto: "PDV", farol: "a", status: "Escopo preliminar" },
+      { assunto: "Pré Obra", farol: "a", status: "Em alinhamento" },
+      { assunto: "Vizinhos", farol: "g", status: "Contato inicial feito" }
     ]
   },
   {
-    id: 9, terreno: "Otávio Tarquínio", bairro: "Campo Belo", status: "Previsto",
-    segmento: "Full", coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
-    mix: "85 e 105m²", reunPassagem: "—", meeting: "—",
-    lancamento: "Jan/2027", anoLancamento: 2027,
-    unid: 120, nom100: 300, nomCBR: 300,
-    ganttInicio: 11, ganttFim: 12,
+    id: 9,
+    terreno: "Otávio Tarquínio",
+    bairro: "Campo Belo",
+    statusMacro: "Coringa",
+    segmento: "Full",
+    coordenacao: "Artur Dorfman",
+    doninho: "Giulia Oliveira",
+    statusExecucao: "Não iniciado",
+    posseLotes: "—",
+    inicioDemolicao: "—",
+    terminoDemolicao: "—",
+    inicioPDV: "—",
+    finalizacaoPDV: "—",
+    meeting: "—",
+    demolicaoPDV: "—",
+    inicioPreObra: "—",
+    inicioObra: "Jan/2027",
+    anoLancamento: 2027,
+    ganttInicio: 11,
+    ganttFim: 12,
     isCoringa: true,
     detalhes: [
-      { assunto: "Assunto", farol: "g", status: "Teste" },
-      { assunto: "Farol", farol: "a", status: "Teste" },
-      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
-      { assunto: "Status/observação", farol: "a", status: "Teste" }
+      { assunto: "Terreno parado", farol: "a", status: "Sem ativação" },
+      { assunto: "PDV", farol: "a", status: "Sem contratação" },
+      { assunto: "Pré Obra", farol: "a", status: "Não iniciada" },
+      { assunto: "Status/observação", farol: "a", status: "Projeto coringa" }
     ]
   }
 ];
@@ -726,6 +843,29 @@ const HOJE_MES = 7;
 let projetosFiltrados = [...projetos];
 let zoomLevel = 1;
 const COL_W = 70;
+
+function getCorProjeto(p, i) {
+  if (p.isCoringa && i === p.ganttInicio) return '#8a63a3';
+  if (p.statusMacro === 'Lançado') return '#5f6f52';
+  if (p.statusMacro === 'Previsto') return '#4d7399';
+  if (p.statusMacro === 'Coringa') return '#8a63a3';
+  return '#6f5b47';
+}
+
+function statusTagMacro(s) {
+  const map = {
+    'Lançado': 'lancado',
+    'Previsto': 'previsto',
+    'Coringa': 'coringa',
+    'Em contratação': 'contratacao'
+  };
+  return `<span class="tag-status tag-${map[s] || 'previsto'}">${s}</span>`;
+}
+
+function farolDot(f) {
+  const map = { g: 'farol-g', a: 'farol-a', r: 'farol-r' };
+  return `<span class="farol ${map[f] || 'farol-g'}"></span>`;
+}
 
 function renderGantt(lista) {
   const container = document.getElementById('ganttContainer');
@@ -747,7 +887,7 @@ function renderGantt(lista) {
     html += '<tr>';
     html += `<td style="background:#e7dccd;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.2);width:200px;border-right:1px solid rgba(255,255,255,0.1);">
       <div style="font-size:13px;font-weight:700;color:var(--text-dark);">${p.terreno}</div>
-      <div style="font-size:11px;color:var(--text-light);">${p.bairro} · ${p.status}</div>
+      <div style="font-size:11px;color:var(--text-light);">${p.bairro} · ${p.statusMacro}</div>
     </td>`;
 
     meses.forEach((m, i) => {
@@ -755,14 +895,7 @@ function renderGantt(lista) {
       let barHTML = '';
 
       if (i >= p.ganttInicio && i <= p.ganttFim) {
-        const cor = p.isCoringa && i >= p.ganttInicio && i <= p.ganttInicio
-          ? '#8a63a3'
-          : p.status === 'Lançado'
-          ? '#5f6f52'
-          : p.status === 'Previsto'
-          ? '#4d7399'
-          : '#6f5b47';
-
+        const cor = getCorProjeto(p, i);
         const isStart = i === p.ganttInicio;
         const isEnd = i === p.ganttFim;
         const radius =
@@ -772,10 +905,6 @@ function renderGantt(lista) {
           : '0';
 
         barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:${cor};border-radius:${radius};left:${isStart ? 4 : 0}px;right:${isEnd ? 4 : 0}px;"></div>`;
-      }
-
-      if (p.isCoringa && i === 12) {
-        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:#4d7399;border-radius:9px;left:4px;right:4px;"></div>`;
       }
 
       html += `<td style="background:${isHoje ? 'rgba(229,57,53,0.05)' : 'var(--white)'};border-bottom:1px solid rgba(0,0,0,0.05);border-right:1px solid rgba(0,0,0,0.05);position:relative;height:36px;width:${w}px;padding:0;">
@@ -791,67 +920,47 @@ function renderGantt(lista) {
   container.innerHTML = html;
 }
 
-function zoomGantt(dir) {
-  zoomLevel = Math.max(0.6, Math.min(2, zoomLevel + dir * 0.2));
-  renderGantt(projetosFiltrados);
-}
-
-function irParaHoje() {
-  const scroll = document.getElementById('ganttScroll');
-  scroll.scrollLeft = (200 + HOJE_MES * COL_W * zoomLevel) - 300;
-}
-
-function statusTag(s) {
-  const map = {
-    'Lançado': 'lancado',
-    'Previsto': 'previsto',
-    'Coringa': 'coringa',
-    'Em contratação': 'contratacao'
-  };
-  return `<span class="tag-status tag-${map[s] || 'previsto'}">${s}</span>`;
-}
-
-function farolDot(f) {
-  const map = { g: 'farol-g', a: 'farol-a', r: 'farol-r' };
-  return `<span class="farol ${map[f] || 'farol-g'}"></span>`;
-}
-
 function renderTabela(lista) {
   const tbody = document.getElementById('tbodyProjetos');
   let html = '';
 
   lista.forEach(p => {
     html += `
-    <tr>
-      <td><button class="expand-btn" id="btn-${p.id}" onclick="toggleDetalhe(${p.id})">+</button></td>
-      <td><strong>${p.terreno}</strong><br><span style="font-size:11px;color:var(--text-light);">${p.bairro}</span></td>
-      <td><select class="select-seg"><option>${p.segmento}</option><option>Padrão</option><option>Full</option></select></td>
-      <td>${p.doninho}</td>
-      <td>${statusTag(p.status)}${p.isCoringa ? '<br><span style="font-size:10px;background:#eee2f5;color:#8a63a3;border-radius:10px;padding:2px 8px;">+Coringa</span>' : ''}</td>
-      <td style="font-size:12px;">${p.mix}</td>
-      <td style="font-size:12px;">${p.reunPassagem}</td>
-      <td style="font-size:12px;">${p.meeting}</td>
-      <td style="font-size:12px;">${p.lancamento}</td>
-      <td style="text-align:right;">${p.unid}</td>
-      <td style="text-align:right;">${p.nom100}</td>
-      <td style="text-align:right;">${p.nomCBR}</td>
-    </tr>
-    <tr class="detail-row" id="detail-${p.id}">
-      <td colspan="13" style="padding:0;">
-        <div style="background:#eadfce;padding:12px 20px;">
-          <div style="font-weight:700;color:var(--bronze);font-size:13px;margin-bottom:8px;letter-spacing:1px;">📋 STATUS — ${p.terreno.toUpperCase()}</div>
-          <div style="background:var(--bege-dark);display:grid;grid-template-columns:160px 60px 1fr;padding:8px 12px;border-radius:6px 6px 0 0;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);font-weight:600;">
-            <div>Assunto</div><div>Farol</div><div>Status / Observações</div>
+      <tr>
+        <td><button class="expand-btn" id="btn-${p.id}" onclick="toggleDetalhe(${p.id})">+</button></td>
+        <td><strong>${p.terreno}</strong><br><span style="font-size:11px;color:var(--text-light);">${p.bairro}</span></td>
+        <td>${p.segmento}</td>
+        <td>${p.coordenacao}</td>
+        <td>${p.doninho}</td>
+        <td>${statusTagMacro(p.statusMacro)}</td>
+        <td>${p.posseLotes}</td>
+        <td>${p.inicioDemolicao}</td>
+        <td>${p.terminoDemolicao}</td>
+        <td>${p.inicioPDV}</td>
+        <td>${p.finalizacaoPDV}</td>
+        <td>${p.meeting}</td>
+        <td>${p.demolicaoPDV}</td>
+        <td>${p.inicioPreObra}</td>
+        <td>${p.inicioObra}</td>
+      </tr>
+      <tr class="detail-row" id="detail-${p.id}">
+        <td colspan="15" style="padding:0;">
+          <div style="background:#eadfce;padding:12px 20px;">
+            <div style="font-weight:700;color:var(--bronze);font-size:13px;margin-bottom:8px;letter-spacing:1px;">📋 STATUS — ${p.terreno.toUpperCase()}</div>
+            <div style="background:var(--bege-dark);display:grid;grid-template-columns:180px 70px 1fr;padding:8px 12px;border-radius:6px 6px 0 0;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);font-weight:600;">
+              <div>Assunto</div><div>Farol</div><div>Status / Observações</div>
+            </div>
+            ${p.detalhes.map(d => `
+              <div style="display:grid;grid-template-columns:180px 70px 1fr;padding:10px 12px;border-bottom:1px solid var(--bege-dark);align-items:center;background:var(--white);">
+                <div style="font-size:13px;">${d.assunto}</div>
+                <div>${farolDot(d.farol)}</div>
+                <div style="font-size:12px;white-space:pre-line;">${d.status}</div>
+              </div>
+            `).join('')}
           </div>
-          ${p.detalhes.map(d => `
-          <div style="display:grid;grid-template-columns:160px 60px 1fr;padding:10px 12px;border-bottom:1px solid var(--bege-dark);align-items:center;background:var(--white);">
-            <div style="font-size:13px;">${d.assunto}</div>
-            <div>${farolDot(d.farol)}</div>
-            <div style="font-size:12px;white-space:pre-line;">${d.status}</div>
-          </div>`).join('')}
-        </div>
-      </td>
-    </tr>`;
+        </td>
+      </tr>
+    `;
   });
 
   tbody.innerHTML = html;
@@ -867,27 +976,46 @@ function toggleDetalhe(id) {
   btn.textContent = isOpen ? '+' : '−';
 }
 
+function atualizarKPIs(lista) {
+  document.getElementById('kpiLancamentos').textContent = lista.length;
+  document.getElementById('kpiAndamento').textContent = lista.filter(p => p.statusExecucao === 'Em andamento').length;
+  document.getElementById('kpiNaoIniciado').textContent = lista.filter(p => p.statusExecucao === 'Não iniciado').length;
+  document.getElementById('kpiFinalizado').textContent = lista.filter(p => p.statusExecucao === 'Finalizado').length;
+  document.getElementById('kpiFull').textContent = lista.filter(p => p.segmento === 'Full').length;
+}
+
 function aplicarFiltros() {
   const ano = document.getElementById('filtroAno').value;
   const seg = document.getElementById('filtroSegmento').value;
   const doninho = document.getElementById('filtroDoninho').value;
   const status = document.getElementById('filtroStatus').value;
-  const Etapa = document.getElementById('filtroEtapa').value;
-  const Forn = document.getElementById('filtroFornecedores').value;
+  const etapa = document.getElementById('filtroEtapa').value;
   const busca = document.getElementById('filtroBusca').value.toLowerCase();
 
   projetosFiltrados = projetos.filter(p => {
-    if (ano && p.anoLancamento != ano) return false;
+    if (ano && String(p.anoLancamento) !== ano) return false;
     if (seg && p.segmento !== seg) return false;
     if (doninho && p.doninho !== doninho) return false;
-    if (status && p.status !== status) return false;
-    if (etapa && p.etapa !== etapa) return false;
-    if (fornecedores && p.fornecedores !== fornecedores) return false;
-    if (busca && !p.terreno.toLowerCase().includes(busca) && !p.bairro.toLowerCase().includes(busca)) return false;
+    if (status && p.statusExecucao !== status) return false;
+
+    if (etapa) {
+      const encontrouEtapa = p.detalhes.some(d =>
+        d.assunto.toLowerCase().includes(etapa.toLowerCase()) ||
+        d.status.toLowerCase().includes(etapa.toLowerCase())
+      );
+      if (!encontrouEtapa) return false;
+    }
+
+    if (
+      busca &&
+      !p.terreno.toLowerCase().includes(busca) &&
+      !p.bairro.toLowerCase().includes(busca)
+    ) return false;
+
     return true;
   });
 
-  document.getElementById('kpiLancamentos').textContent = projetosFiltrados.length;
+  atualizarKPIs(projetosFiltrados);
   renderGantt(projetosFiltrados);
   renderTabela(projetosFiltrados);
 }
@@ -898,9 +1026,18 @@ function limparFiltros() {
   document.getElementById('filtroDoninho').value = '';
   document.getElementById('filtroStatus').value = '';
   document.getElementById('filtroEtapa').value = '';
-  document.getElementById('filtroFornecedores').value = '';
   document.getElementById('filtroBusca').value = '';
   aplicarFiltros();
+}
+
+function zoomGantt(dir) {
+  zoomLevel = Math.max(0.6, Math.min(2, zoomLevel + dir * 0.2));
+  renderGantt(projetosFiltrados);
+}
+
+function irParaHoje() {
+  const scroll = document.getElementById('ganttScroll');
+  scroll.scrollLeft = (200 + HOJE_MES * COL_W * zoomLevel) - 300;
 }
 
 document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR', {
