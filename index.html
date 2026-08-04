@@ -446,12 +446,13 @@
           <option value="">Todos</option>
           <option value="2026" selected>2026</option>
           <option value="2027">2027</option>
+          <option value="2028">2028</option>
         </select>
       </div>
 
       <div class="filtro-item">
-        <label>Status</label>
-        <select id="filtroStatus" onchange="aplicarFiltros()">
+        <label>Segmento</label>
+        <select id="filtroSegmento" onchange="aplicarFiltros()">
           <option value="">Todos</option>
           <option value="Lançado">Lançado</option>
           <option value="Previsto">Previsto</option>
@@ -461,30 +462,34 @@
       </div>
 
       <div class="filtro-item">
-        <label>Coordenação</label>
-        <select id="filtroCoordenacao" onchange="aplicarFiltros()">
-          <option value="">Todas</option>
-          <option value="Denis Pimentel">Denis Pimentel</option>
-          <option value="Artur Dorfman">Artur Dorfman</option>
-        </select>
-      </div>
-
-      <div class="filtro-item">
         <label>Doninho</label>
         <select id="filtroDoninho" onchange="aplicarFiltros()">
-          <option value="">Todos</option>
-          <option value="Denis Pimentel">Denis Pimentel</option>
+          <option value="">Todas</option>
+         <option value="Denis Pimentel">Denis Pimentel</option>
           <option value="Giulia Oliveira">Giulia Oliveira</option>
           <option value="Akemi Yoshikawa">Akemi Yoshikawa</option>
         </select>
       </div>
 
       <div class="filtro-item">
-        <label>Segmento</label>
-        <select id="filtroSegmento" onchange="aplicarFiltros()">
+        <label>Status</label>
+        <select id="filtroStatus" onchange="aplicarFiltros()">
           <option value="">Todos</option>
-          <option value="Padrão">Padrão</option>
-          <option value="Full">Full</option>
+          <option value="Não iniciado">Não iniciado</option>
+          <option value="Em andamento">Em andamento</option>
+          <option value="Finalizado">Finalizado</option>
+        </select>
+      </div>
+
+      <div class="filtro-item">
+        <label>Etapa</label>
+        <select id="filtroEtapa" onchange="aplicarFiltros()">
+          <option value="">Todos</option>
+          <option value="Demolição">Demolição</option>
+          <option value="PDV">PDV</option>
+          <option value="Pré Obra">Pré Obra</option>
+          <option value="Vizinhos">Vizinhos</option>
+          <option value="Terreno parado">Terreno parado</option>
         </select>
       </div>
 
@@ -572,13 +577,15 @@
           <th>Coordenação</th>
           <th>Doninho</th>
           <th>Status</th>
-          <th>Mix</th>
-          <th>Reun. Passagem</th>
+          <th>Posse do primeiro lote e do ultimo</th>
+          <th>Inicio de demolição</th>
+          <th>Termino de demolição</th>
+          <th>Inicio de PDV</th>
+          <th>Finalização de PDV</th>
           <th>Meeting</th>
-          <th>Lançamento</th>
-          <th>Unid.</th>
-          <th>Nom 100%</th>
-          <th>Nom %CBR</th>
+          <th>Demolição PDV</th>
+          <th>Início pré obra</th>
+          <th>Início Obra</th>
         </tr>
       </thead>
       <tbody id="tbodyProjetos"></tbody>
@@ -587,7 +594,7 @@
 </div>
 
 <div class="footer">
-  Living — Painel de Gestão Landbank · Dados atualizados via GitHub · <span id="dataAtual"></span>
+  Living — Painel de Gestão Landbank - Engenharia de Incorporação · <span id="dataAtual"></span>
 </div>
 
 <script>
@@ -600,9 +607,10 @@ const projetos = [
     unid: 207, nom100: 214, nomCBR: 214,
     ganttInicio: 1, ganttFim: 2,
     detalhes: [
-      { assunto: "Lançamento", farol: "g", status: "Fev/2026" },
-      { assunto: "Vendas", farol: "a", status: "LEVEN by LIVING — Assinaturas: 70/188 (37%) - (Meta Ano: 70/120)\n93m²: 27/31 (87%) | 89m²: 18/36 (50%) | 79m²: 14/64 (22%) | 69m²: 11/57 (19%)\nInputs: 68/188 (36%)" },
-      { assunto: "Observações", farol: "g", status: "Desmobilização do PDV prevista p/ 11.10.2026" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -613,9 +621,10 @@ const projetos = [
     unid: 745, nom100: 243, nomCBR: 243,
     ganttInicio: 3, ganttFim: 4,
     detalhes: [
-      { assunto: "Lançamento", farol: "g", status: "Abr/2026" },
-      { assunto: "Vendas", farol: "g", status: "Performance acima da meta" },
-      { assunto: "Observações", farol: "g", status: "Em andamento" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -626,9 +635,10 @@ const projetos = [
     unid: 317, nom100: 389, nomCBR: 389,
     ganttInicio: 4, ganttFim: 5,
     detalhes: [
-      { assunto: "Lançamento", farol: "g", status: "Mai/2026" },
-      { assunto: "Vendas", farol: "a", status: "Em acompanhamento" },
-      { assunto: "Observações", farol: "g", status: "PDV ativo" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -639,9 +649,10 @@ const projetos = [
     unid: 280, nom100: 310, nomCBR: 310,
     ganttInicio: 5, ganttFim: 6,
     detalhes: [
-      { assunto: "Lançamento", farol: "g", status: "Jun/2026" },
-      { assunto: "Vendas", farol: "g", status: "Meta atingida" },
-      { assunto: "Observações", farol: "g", status: "Em andamento" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -652,9 +663,10 @@ const projetos = [
     unid: 320, nom100: 280, nomCBR: 280,
     ganttInicio: 8, ganttFim: 8,
     detalhes: [
-      { assunto: "Lançamento", farol: "a", status: "Set/2026 — Previsto" },
-      { assunto: "Aprovações", farol: "a", status: "Em processo" },
-      { assunto: "Observações", farol: "g", status: "Aguardando aprovação municipal" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -665,9 +677,10 @@ const projetos = [
     unid: 210, nom100: 350, nomCBR: 350,
     ganttInicio: 9, ganttFim: 9,
     detalhes: [
-      { assunto: "Lançamento", farol: "a", status: "Out/2026 — Previsto" },
-      { assunto: "Projeto", farol: "g", status: "Em desenvolvimento" },
-      { assunto: "Observações", farol: "g", status: "Terreno aprovado" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -678,9 +691,10 @@ const projetos = [
     unid: 180, nom100: 420, nomCBR: 420,
     ganttInicio: 10, ganttFim: 10,
     detalhes: [
-      { assunto: "Lançamento", farol: "a", status: "Nov/2026 — Previsto" },
-      { assunto: "Projeto", farol: "a", status: "Em revisão" },
-      { assunto: "Observações", farol: "g", status: "Alta demanda esperada na região" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -691,9 +705,10 @@ const projetos = [
     unid: 290, nom100: 260, nomCBR: 260,
     ganttInicio: 11, ganttFim: 12,
     detalhes: [
-      { assunto: "Lançamento", farol: "a", status: "Dez/2026 — Previsto" },
-      { assunto: "Projeto", farol: "g", status: "Aprovado" },
-      { assunto: "Observações", farol: "g", status: "Boa localização" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   },
   {
@@ -705,9 +720,10 @@ const projetos = [
     ganttInicio: 11, ganttFim: 12,
     isCoringa: true,
     detalhes: [
-      { assunto: "Lançamento", farol: "a", status: "Jan/2027 — Previsto (Coringa)" },
-      { assunto: "Negociação", farol: "a", status: "Em andamento" },
-      { assunto: "Observações", farol: "g", status: "Alta demanda no bairro" }
+      { assunto: "Assunto", farol: "g", status: "Teste" },
+      { assunto: "Farol", farol: "a", status: "Teste" },
+      { assunto: "Data limite para executar", farol: "a", status: "Teste" },
+      { assunto: "Status/observação", farol: "a", status: "Teste" }
     ]
   }
 ];
