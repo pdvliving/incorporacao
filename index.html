@@ -232,7 +232,6 @@
   .tag-previsto { background: #dde8f3; color: var(--previsto); }
   .tag-coringa { background: #eee2f5; color: var(--coringa); }
   .tag-contratacao { background: #e9e0d6; color: var(--contratacao); }
-
   .tag-nao-iniciado { background: #efe7dc; color: #7a6246; }
   .tag-em-andamento { background: #fff0d6; color: #9a6a00; }
   .tag-finalizado { background: #e0efdf; color: #3f7a42; }
@@ -410,6 +409,67 @@
     background: var(--white);
   }
 
+  .topico-col-header {
+    background: var(--bege-dark);
+    display: grid;
+    grid-template-columns: 1.3fr 90px 180px 1.7fr;
+    padding: 8px 12px;
+    border-radius: 6px 6px 0 0;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  .topico-box {
+    border-bottom: 1px solid var(--bege-dark);
+    background: var(--white);
+  }
+
+  .topico-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 10px 12px;
+    cursor: pointer;
+    background: #f3ecdf;
+    border-bottom: 1px solid var(--bege-dark);
+  }
+
+  .topico-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bronze);
+  }
+
+  .topico-toggle {
+    font-size: 16px;
+    color: var(--bronze);
+    font-weight: 700;
+  }
+
+  .topico-conteudo {
+    display: none;
+  }
+
+  .topico-conteudo.open {
+    display: block;
+  }
+
+  .topico-linha {
+    display: grid;
+    grid-template-columns: 1.3fr 90px 180px 1.7fr;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--bege-dark);
+    align-items: center;
+    background: var(--white);
+  }
+
+  .topico-linha:last-child {
+    border-bottom: none;
+  }
+
   .footer {
     text-align: center;
     padding: 20px;
@@ -481,7 +541,6 @@
           <option value="PDV">PDV</option>
           <option value="Pré Obra">Pré Obra</option>
           <option value="Vizinhos">Vizinhos</option>
-          <option value="Terreno parado">Terreno parado</option>
         </select>
       </div>
 
@@ -602,12 +661,21 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 1,
     ganttFim: 2,
-    detalhes: [
-      { assunto: "Demolição", farol: "g", status: "Concluída" },
-      { assunto: "PDV", farol: "a", status: "Em validação final" },
-      { assunto: "Pré Obra", farol: "a", status: "Mobilização em andamento" },
-      { assunto: "Vizinhos", farol: "g", status: "Comunicação realizada" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Tapumes", farol: "g", dataLimite: "10/08/2026", status: "Concluída" },
+        { assunto: "Retirada de resíduos", farol: "a", dataLimite: "14/08/2026", status: "Em andamento" }
+      ],
+      "PDV": [
+        { assunto: "Instalação de mobiliário", farol: "a", dataLimite: "20/08/2026", status: "Em validação final" }
+      ],
+      "Pré Obra": [
+        { assunto: "Mobilização do canteiro", farol: "a", dataLimite: "25/08/2026", status: "Mobilização em andamento" }
+      ],
+      "Vizinhos": [
+        { assunto: "Comunicado da obra", farol: "g", dataLimite: "08/08/2026", status: "Comunicação realizada" }
+      ]
+    }
   },
   {
     id: 2,
@@ -630,12 +698,20 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 3,
     ganttFim: 4,
-    detalhes: [
-      { assunto: "Demolição", farol: "a", status: "A iniciar" },
-      { assunto: "PDV", farol: "a", status: "Planejamento inicial" },
-      { assunto: "Terreno parado", farol: "a", status: "Aguardando gatilho" },
-      { assunto: "Status/observação", farol: "a", status: "Sem impeditivo crítico" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Planejamento de demolição", farol: "a", dataLimite: "12/09/2026", status: "A iniciar" }
+      ],
+      "PDV": [
+        { assunto: "Planejamento inicial", farol: "a", dataLimite: "18/09/2026", status: "Aguardando definição" }
+      ],
+      "Pré Obra": [
+        { assunto: "Cronograma preliminar", farol: "a", dataLimite: "25/09/2026", status: "Sem mobilização" }
+      ],
+      "Vizinhos": [
+        { assunto: "Mapeamento inicial", farol: "a", dataLimite: "30/09/2026", status: "Sem comunicação ativa" }
+      ]
+    }
   },
   {
     id: 3,
@@ -658,12 +734,20 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 4,
     ganttFim: 5,
-    detalhes: [
-      { assunto: "PDV", farol: "g", status: "Concluído" },
-      { assunto: "Pré Obra", farol: "g", status: "Concluída" },
-      { assunto: "Vizinhos", farol: "g", status: "Tratativas encerradas" },
-      { assunto: "Status/observação", farol: "g", status: "Fluxo finalizado" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Execução da demolição", farol: "g", dataLimite: "28/02/2024", status: "Concluída" }
+      ],
+      "PDV": [
+        { assunto: "Implantação do PDV", farol: "g", dataLimite: "20/04/2024", status: "Concluído" }
+      ],
+      "Pré Obra": [
+        { assunto: "Checklist pré obra", farol: "g", dataLimite: "01/05/2026", status: "Concluída" }
+      ],
+      "Vizinhos": [
+        { assunto: "Tratativas com entorno", farol: "g", dataLimite: "15/04/2024", status: "Tratativas encerradas" }
+      ]
+    }
   },
   {
     id: 4,
@@ -686,12 +770,20 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 5,
     ganttFim: 6,
-    detalhes: [
-      { assunto: "PDV", farol: "g", status: "Executado" },
-      { assunto: "Demolição", farol: "g", status: "Concluída" },
-      { assunto: "Pré Obra", farol: "a", status: "Checklist parcial" },
-      { assunto: "Status/observação", farol: "a", status: "Acompanhamento semanal" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Frente de demolição", farol: "g", dataLimite: "30/04/2024", status: "Concluída" }
+      ],
+      "PDV": [
+        { assunto: "Execução do PDV", farol: "g", dataLimite: "30/05/2024", status: "Executado" }
+      ],
+      "Pré Obra": [
+        { assunto: "Checklist de mobilização", farol: "a", dataLimite: "08/06/2026", status: "Checklist parcial" }
+      ],
+      "Vizinhos": [
+        { assunto: "Acompanhamento do entorno", farol: "a", dataLimite: "12/06/2026", status: "Acompanhamento semanal" }
+      ]
+    }
   },
   {
     id: 5,
@@ -714,12 +806,20 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 8,
     ganttFim: 8,
-    detalhes: [
-      { assunto: "Demolição", farol: "a", status: "Não iniciada" },
-      { assunto: "PDV", farol: "a", status: "Não iniciado" },
-      { assunto: "Pré Obra", farol: "a", status: "Sem mobilização" },
-      { assunto: "Terreno parado", farol: "a", status: "Aguardando avanço" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Planejamento inicial", farol: "a", dataLimite: "05/10/2026", status: "Não iniciada" }
+      ],
+      "PDV": [
+        { assunto: "Definição de escopo", farol: "a", dataLimite: "10/10/2026", status: "Não iniciado" }
+      ],
+      "Pré Obra": [
+        { assunto: "Mobilização preliminar", farol: "a", dataLimite: "15/10/2026", status: "Sem mobilização" }
+      ],
+      "Vizinhos": [
+        { assunto: "Contato inicial", farol: "a", dataLimite: "20/10/2026", status: "Aguardando avanço" }
+      ]
+    }
   },
   {
     id: 6,
@@ -742,12 +842,20 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 9,
     ganttFim: 9,
-    detalhes: [
-      { assunto: "PDV", farol: "a", status: "Em contratação" },
-      { assunto: "Demolição", farol: "a", status: "Programação preliminar" },
-      { assunto: "Vizinhos", farol: "g", status: "Mapeamento realizado" },
-      { assunto: "Status/observação", farol: "a", status: "Dependências externas" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Programação preliminar", farol: "a", dataLimite: "22/10/2026", status: "Programação preliminar" }
+      ],
+      "PDV": [
+        { assunto: "Contratação do PDV", farol: "a", dataLimite: "18/10/2026", status: "Em contratação" }
+      ],
+      "Pré Obra": [
+        { assunto: "Dependências externas", farol: "a", dataLimite: "28/10/2026", status: "Aguardando liberação" }
+      ],
+      "Vizinhos": [
+        { assunto: "Mapeamento do entorno", farol: "g", dataLimite: "14/10/2026", status: "Mapeamento realizado" }
+      ]
+    }
   },
   {
     id: 7,
@@ -770,12 +878,20 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 10,
     ganttFim: 10,
-    detalhes: [
-      { assunto: "Pré Obra", farol: "a", status: "Não iniciada" },
-      { assunto: "PDV", farol: "a", status: "Aguardando definição" },
-      { assunto: "Vizinhos", farol: "a", status: "Sem acionamento" },
-      { assunto: "Status/observação", farol: "a", status: "Em planejamento" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Estratégia inicial", farol: "a", dataLimite: "05/11/2026", status: "Não iniciada" }
+      ],
+      "PDV": [
+        { assunto: "Definição do PDV", farol: "a", dataLimite: "10/11/2026", status: "Aguardando definição" }
+      ],
+      "Pré Obra": [
+        { assunto: "Planejamento de mobilização", farol: "a", dataLimite: "15/11/2026", status: "Não iniciada" }
+      ],
+      "Vizinhos": [
+        { assunto: "Comunicação inicial", farol: "a", dataLimite: "18/11/2026", status: "Sem acionamento" }
+      ]
+    }
   },
   {
     id: 8,
@@ -798,12 +914,20 @@ const projetos = [
     anoLancamento: 2026,
     ganttInicio: 11,
     ganttFim: 12,
-    detalhes: [
-      { assunto: "Demolição", farol: "a", status: "Em preparação" },
-      { assunto: "PDV", farol: "a", status: "Escopo preliminar" },
-      { assunto: "Pré Obra", farol: "a", status: "Em alinhamento" },
-      { assunto: "Vizinhos", farol: "g", status: "Contato inicial feito" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Preparação da frente", farol: "a", dataLimite: "02/12/2026", status: "Em preparação" }
+      ],
+      "PDV": [
+        { assunto: "Escopo preliminar", farol: "a", dataLimite: "08/12/2026", status: "Escopo preliminar" }
+      ],
+      "Pré Obra": [
+        { assunto: "Alinhamento operacional", farol: "a", dataLimite: "12/12/2026", status: "Em alinhamento" }
+      ],
+      "Vizinhos": [
+        { assunto: "Contato inicial", farol: "g", dataLimite: "05/12/2026", status: "Contato inicial feito" }
+      ]
+    }
   },
   {
     id: 9,
@@ -827,12 +951,20 @@ const projetos = [
     ganttInicio: 11,
     ganttFim: 12,
     isCoringa: true,
-    detalhes: [
-      { assunto: "Terreno parado", farol: "a", status: "Sem ativação" },
-      { assunto: "PDV", farol: "a", status: "Sem contratação" },
-      { assunto: "Pré Obra", farol: "a", status: "Não iniciada" },
-      { assunto: "Status/observação", farol: "a", status: "Projeto coringa" }
-    ]
+    detalhes: {
+      "Demolição": [
+        { assunto: "Ativação da frente", farol: "a", dataLimite: "10/01/2027", status: "Sem ativação" }
+      ],
+      "PDV": [
+        { assunto: "Contratação do PDV", farol: "a", dataLimite: "15/01/2027", status: "Sem contratação" }
+      ],
+      "Pré Obra": [
+        { assunto: "Mobilização preliminar", farol: "a", dataLimite: "20/01/2027", status: "Não iniciada" }
+      ],
+      "Vizinhos": [
+        { assunto: "Comunicação com entorno", farol: "a", dataLimite: "25/01/2027", status: "Projeto coringa" }
+      ]
+    }
   }
 ];
 
@@ -865,6 +997,60 @@ function statusTagMacro(s) {
 function farolDot(f) {
   const map = { g: 'farol-g', a: 'farol-a', r: 'farol-r' };
   return `<span class="farol ${map[f] || 'farol-g'}"></span>`;
+}
+
+function normalizarChave(texto) {
+  return texto
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+}
+
+function toggleTopico(projetoId, topico) {
+  const chave = normalizarChave(topico);
+  const conteudo = document.getElementById(`topico-${projetoId}-${chave}`);
+  const icone = document.getElementById(`toggle-icon-${projetoId}-${chave}`);
+  const aberto = conteudo.classList.contains('open');
+
+  conteudo.classList.toggle('open', !aberto);
+  icone.textContent = aberto ? '+' : '−';
+}
+
+function renderTopicosProjeto(p) {
+  const topicosOrdem = ["Demolição", "PDV", "Pré Obra", "Vizinhos"];
+
+  return topicosOrdem.map(topico => {
+    const itens = (p.detalhes && p.detalhes[topico]) ? p.detalhes[topico] : [];
+
+    return `
+      <div class="topico-box">
+        <div class="topico-header" onclick="toggleTopico(${p.id}, '${topico}')">
+          <div class="topico-titulo">${topico}</div>
+          <div class="topico-toggle" id="toggle-icon-${p.id}-${normalizarChave(topico)}">+</div>
+        </div>
+        <div class="topico-conteudo" id="topico-${p.id}-${normalizarChave(topico)}">
+          ${
+            itens.length
+              ? itens.map(item => `
+                <div class="topico-linha">
+                  <div>${item.assunto || '—'}</div>
+                  <div>${farolDot(item.farol)}</div>
+                  <div>${item.dataLimite || '—'}</div>
+                  <div style="white-space:pre-line;">${item.status || '—'}</div>
+                </div>
+              `).join('')
+              : `<div class="topico-linha">
+                  <div>—</div>
+                  <div>—</div>
+                  <div>—</div>
+                  <div>Sem informações</div>
+                 </div>`
+          }
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 function renderGantt(lista) {
@@ -947,16 +1133,13 @@ function renderTabela(lista) {
         <td colspan="15" style="padding:0;">
           <div style="background:#eadfce;padding:12px 20px;">
             <div style="font-weight:700;color:var(--bronze);font-size:13px;margin-bottom:8px;letter-spacing:1px;">📋 STATUS — ${p.terreno.toUpperCase()}</div>
-            <div style="background:var(--bege-dark);display:grid;grid-template-columns:180px 70px 1fr;padding:8px 12px;border-radius:6px 6px 0 0;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);font-weight:600;">
-              <div>Assunto</div><div>Farol</div><div>Status / Observações</div>
+            <div class="topico-col-header">
+              <div>Assunto</div>
+              <div>Farol</div>
+              <div>Data limite para executar</div>
+              <div>Status / observação</div>
             </div>
-            ${p.detalhes.map(d => `
-              <div style="display:grid;grid-template-columns:180px 70px 1fr;padding:10px 12px;border-bottom:1px solid var(--bege-dark);align-items:center;background:var(--white);">
-                <div style="font-size:13px;">${d.assunto}</div>
-                <div>${farolDot(d.farol)}</div>
-                <div style="font-size:12px;white-space:pre-line;">${d.status}</div>
-              </div>
-            `).join('')}
+            ${renderTopicosProjeto(p)}
           </div>
         </td>
       </tr>
@@ -999,11 +1182,8 @@ function aplicarFiltros() {
     if (status && p.statusExecucao !== status) return false;
 
     if (etapa) {
-      const encontrouEtapa = p.detalhes.some(d =>
-        d.assunto.toLowerCase().includes(etapa.toLowerCase()) ||
-        d.status.toLowerCase().includes(etapa.toLowerCase())
-      );
-      if (!encontrouEtapa) return false;
+      const itensDoTopico = p.detalhes?.[etapa] || [];
+      if (!itensDoTopico.length) return false;
     }
 
     if (
