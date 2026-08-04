@@ -1,62 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Living — Painel de Gestão Landbank</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title> PDV Living - Eng. Incorporação</title>
 <style>
   :root {
-    --verde: #5a6e4a;
-    --verde-light: #7a9463;
-    --bege: #f5f0e8;
-    --bege-dark: #e8e0d0;
-    --bronze: #a0845c;
-    --bronze-light: #c4a97d;
-    --text-dark: #2c2c2c;
-    --text-mid: #5a5a5a;
-    --text-light: #8a8a8a;
-    --white: #ffffff;
-    --lancado: #5a6e4a;
-    --previsto: #3b6ea5;
-    --coringa: #8b5ca8;
-    --contratacao: #6b5a45;
+    --verde: #5f6f52;
+    --verde-light: #7d8d6c;
+    --bege: #d8cbb8;
+    --bege-dark: #c7b79f;
+    --bronze: #8c7355;
+    --bronze-light: #a98a68;
+    --text-dark: #2f2a24;
+    --text-mid: #5d554c;
+    --text-light: #857b70;
+    --white: #f7f3ee;
+    --lancado: #5f6f52;
+    --previsto: #4d7399;
+    --coringa: #8a63a3;
+    --contratacao: #6f5b47;
     --farol-verde: #4caf50;
     --farol-amarelo: #ff9800;
     --farol-vermelho: #f44336;
     --shadow: 0 2px 8px rgba(0,0,0,0.08);
     --radius: 8px;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Georgia', serif; background: var(--bege); color: var(--text-dark); font-size: 14px; }
 
-  /* HEADER */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: "Calibri Light", Calibri, "Segoe UI", Arial, sans-serif;
+  }
+
+  body {
+    background: var(--bege);
+    color: var(--text-dark);
+    font-size: 14px;
+  }
+
   .header {
     background: var(--white);
     border-bottom: 2px solid var(--bege-dark);
     padding: 14px 28px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     box-shadow: var(--shadow);
   }
-  .header-left { display: flex; align-items: center; gap: 18px; }
-  .logo { font-size: 22px; font-weight: bold; color: var(--bronze); letter-spacing: 3px; font-family: 'Georgia', serif; }
-  .logo span { color: var(--verde); }
-  .header-title { font-size: 13px; color: var(--text-mid); letter-spacing: 2px; text-transform: uppercase; border-left: 2px solid var(--bege-dark); padding-left: 18px; }
-  .header-right { display: flex; align-items: center; gap: 12px; }
-  .sync-badge { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--verde); border: 1px solid var(--verde); border-radius: 20px; padding: 4px 12px; }
-  .sync-dot { width: 8px; height: 8px; background: var(--verde); border-radius: 50%; }
-  .btn { padding: 7px 18px; border-radius: 6px; font-size: 13px; cursor: pointer; border: 1.5px solid var(--bronze); background: var(--white); color: var(--bronze); font-family: 'Georgia', serif; transition: all 0.2s; }
-  .btn:hover { background: var(--bronze); color: var(--white); }
-  .btn-primary { background: var(--bronze); color: var(--white); }
-  .btn-primary:hover { background: var(--bronze-light); border-color: var(--bronze-light); }
 
-  /* MAIN */
-  .main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
-  .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); font-family: sans-serif; margin-bottom: 12px; font-weight: 600; }
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
 
-  /* FILTROS */
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 30px;
+    width: auto;
+    display: block;
+  }
+
+  .header-title {
+    font-size: 13px;
+    color: var(--text-mid);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-left: 2px solid var(--bege-dark);
+    padding-left: 18px;
+  }
+
+  .main {
+    padding: 24px 28px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+
   .filtros-box {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -65,27 +108,71 @@
     margin-bottom: 24px;
     box-shadow: var(--shadow);
   }
-  .filtros-grid { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
-  .filtro-item { display: flex; flex-direction: column; gap: 5px; }
-  .filtro-item label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-family: sans-serif; font-weight: 600; }
-  .filtro-item select, .filtro-item input {
+
+  .filtros-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .filtro-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .filtro-item label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  .filtro-item select,
+  .filtro-item input {
     border: 1.5px solid var(--bege-dark);
     border-radius: 6px;
     padding: 7px 12px;
     font-size: 13px;
     color: var(--text-dark);
-    background: var(--bege);
-    font-family: 'Georgia', serif;
+    background: #efe6da;
     min-width: 130px;
     outline: none;
     transition: border 0.2s;
   }
-  .filtro-item select:focus, .filtro-item input:focus { border-color: var(--bronze); }
-  .btn-limpar { padding: 7px 16px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid var(--bege-dark); background: var(--white); color: var(--text-mid); font-family: sans-serif; transition: all 0.2s; align-self: flex-end; }
-  .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); }
 
-  /* KPI CARDS */
-  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .filtro-item select:focus,
+  .filtro-item input:focus {
+    border-color: var(--bronze);
+  }
+
+  .btn-limpar {
+    padding: 7px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid var(--bege-dark);
+    background: var(--white);
+    color: var(--text-mid);
+    transition: all 0.2s;
+    align-self: flex-end;
+  }
+
+  .btn-limpar:hover {
+    border-color: var(--bronze);
+    color: var(--bronze);
+    background: #f1e8dc;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
   .kpi-card {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -93,24 +180,72 @@
     padding: 18px 20px;
     box-shadow: var(--shadow);
   }
-  .kpi-card.destaque { background: var(--bronze); color: var(--white); border-color: var(--bronze); }
-  .kpi-card.destaque .kpi-label, .kpi-card.destaque .kpi-sub { color: rgba(255,255,255,0.8); }
-  .kpi-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-family: sans-serif; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
-  .kpi-value { font-size: 26px; font-weight: bold; color: var(--text-dark); line-height: 1.1; }
-  .kpi-card.destaque .kpi-value { color: var(--white); font-size: 36px; }
-  .kpi-sub { font-size: 11px; color: var(--text-light); margin-top: 4px; font-family: sans-serif; }
-  .aviso-kpi {
-    background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px;
-    padding: 10px 16px; font-size: 12px; color: #7a6000; margin-bottom: 24px;
-    display: flex; align-items: center; gap: 8px; font-family: sans-serif;
-  }
-  .tag-status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-family: sans-serif; font-weight: 600; }
-  .tag-lancado { background: #e8f5e9; color: var(--lancado); }
-  .tag-previsto { background: #e3f0fb; color: var(--previsto); }
-  .tag-coringa { background: #f3e8fb; color: var(--coringa); }
-  .tag-contratacao { background: #ede8e3; color: var(--contratacao); }
 
-  /* GANTT */
+  .kpi-card.destaque {
+    background: var(--bronze);
+    color: var(--white);
+    border-color: var(--bronze);
+  }
+
+  .kpi-card.destaque .kpi-label,
+  .kpi-card.destaque .kpi-sub {
+    color: rgba(255,255,255,0.82);
+  }
+
+  .kpi-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .kpi-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.1;
+  }
+
+  .kpi-card.destaque .kpi-value {
+    color: var(--white);
+    font-size: 36px;
+  }
+
+  .kpi-sub {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  .aviso-kpi {
+    background: #f3e8cf;
+    border: 1px solid #ddc9a1;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: #6d5736;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tag-status {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .tag-lancado { background: #e2eadc; color: var(--lancado); }
+  .tag-previsto { background: #dde8f3; color: var(--previsto); }
+  .tag-coringa { background: #eee2f5; color: var(--coringa); }
+  .tag-contratacao { background: #e9e0d6; color: var(--contratacao); }
+
   .gantt-box {
     background: var(--verde);
     border-radius: var(--radius);
@@ -119,45 +254,69 @@
     overflow: hidden;
     box-shadow: var(--shadow);
   }
+
   .gantt-header {
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 12px 18px;
     background: rgba(0,0,0,0.15);
   }
-  .gantt-title { color: var(--white); font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 8px; }
-  .gantt-controls { display: flex; align-items: center; gap: 8px; }
-  .gantt-btn { padding: 5px 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.15); color: var(--white); font-size: 12px; cursor: pointer; font-family: sans-serif; transition: background 0.2s; }
-  .gantt-btn:hover { background: rgba(255,255,255,0.3); }
-  .gantt-legend { display: flex; align-items: center; gap: 14px; }
-  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.9); font-family: sans-serif; }
-  .legend-dot { width: 14px; height: 8px; border-radius: 4px; }
-  .gantt-scroll { overflow-x: auto; }
-  .gantt-table { width: 100%; border-collapse: collapse; min-width: 1100px; }
-  .gantt-table th {
-    background: rgba(0,0,0,0.1); color: rgba(255,255,255,0.8);
-    font-size: 11px; font-family: sans-serif; font-weight: 600;
-    padding: 8px 10px; text-align: center; letter-spacing: 1px;
-    border-right: 1px solid rgba(255,255,255,0.1);
-  }
-  .gantt-table th.col-projeto { text-align: left; min-width: 180px; }
-  .gantt-table td { padding: 6px 10px; border-right: 1px solid rgba(255,255,255,0.08); background: var(--white); }
-  .gantt-table td.col-projeto { background: var(--bege); min-width: 180px; }
-  .gantt-table tr:hover td { background: #f0ece4; }
-  .gantt-table tr:hover td.col-projeto { background: #e8e2d8; }
-  .proj-nome { font-size: 13px; font-weight: bold; color: var(--text-dark); }
-  .proj-sub { font-size: 11px; color: var(--text-light); font-family: sans-serif; }
-  .gantt-bar-cell { position: relative; height: 36px; }
-  .gantt-bar {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    height: 18px; border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; color: white; font-family: sans-serif; white-space: nowrap;
-    padding: 0 8px;
-  }
-  .hoje-line { background: #e53935; width: 2px; position: absolute; top: 0; bottom: 0; z-index: 10; }
-  .hoje-label { position: absolute; top: 2px; font-size: 10px; color: #e53935; font-family: sans-serif; font-weight: bold; transform: translateX(-50%); }
 
-  /* TABELA PROJETOS */
+  .gantt-title {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .gantt-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .gantt-btn {
+    padding: 5px 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.15);
+    color: var(--white);
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .gantt-btn:hover {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .gantt-legend {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .legend-dot {
+    width: 14px;
+    height: 8px;
+    border-radius: 4px;
+  }
+
+  .gantt-scroll {
+    overflow-x: auto;
+  }
+
   .tabela-box {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -166,59 +325,118 @@
     box-shadow: var(--shadow);
     margin-bottom: 24px;
   }
-  .tabela-projetos { width: 100%; border-collapse: collapse; }
-  .tabela-projetos thead tr { background: var(--bege-dark); }
+
+  .tabela-projetos {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .tabela-projetos thead tr {
+    background: var(--bege-dark);
+  }
+
   .tabela-projetos th {
-    padding: 10px 14px; text-align: left;
-    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--text-mid); font-family: sans-serif; font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    font-weight: 600;
     border-bottom: 2px solid var(--bege-dark);
     white-space: nowrap;
   }
-  .tabela-projetos td { padding: 10px 14px; border-bottom: 1px solid var(--bege-dark); font-size: 13px; vertical-align: middle; }
-  .tabela-projetos tr:last-child td { border-bottom: none; }
-  .tabela-projetos tr:hover td { background: #faf7f2; }
-  .expand-btn { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--bronze); background: var(--white); color: var(--bronze); cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; font-family: sans-serif; transition: all 0.2s; flex-shrink: 0; }
-  .expand-btn:hover { background: var(--bronze); color: var(--white); }
-  .expand-btn.open { background: var(--bronze); color: var(--white); }
-  .detail-row { display: none; }
-  .detail-row.open { display: table-row; }
-  .detail-content { background: var(--bege); padding: 16px 20px; }
-  .detail-grid { display: grid; grid-template-columns: 200px 80px 1fr; gap: 0; }
-  .detail-header { display: grid; grid-template-columns: 200px 80px 1fr; background: var(--bege-dark); padding: 8px 12px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-family: sans-serif; font-weight: 600; border-radius: 6px 6px 0 0; }
-  .detail-row-inner { display: grid; grid-template-columns: 200px 80px 1fr; padding: 10px 12px; border-bottom: 1px solid var(--bege-dark); align-items: center; }
-  .detail-row-inner:last-child { border-bottom: none; }
-  .farol { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+
+  .tabela-projetos td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--bege-dark);
+    font-size: 13px;
+    vertical-align: middle;
+  }
+
+  .tabela-projetos tr:last-child td {
+    border-bottom: none;
+  }
+
+  .tabela-projetos tr:hover td {
+    background: #f2e9de;
+  }
+
+  .expand-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid var(--bronze);
+    background: var(--white);
+    color: var(--bronze);
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .expand-btn:hover {
+    background: var(--bronze);
+    color: var(--white);
+  }
+
+  .expand-btn.open {
+    background: var(--bronze);
+    color: var(--white);
+  }
+
+  .detail-row {
+    display: none;
+  }
+
+  .detail-row.open {
+    display: table-row;
+  }
+
+  .farol {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
   .farol-g { background: var(--farol-verde); }
   .farol-a { background: var(--farol-amarelo); }
   .farol-r { background: var(--farol-vermelho); }
-  .select-seg { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 3px 6px; font-size: 12px; background: var(--white); font-family: 'Georgia', serif; }
 
-  /* MODO LEITURA */
-  .modo-leitura { background: #fff8e1; border: 1px solid #ffe082; border-radius: 6px; padding: 8px 14px; font-size: 12px; color: #7a6000; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; font-family: sans-serif; }
+  .select-seg {
+    border: 1px solid var(--bege-dark);
+    border-radius: 4px;
+    padding: 3px 6px;
+    font-size: 12px;
+    background: var(--white);
+  }
 
-  /* FOOTER */
-  .footer { text-align: center; padding: 20px; font-size: 11px; color: var(--text-light); font-family: sans-serif; border-top: 1px solid var(--bege-dark); margin-top: 10px; }
+  .footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: var(--text-light);
+    border-top: 1px solid var(--bege-dark);
+    margin-top: 10px;
+  }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-left">
-    <div class="logo">◈ <span>LIVING</span></div>
+    <div class="logo">
+      <img src="https://www.meuliving.com.br/themes/living/img/icons/logo.svg" alt="Living" />
+    </div>
     <div class="header-title">Painel de Gestão — Landbank</div>
-  </div>
-  <div class="header-right">
-    <div class="sync-badge"><div class="sync-dot"></div> Sincronizado ✓</div>
-    <button class="btn">✏️ Editar</button>
-    <button class="btn btn-primary">⚡ Simular</button>
   </div>
 </div>
 
 <div class="main">
-
-  <!-- FILTROS -->
   <div class="filtros-box">
     <div class="section-label">Filtros</div>
     <div class="filtros-grid">
@@ -230,6 +448,7 @@
           <option value="2027">2027</option>
         </select>
       </div>
+
       <div class="filtro-item">
         <label>Status</label>
         <select id="filtroStatus" onchange="aplicarFiltros()">
@@ -240,6 +459,7 @@
           <option value="Em contratação">Em contratação</option>
         </select>
       </div>
+
       <div class="filtro-item">
         <label>Coordenação</label>
         <select id="filtroCoordenacao" onchange="aplicarFiltros()">
@@ -248,6 +468,7 @@
           <option value="Artur Dorfman">Artur Dorfman</option>
         </select>
       </div>
+
       <div class="filtro-item">
         <label>Doninho</label>
         <select id="filtroDoninho" onchange="aplicarFiltros()">
@@ -257,6 +478,7 @@
           <option value="Akemi Yoshikawa">Akemi Yoshikawa</option>
         </select>
       </div>
+
       <div class="filtro-item">
         <label>Segmento</label>
         <select id="filtroSegmento" onchange="aplicarFiltros()">
@@ -265,15 +487,16 @@
           <option value="Full">Full</option>
         </select>
       </div>
+
       <div class="filtro-item">
         <label>Buscar</label>
-        <input type="text" id="filtroBusca" placeholder="Nome do terreno..." oninput="aplicarFiltros()"/>
+        <input type="text" id="filtroBusca" placeholder="Nome do terreno..." oninput="aplicarFiltros()" />
       </div>
+
       <button class="btn-limpar" onclick="limparFiltros()">↺ Limpar tudo</button>
     </div>
   </div>
 
-  <!-- KPI CARDS -->
   <div class="section-label">Indicadores</div>
   <div class="kpi-grid" id="kpiGrid">
     <div class="kpi-card destaque">
@@ -281,26 +504,31 @@
       <div class="kpi-value" id="kpiLancamentos">9</div>
       <div class="kpi-sub">projetos no landbank</div>
     </div>
+
     <div class="kpi-card">
       <div class="kpi-label">VGV Nominal 100%</div>
       <div class="kpi-value">R$ 2.311M</div>
       <div class="kpi-sub">R$ milhões</div>
     </div>
+
     <div class="kpi-card">
       <div class="kpi-label">VGV Nom %CBR</div>
       <div class="kpi-value">R$ 2.256M</div>
       <div class="kpi-sub">R$ milhões</div>
     </div>
+
     <div class="kpi-card">
       <div class="kpi-label">VGV VP %CBR</div>
       <div class="kpi-value">R$ 1.698M</div>
       <div class="kpi-sub">R$ milhões</div>
     </div>
+
     <div class="kpi-card">
       <div class="kpi-label">Nº de Unidades</div>
       <div class="kpi-value">3.669</div>
       <div class="kpi-sub">unidades totais</div>
     </div>
+
     <div class="kpi-card">
       <div class="kpi-label">Tempo Médio p/ Lançamento</div>
       <div class="kpi-value">20m</div>
@@ -312,7 +540,6 @@
     ⚠️ Atenção: indicadores consideram apenas <strong style="margin:0 4px">Lançado</strong> e <strong style="margin:0 4px">Previsto</strong>. Coringa e Em contratação são excluídos.
   </div>
 
-  <!-- GANTT -->
   <div class="section-label">Linha do Tempo — Meeting → Lançamento</div>
   <div class="gantt-box">
     <div class="gantt-header">
@@ -322,10 +549,10 @@
         <button class="gantt-btn" onclick="zoomGantt(1)">+ Zoom</button>
         <button class="gantt-btn" onclick="irParaHoje()">Ir para hoje</button>
         <div class="gantt-legend">
-          <div class="legend-item"><div class="legend-dot" style="background:#5a6e4a"></div>Lançado</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#3b6ea5"></div>Previsto</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#8b5ca8"></div>Coringa</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#6b5a45"></div>Em contratação</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#5f6f52"></div>Lançado</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#4d7399"></div>Previsto</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#8a63a3"></div>Coringa</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#6f5b47"></div>Em contratação</div>
         </div>
       </div>
     </div>
@@ -334,7 +561,6 @@
     </div>
   </div>
 
-  <!-- TABELA PROJETOS -->
   <div class="section-label">Projetos</div>
   <div class="tabela-box">
     <table class="tabela-projetos" id="tabelaProjetos">
@@ -358,7 +584,6 @@
       <tbody id="tbodyProjetos"></tbody>
     </table>
   </div>
-
 </div>
 
 <div class="footer">
@@ -366,7 +591,6 @@
 </div>
 
 <script>
-// ─── DADOS ───────────────────────────────────────────────────────────────────
 const projetos = [
   {
     id: 1, terreno: "Ouvidor Peleja", bairro: "Vila Mariana", status: "Lançado",
@@ -374,7 +598,7 @@ const projetos = [
     mix: "69, 79, 88 e 93m²", reunPassagem: "01/10/2024", meeting: "28/01/2026",
     lancamento: "21/02/2026", anoLancamento: 2026,
     unid: 207, nom100: 214, nomCBR: 214,
-    ganttInicio: 1, ganttFim: 2, // mês índice (0=jan2026)
+    ganttInicio: 1, ganttFim: 2,
     detalhes: [
       { assunto: "Lançamento", farol: "g", status: "Fev/2026" },
       { assunto: "Vendas", farol: "a", status: "LEVEN by LIVING — Assinaturas: 70/188 (37%) - (Meta Ano: 70/120)\n93m²: 27/31 (87%) | 89m²: 18/36 (50%) | 79m²: 14/64 (22%) | 69m²: 11/57 (19%)\nInputs: 68/188 (36%)" },
@@ -478,7 +702,7 @@ const projetos = [
     mix: "85 e 105m²", reunPassagem: "—", meeting: "—",
     lancamento: "Jan/2027", anoLancamento: 2027,
     unid: 120, nom100: 300, nomCBR: 300,
-    ganttInicio: 11, ganttFim: 12, // coringa + previsto
+    ganttInicio: 11, ganttFim: 12,
     isCoringa: true,
     detalhes: [
       { assunto: "Lançamento", farol: "a", status: "Jan/2027 — Previsto (Coringa)" },
@@ -491,54 +715,68 @@ const projetos = [
 const meses = ["JAN\n2026","FEV\n2026","MAR\n2026","ABR\n2026","MAI\n2026","JUN\n2026","JUL\n2026","AGO\n2026","SET\n2026","OUT\n2026","NOV\n2026","DEZ\n2026","JAN\n2027","FEV\n2027","MAR\n2027","ABR\n2027"];
 const mesesLabel = ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ","JAN","FEV","MAR","ABR"];
 const anos2 = [2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2027,2027,2027,2027];
-const HOJE_MES = 7; // AGO 2026 = índice 7
-
+const HOJE_MES = 7;
 let projetosFiltrados = [...projetos];
 let zoomLevel = 1;
 const COL_W = 70;
 
-// ─── GANTT ───────────────────────────────────────────────────────────────────
 function renderGantt(lista) {
   const container = document.getElementById('ganttContainer');
   const w = COL_W * zoomLevel;
   const totalW = w * meses.length + 200;
 
   let html = `<table style="width:${totalW}px;border-collapse:collapse;min-width:${totalW}px;">`;
-  // cabeçalho
   html += '<thead><tr>';
-  html += `<th style="background:rgba(0,0,0,0.1);color:rgba(255,255,255,0.8);font-size:11px;font-family:sans-serif;padding:8px 10px;text-align:left;width:200px;border-right:1px solid rgba(255,255,255,0.1);">PROJETO</th>`;
+  html += `<th style="background:rgba(0,0,0,0.1);color:rgba(255,255,255,0.85);font-size:11px;padding:8px 10px;text-align:left;width:200px;border-right:1px solid rgba(255,255,255,0.1);">PROJETO</th>`;
+
   meses.forEach((m, i) => {
     const isHoje = i === HOJE_MES;
-    html += `<th style="background:${isHoje?'rgba(229,57,53,0.2)':'rgba(0,0,0,0.1)'};color:${isHoje?'#ffcdd2':'rgba(255,255,255,0.8)'};font-size:11px;font-family:sans-serif;padding:8px 4px;text-align:center;width:${w}px;border-right:1px solid rgba(255,255,255,0.1);white-space:pre-line;line-height:1.2;">${mesesLabel[i]}\n${anos2[i]}</th>`;
+    html += `<th style="background:${isHoje ? 'rgba(229,57,53,0.2)' : 'rgba(0,0,0,0.1)'};color:${isHoje ? '#ffd7d2' : 'rgba(255,255,255,0.85)'};font-size:11px;padding:8px 4px;text-align:center;width:${w}px;border-right:1px solid rgba(255,255,255,0.1);white-space:pre-line;line-height:1.2;">${mesesLabel[i]}\n${anos2[i]}</th>`;
   });
+
   html += '</tr></thead><tbody>';
 
   lista.forEach(p => {
     html += '<tr>';
-    html += `<td style="background:var(--bege);padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.2);width:200px;border-right:1px solid rgba(255,255,255,0.1);">
-      <div style="font-size:13px;font-weight:bold;color:var(--text-dark);">${p.terreno}</div>
-      <div style="font-size:11px;color:var(--text-light);font-family:sans-serif;">${p.bairro} · ${p.status}</div>
+    html += `<td style="background:#e7dccd;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.2);width:200px;border-right:1px solid rgba(255,255,255,0.1);">
+      <div style="font-size:13px;font-weight:700;color:var(--text-dark);">${p.terreno}</div>
+      <div style="font-size:11px;color:var(--text-light);">${p.bairro} · ${p.status}</div>
     </td>`;
 
     meses.forEach((m, i) => {
       const isHoje = i === HOJE_MES;
       let barHTML = '';
+
       if (i >= p.ganttInicio && i <= p.ganttFim) {
-        const cor = p.isCoringa && i >= p.ganttInicio && i <= (p.ganttInicio) ? '#8b5ca8'
-          : p.status === 'Lançado' ? '#5a6e4a'
-          : p.status === 'Previsto' ? '#3b6ea5'
-          : '#6b5a45';
+        const cor = p.isCoringa && i >= p.ganttInicio && i <= p.ganttInicio
+          ? '#8a63a3'
+          : p.status === 'Lançado'
+          ? '#5f6f52'
+          : p.status === 'Previsto'
+          ? '#4d7399'
+          : '#6f5b47';
+
         const isStart = i === p.ganttInicio;
         const isEnd = i === p.ganttFim;
-        const radius = isStart && isEnd ? '9px' : isStart ? '9px 0 0 9px' : isEnd ? '0 9px 9px 0' : '0';
-        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:${cor};border-radius:${radius};left:${isStart?4:0}px;right:${isEnd?4:0}px;"></div>`;
+        const radius =
+          isStart && isEnd ? '9px'
+          : isStart ? '9px 0 0 9px'
+          : isEnd ? '0 9px 9px 0'
+          : '0';
+
+        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:${cor};border-radius:${radius};left:${isStart ? 4 : 0}px;right:${isEnd ? 4 : 0}px;"></div>`;
       }
+
       if (p.isCoringa && i === 12) {
-        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:#3b6ea5;border-radius:9px;left:4px;right:4px;"></div>`;
+        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:#4d7399;border-radius:9px;left:4px;right:4px;"></div>`;
       }
-      html += `<td style="background:${isHoje?'rgba(229,57,53,0.05)':'var(--white)'};border-bottom:1px solid rgba(0,0,0,0.05);border-right:1px solid rgba(0,0,0,0.05);position:relative;height:36px;width:${w}px;padding:0;">${barHTML}${isHoje?`<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e53935;z-index:5;"></div>`:''}
+
+      html += `<td style="background:${isHoje ? 'rgba(229,57,53,0.05)' : 'var(--white)'};border-bottom:1px solid rgba(0,0,0,0.05);border-right:1px solid rgba(0,0,0,0.05);position:relative;height:36px;width:${w}px;padding:0;">
+        ${barHTML}
+        ${isHoje ? `<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e53935;z-index:5;"></div>` : ''}
       </td>`;
     });
+
     html += '</tr>';
   });
 
@@ -556,32 +794,34 @@ function irParaHoje() {
   scroll.scrollLeft = (200 + HOJE_MES * COL_W * zoomLevel) - 300;
 }
 
-// ─── TABELA ───────────────────────────────────────────────────────────────────
 function statusTag(s) {
   const map = {
-    'Lançado': 'lancado', 'Previsto': 'previsto',
-    'Coringa': 'coringa', 'Em contratação': 'contratacao'
+    'Lançado': 'lancado',
+    'Previsto': 'previsto',
+    'Coringa': 'coringa',
+    'Em contratação': 'contratacao'
   };
-  return `<span class="tag-status tag-${map[s]||'previsto'}">${s}</span>`;
+  return `<span class="tag-status tag-${map[s] || 'previsto'}">${s}</span>`;
 }
 
 function farolDot(f) {
   const map = { g: 'farol-g', a: 'farol-a', r: 'farol-r' };
-  return `<span class="farol ${map[f]||'farol-g'}"></span>`;
+  return `<span class="farol ${map[f] || 'farol-g'}"></span>`;
 }
 
 function renderTabela(lista) {
   const tbody = document.getElementById('tbodyProjetos');
   let html = '';
+
   lista.forEach(p => {
     html += `
     <tr>
       <td><button class="expand-btn" id="btn-${p.id}" onclick="toggleDetalhe(${p.id})">+</button></td>
-      <td><strong>${p.terreno}</strong><br><span style="font-size:11px;color:var(--text-light);font-family:sans-serif;">${p.bairro}</span></td>
+      <td><strong>${p.terreno}</strong><br><span style="font-size:11px;color:var(--text-light);">${p.bairro}</span></td>
       <td><select class="select-seg"><option>${p.segmento}</option><option>Padrão</option><option>Full</option></select></td>
       <td>${p.coordenacao}</td>
       <td>${p.doninho}</td>
-      <td>${statusTag(p.status)}${p.isCoringa?'<br><span style="font-size:10px;background:#f3e8fb;color:#8b5ca8;border-radius:10px;padding:2px 8px;font-family:sans-serif;">+Coringa</span>':''}</td>
+      <td>${statusTag(p.status)}${p.isCoringa ? '<br><span style="font-size:10px;background:#eee2f5;color:#8a63a3;border-radius:10px;padding:2px 8px;">+Coringa</span>' : ''}</td>
       <td style="font-size:12px;">${p.mix}</td>
       <td style="font-size:12px;">${p.reunPassagem}</td>
       <td style="font-size:12px;">${p.meeting}</td>
@@ -592,24 +832,22 @@ function renderTabela(lista) {
     </tr>
     <tr class="detail-row" id="detail-${p.id}">
       <td colspan="13" style="padding:0;">
-        <div style="background:var(--bege);padding:12px 20px;">
-          <div style="font-size:12px;color:#7a6000;background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:6px 12px;margin-bottom:10px;font-family:sans-serif;">
-            🔒 Modo leitura — ative Edição ou Simulação para alterar.
-          </div>
-          <div style="font-weight:bold;color:var(--bronze);font-size:13px;margin-bottom:8px;letter-spacing:1px;">📋 STATUS — ${p.terreno.toUpperCase()}</div>
-          <div style="background:var(--bege-dark);display:grid;grid-template-columns:160px 60px 1fr;padding:8px 12px;border-radius:6px 6px 0 0;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);font-family:sans-serif;font-weight:600;">
+        <div style="background:#eadfce;padding:12px 20px;">
+          <div style="font-weight:700;color:var(--bronze);font-size:13px;margin-bottom:8px;letter-spacing:1px;">📋 STATUS — ${p.terreno.toUpperCase()}</div>
+          <div style="background:var(--bege-dark);display:grid;grid-template-columns:160px 60px 1fr;padding:8px 12px;border-radius:6px 6px 0 0;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);font-weight:600;">
             <div>Assunto</div><div>Farol</div><div>Status / Observações</div>
           </div>
           ${p.detalhes.map(d => `
           <div style="display:grid;grid-template-columns:160px 60px 1fr;padding:10px 12px;border-bottom:1px solid var(--bege-dark);align-items:center;background:var(--white);">
             <div style="font-size:13px;">${d.assunto}</div>
             <div>${farolDot(d.farol)}</div>
-            <div style="font-size:12px;font-family:sans-serif;white-space:pre-line;">${d.status}</div>
+            <div style="font-size:12px;white-space:pre-line;">${d.status}</div>
           </div>`).join('')}
         </div>
       </td>
     </tr>`;
   });
+
   tbody.innerHTML = html;
 }
 
@@ -617,12 +855,12 @@ function toggleDetalhe(id) {
   const row = document.getElementById(`detail-${id}`);
   const btn = document.getElementById(`btn-${id}`);
   const isOpen = row.classList.contains('open');
+
   row.classList.toggle('open', !isOpen);
   btn.classList.toggle('open', !isOpen);
   btn.textContent = isOpen ? '+' : '−';
 }
 
-// ─── FILTROS ─────────────────────────────────────────────────────────────────
 function aplicarFiltros() {
   const ano = document.getElementById('filtroAno').value;
   const status = document.getElementById('filtroStatus').value;
@@ -656,8 +894,12 @@ function limparFiltros() {
   aplicarFiltros();
 }
 
-// ─── INIT ─────────────────────────────────────────────────────────────────────
-document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR', {day:'2-digit',month:'long',year:'numeric'});
+document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric'
+});
+
 aplicarFiltros();
 setTimeout(irParaHoje, 300);
 </script>
