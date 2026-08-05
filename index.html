@@ -924,12 +924,3 @@ setTimeout(irParaHoje, 300);
 </script>
 </body>
 </html>
-```O que foi implementado:
-
----
-
-**`criarModeloDetalhes()`** — função única que gera o checklist completo com os 4 tópicos e todos os subitens reais. Cada projeto chama essa função uma vez, sem repetir código.
-
-**Itens com farol de vencimento** — os campos que você marcou (Alvará de Stand, Alvará de Tapume, ARTs, Seguro de Obra) ganham uma coluna extra **"Venc."** com farol independente. Para atualizar a cor do vencimento de um item específico, basta setar:
-```javascript
-projetos[0].detalhes["PDV"].itens[5].farolVencCor = "r"; // vermelho = vencido
