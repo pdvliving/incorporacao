@@ -26,26 +26,11 @@
     --shadow: 0 2px 8px rgba(0,0,0,0.08);
     --radius: 8px;
   }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body,
-  button,
-  input,
-  select,
-  textarea {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body, button, input, select, textarea {
     font-family: "Calibri Light", Calibri, "Segoe UI", Arial, sans-serif;
   }
-
-  body {
-    background: var(--bege);
-    color: var(--text-dark);
-    font-size: 14px;
-  }
+  body { background: var(--bege); color: var(--text-dark); font-size: 14px; }
 
   .header {
     background: var(--white);
@@ -58,24 +43,9 @@
     z-index: 100;
     box-shadow: var(--shadow);
   }
-
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-
-  .logo img {
-    height: 30px;
-    width: auto;
-    display: block;
-  }
-
+  .header-left { display: flex; align-items: center; gap: 18px; }
+  .logo { display: flex; align-items: center; }
+  .logo img { height: 30px; width: auto; display: block; }
   .header-title {
     font-size: 13px;
     color: var(--text-mid);
@@ -85,11 +55,7 @@
     padding-left: 18px;
   }
 
-  .main {
-    padding: 24px 28px;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
+  .main { padding: 24px 28px; max-width: 1400px; margin: 0 auto; }
 
   .section-label {
     font-size: 11px;
@@ -108,20 +74,8 @@
     margin-bottom: 24px;
     box-shadow: var(--shadow);
   }
-
-  .filtros-grid {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    align-items: flex-end;
-  }
-
-  .filtro-item {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
+  .filtros-grid { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+  .filtro-item { display: flex; flex-direction: column; gap: 5px; }
   .filtro-item label {
     font-size: 10px;
     letter-spacing: 1.5px;
@@ -129,9 +83,7 @@
     color: var(--text-light);
     font-weight: 600;
   }
-
-  .filtro-item select,
-  .filtro-item input {
+  .filtro-item select, .filtro-item input {
     border: 1.5px solid var(--bege-dark);
     border-radius: 6px;
     padding: 7px 12px;
@@ -142,12 +94,7 @@
     outline: none;
     transition: border 0.2s;
   }
-
-  .filtro-item select:focus,
-  .filtro-item input:focus {
-    border-color: var(--bronze);
-  }
-
+  .filtro-item select:focus, .filtro-item input:focus { border-color: var(--bronze); }
   .btn-limpar {
     padding: 7px 16px;
     border-radius: 6px;
@@ -159,12 +106,7 @@
     transition: all 0.2s;
     align-self: flex-end;
   }
-
-  .btn-limpar:hover {
-    border-color: var(--bronze);
-    color: var(--bronze);
-    background: #f1e8dc;
-  }
+  .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); background: #f1e8dc; }
 
   .kpi-grid {
     display: grid;
@@ -172,7 +114,6 @@
     gap: 14px;
     margin-bottom: 24px;
   }
-
   .kpi-card {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -180,18 +121,8 @@
     padding: 18px 20px;
     box-shadow: var(--shadow);
   }
-
-  .kpi-card.destaque {
-    background: var(--bronze);
-    color: var(--white);
-    border-color: var(--bronze);
-  }
-
-  .kpi-card.destaque .kpi-label,
-  .kpi-card.destaque .kpi-sub {
-    color: rgba(255,255,255,0.82);
-  }
-
+  .kpi-card.destaque { background: var(--bronze); color: var(--white); border-color: var(--bronze); }
+  .kpi-card.destaque .kpi-label, .kpi-card.destaque .kpi-sub { color: rgba(255,255,255,0.82); }
   .kpi-label {
     font-size: 10px;
     letter-spacing: 1.5px;
@@ -201,24 +132,9 @@
     margin-bottom: 8px;
     line-height: 1.4;
   }
-
-  .kpi-value {
-    font-size: 26px;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.1;
-  }
-
-  .kpi-card.destaque .kpi-value {
-    color: var(--white);
-    font-size: 36px;
-  }
-
-  .kpi-sub {
-    font-size: 11px;
-    color: var(--text-light);
-    margin-top: 4px;
-  }
+  .kpi-value { font-size: 26px; font-weight: 700; color: var(--text-dark); line-height: 1.1; }
+  .kpi-card.destaque .kpi-value { color: var(--white); font-size: 36px; }
+  .kpi-sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
 
   .tag-status {
     display: inline-block;
@@ -227,14 +143,10 @@
     font-size: 11px;
     font-weight: 600;
   }
-
   .tag-lancado { background: #e2eadc; color: var(--lancado); }
   .tag-previsto { background: #dde8f3; color: var(--previsto); }
   .tag-coringa { background: #eee2f5; color: var(--coringa); }
   .tag-contratacao { background: #e9e0d6; color: var(--contratacao); }
-  .tag-nao-iniciado { background: #efe7dc; color: #7a6246; }
-  .tag-em-andamento { background: #fff0d6; color: #9a6a00; }
-  .tag-finalizado { background: #e0efdf; color: #3f7a42; }
 
   .gantt-box {
     background: var(--verde);
@@ -244,7 +156,6 @@
     overflow: hidden;
     box-shadow: var(--shadow);
   }
-
   .gantt-header {
     display: flex;
     align-items: center;
@@ -252,23 +163,8 @@
     padding: 12px 18px;
     background: rgba(0,0,0,0.15);
   }
-
-  .gantt-title {
-    color: var(--white);
-    font-size: 14px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .gantt-controls {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
+  .gantt-title { color: var(--white); font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .gantt-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .gantt-btn {
     padding: 5px 12px;
     border-radius: 5px;
@@ -279,35 +175,11 @@
     cursor: pointer;
     transition: background 0.2s;
   }
-
-  .gantt-btn:hover {
-    background: rgba(255,255,255,0.3);
-  }
-
-  .gantt-legend {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.9);
-  }
-
-  .legend-dot {
-    width: 14px;
-    height: 8px;
-    border-radius: 4px;
-  }
-
-  .gantt-scroll {
-    overflow-x: auto;
-  }
+  .gantt-btn:hover { background: rgba(255,255,255,0.3); }
+  .gantt-legend { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.9); }
+  .legend-dot { width: 14px; height: 8px; border-radius: 4px; }
+  .gantt-scroll { overflow-x: auto; }
 
   .tabela-box {
     background: var(--white);
@@ -317,17 +189,8 @@
     box-shadow: var(--shadow);
     margin-bottom: 24px;
   }
-
-  .tabela-projetos {
-    width: 100%;
-    min-width: 1700px;
-    border-collapse: collapse;
-  }
-
-  .tabela-projetos thead tr {
-    background: var(--bege-dark);
-  }
-
+  .tabela-projetos { width: 100%; min-width: 1700px; border-collapse: collapse; }
+  .tabela-projetos thead tr { background: var(--bege-dark); }
   .tabela-projetos th {
     padding: 10px 14px;
     text-align: left;
@@ -339,7 +202,6 @@
     border-bottom: 2px solid var(--bege-dark);
     white-space: nowrap;
   }
-
   .tabela-projetos td {
     padding: 10px 14px;
     border-bottom: 1px solid var(--bege-dark);
@@ -347,14 +209,8 @@
     vertical-align: middle;
     white-space: nowrap;
   }
-
-  .tabela-projetos tr:last-child td {
-    border-bottom: none;
-  }
-
-  .tabela-projetos tr:hover td {
-    background: #f2e9de;
-  }
+  .tabela-projetos tr:last-child td { border-bottom: none; }
+  .tabela-projetos tr:hover td { background: #f2e9de; }
 
   .expand-btn {
     width: 22px;
@@ -371,48 +227,23 @@
     transition: all 0.2s;
     flex-shrink: 0;
   }
+  .expand-btn:hover { background: var(--bronze); color: var(--white); }
+  .expand-btn.open { background: var(--bronze); color: var(--white); }
 
-  .expand-btn:hover {
-    background: var(--bronze);
-    color: var(--white);
-  }
+  .detail-row { display: none; }
+  .detail-row.open { display: table-row; }
 
-  .expand-btn.open {
-    background: var(--bronze);
-    color: var(--white);
-  }
-
-  .detail-row {
-    display: none;
-  }
-
-  .detail-row.open {
-    display: table-row;
-  }
-
-  .farol {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: inline-block;
-  }
-
+  .farol { width: 14px; height: 14px; border-radius: 50%; display: inline-block; vertical-align: middle; }
   .farol-g { background: var(--farol-verde); }
   .farol-a { background: var(--farol-amarelo); }
   .farol-r { background: var(--farol-vermelho); }
+  .farol-vazio { background: #ddd; }
 
-  .select-seg {
-    border: 1px solid var(--bege-dark);
-    border-radius: 4px;
-    padding: 3px 6px;
-    font-size: 12px;
-    background: var(--white);
-  }
-
+  /* Tópicos ocultáveis */
   .topico-col-header {
     background: var(--bege-dark);
     display: grid;
-    grid-template-columns: 1.3fr 90px 180px 1.7fr;
+    grid-template-columns: 2fr 70px 70px 160px 2fr;
     padding: 8px 12px;
     border-radius: 6px 6px 0 0;
     font-size: 10px;
@@ -421,12 +252,7 @@
     color: var(--text-light);
     font-weight: 600;
   }
-
-  .topico-box {
-    border-bottom: 1px solid var(--bege-dark);
-    background: var(--white);
-  }
-
+  .topico-box { border-bottom: 1px solid var(--bege-dark); background: var(--white); }
   .topico-header {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -435,39 +261,43 @@
     cursor: pointer;
     background: #f3ecdf;
     border-bottom: 1px solid var(--bege-dark);
+    user-select: none;
   }
-
-  .topico-titulo {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--bronze);
-  }
-
-  .topico-toggle {
-    font-size: 16px;
-    color: var(--bronze);
-    font-weight: 700;
-  }
-
-  .topico-conteudo {
-    display: none;
-  }
-
-  .topico-conteudo.open {
-    display: block;
-  }
-
+  .topico-titulo { font-size: 13px; font-weight: 700; color: var(--bronze); }
+  .topico-toggle { font-size: 16px; color: var(--bronze); font-weight: 700; }
+  .topico-conteudo { display: none; }
+  .topico-conteudo.open { display: block; }
   .topico-linha {
     display: grid;
-    grid-template-columns: 1.3fr 90px 180px 1.7fr;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--bege-dark);
+    grid-template-columns: 2fr 70px 70px 160px 2fr;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ede5d8;
     align-items: center;
     background: var(--white);
+    font-size: 12px;
+  }
+  .topico-linha:last-child { border-bottom: none; }
+  .topico-linha:hover { background: #faf6f0; }
+
+  /* Linha de datas do tópico */
+  .topico-datas {
+    display: grid;
+    grid-template-columns: 2fr 70px 70px 160px 2fr;
+    padding: 7px 12px;
+    background: #eee6d8;
+    border-bottom: 1px solid var(--bege-dark);
+    font-size: 11px;
+    color: var(--text-mid);
+    font-weight: 600;
   }
 
-  .topico-linha:last-child {
-    border-bottom: none;
+  /* Farol de vencimento inline */
+  .farol-venc {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-light);
   }
 
   .footer {
@@ -481,6 +311,7 @@
 </style>
 </head>
 <body>
+
 <div class="header">
   <div class="header-left">
     <div class="logo">
@@ -503,7 +334,6 @@
           <option value="2028">2028</option>
         </select>
       </div>
-
       <div class="filtro-item">
         <label>Segmento</label>
         <select id="filtroSegmento" onchange="aplicarFiltros()">
@@ -512,7 +342,6 @@
           <option value="Padrão">Padrão</option>
         </select>
       </div>
-
       <div class="filtro-item">
         <label>Doninho</label>
         <select id="filtroDoninho" onchange="aplicarFiltros()">
@@ -522,7 +351,6 @@
           <option value="Akemi Yoshikawa">Akemi Yoshikawa</option>
         </select>
       </div>
-
       <div class="filtro-item">
         <label>Status</label>
         <select id="filtroStatus" onchange="aplicarFiltros()">
@@ -532,7 +360,6 @@
           <option value="Finalizado">Finalizado</option>
         </select>
       </div>
-
       <div class="filtro-item">
         <label>Etapa</label>
         <select id="filtroEtapa" onchange="aplicarFiltros()">
@@ -543,42 +370,36 @@
           <option value="Vizinhos">Vizinhos</option>
         </select>
       </div>
-
       <div class="filtro-item">
         <label>Buscar</label>
         <input type="text" id="filtroBusca" placeholder="Nome do terreno..." oninput="aplicarFiltros()" />
       </div>
-
       <button class="btn-limpar" onclick="limparFiltros()">↺ Limpar tudo</button>
     </div>
   </div>
 
   <div class="section-label">Indicadores</div>
-  <div class="kpi-grid" id="kpiGrid">
+  <div class="kpi-grid">
     <div class="kpi-card destaque">
       <div class="kpi-label">Projetos Filtrados</div>
       <div class="kpi-value" id="kpiLancamentos">9</div>
       <div class="kpi-sub">projetos no dashboard</div>
     </div>
-
     <div class="kpi-card">
       <div class="kpi-label">Em andamento</div>
       <div class="kpi-value" id="kpiAndamento">0</div>
       <div class="kpi-sub">status de execução</div>
     </div>
-
     <div class="kpi-card">
       <div class="kpi-label">Não iniciado</div>
       <div class="kpi-value" id="kpiNaoIniciado">0</div>
       <div class="kpi-sub">status de execução</div>
     </div>
-
     <div class="kpi-card">
       <div class="kpi-label">Finalizado</div>
       <div class="kpi-value" id="kpiFinalizado">0</div>
       <div class="kpi-sub">status de execução</div>
     </div>
-
     <div class="kpi-card">
       <div class="kpi-label">Terrenos Full</div>
       <div class="kpi-value" id="kpiFull">0</div>
@@ -609,7 +430,7 @@
 
   <div class="section-label">Projetos</div>
   <div class="tabela-box">
-    <table class="tabela-projetos" id="tabelaProjetos">
+    <table class="tabela-projetos">
       <thead>
         <tr>
           <th style="width:30px"></th>
@@ -639,469 +460,367 @@
 </div>
 
 <script>
+// ─────────────────────────────────────────────────────────────
+// MODELO ÚNICO DE CHECKLIST
+// Cada item: { assunto, farol, farolVenc (opcional), dataLimite, status }
+// farolVenc = true → exibe segundo farol para prazo de vencimento
+// ─────────────────────────────────────────────────────────────
+function criarModeloDetalhes() {
+  return {
+    "Demolição": {
+      dataInicio: "—",
+      dataFim: "—",
+      itens: [
+        { assunto: "Visita + Orçamentos Demolição",          farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Laudo de Boas Vindas",                   farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Laudo de vizinhos (contratação e realizado)", farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Ronda / Portaria",                       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Contratação demolidora",                 farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Contratação tapume demolição",           farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Documentação LCR",                       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Demanda Entrada de Energia Obra",        farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Solicitação Orçamentos LCR",             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Posses (farol por lote + link QF)",      farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Supressões",                             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Ligação de Energia",                     farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Ligação de Água",                        farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Ligação de Esgoto",                      farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Ligação Acréscimo de Obra",              farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Acréscimo de Energia",                   farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Entrada de Energia de Obra",             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Remediação",                             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Alvará de Demolição",                    farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Alvará de Tapume",                       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "ART",                                    farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "PGRCC inicial",                          farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "PGRCC final",                            farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Seguro de Obra",                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Placa de Obra",                          farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "PCA",                                    farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Plano de Demolição",                     farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Certificado de Britagem",                farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Início demolição",                       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Chapisco + Canaleta",                    farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Relatório final de visita MA (pós demo)",farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Plani Pós Demo",                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Pendências",                             farol: "a", dataLimite: "—", status: "—" }
+      ]
+    },
+    "PDV": {
+      dataInicio: "—",
+      dataFim: "—",
+      itens: [
+        { assunto: "Sinal",                                                                          farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Cronograma Projetos Stand",                                                      farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Projetos Stand (Cronograma, Param., EST, FUN, ELE, HID, STAND, DEC, MINI EXEC)", farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Kick off",                                                                       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Pasta de obra",                                                                  farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Alvará de Stand",       farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "Alvará de Tapume",      farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "ART Cyrela",            farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "ART Empreiteira",       farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "ART Segurança do Trabalho", farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "PGRCC inicial",                                                                  farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "PGRCC final",                                                                    farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Seguro de Obra",        farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "Placa de Obra",                                                                  farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "PCA",                                                                            farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Ar Condicionado (Croqui e Orçamento)",                                          farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Escopo",                                                                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Marcenaria (Croqui e Orçamento)",                                               farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Pisos (Stand e Backoffice)",                                                     farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Quintal urbano",                                                                 farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Checklist",                                                                      farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Concessionárias",                                                                farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Tapume",                                                                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Portaria",                                                                       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Laudo de Taludes",                                                               farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Laudo de Estrutura",                                                             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Laudo de Estanqueidade",                                                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Laudo de Telhados",                                                              farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Laudo Corante",                                                                  farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Aditivo",                                                                        farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Pendências",                                                                     farol: "a", dataLimite: "—", status: "—" }
+      ]
+    },
+    "Pré Obra": {
+      dataInicio: "—",
+      dataFim: "—",
+      itens: [
+        { assunto: "Tapume de obra",                                                                              farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Projeto de Canteiro",                                                                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Custo planejado para tapume",                                                                  farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Validação Eng. Obra",                                                                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Solicitação do orçamento e programação da instalação e envelopamento",                        farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Desmobilização (AC, Marcenaria)",                                                             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Demolição stand (contratação e programação)",                                                 farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Pasta de obra",                                                                               farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Alvará de Tapume",       farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "ART Empreiteira",        farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "ART Segurança do Trabalho", farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "PGRCC inicial",                                                                               farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "PGRCC final",                                                                                 farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Seguro de Obra",         farol: "a", farolVenc: true, dataLimite: "—", status: "—" },
+        { assunto: "TCA",                                                                                         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Certificado de Britagem",                                                                     farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Concessionária",                                                                              farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Relatório de vizinhos",                                                                       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Manejo Arbóreo",                                                                              farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Passagem de obra (FVS, Drone, Fotos, Validação Plani Pós Demo, Rel. vizinhos, e-mail)",       farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Pendências",                                                                                   farol: "a", dataLimite: "—", status: "—" }
+      ]
+    },
+    "Vizinhos": {
+      dataInicio: "—",
+      dataFim: "—",
+      itens: [
+        { assunto: "Descrição do Caso",                                      farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Formalização da reclamação (e-mail e telefone)",         farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Abertura do sinistro junto à EPL + Envio Documentação",  farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Vistoria do Perito + Fornecedores",                      farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Orçamentos",                                             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Análise da Seguradora",                                  farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Assinatura da Minuta Inicial",                           farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Início dos Serviços / Reembolso",                        farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Assinatura da Minuta Final",                             farol: "a", dataLimite: "—", status: "—" },
+        { assunto: "Reembolso EPL",                                          farol: "a", dataLimite: "—", status: "—" }
+      ]
+    }
+  };
+}
+
+// ─────────────────────────────────────────────────────────────
+// PROJETOS — cada um usa uma cópia fresca do modelo
+// Para personalizar um item específico de um projeto,
+// acesse: projetos[n].detalhes["Demolição"].itens[0].farol = "g"
+// ─────────────────────────────────────────────────────────────
 const projetos = [
   {
-    id: 1,
-    terreno: "Ouvidor Peleja",
-    bairro: "Vila Mariana",
-    statusMacro: "Lançado",
-    segmento: "Padrão",
-    coordenacao: "Denis Pimentel",
-    doninho: "Denis Pimentel",
+    id: 1, terreno: "Ouvidor Peleja", bairro: "Vila Mariana",
+    statusMacro: "Lançado", segmento: "Padrão",
+    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
     statusExecucao: "Em andamento",
-    posseLotes: "01/10/2024",
-    inicioDemolicao: "05/10/2024",
-    terminoDemolicao: "20/11/2024",
-    inicioPDV: "10/12/2024",
-    finalizacaoPDV: "15/01/2025",
-    meeting: "28/01/2026",
-    demolicaoPDV: "05/02/2026",
-    inicioPreObra: "10/02/2026",
-    inicioObra: "21/02/2026",
-    anoLancamento: 2026,
-    ganttInicio: 1,
-    ganttFim: 2,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Tapumes", farol: "g", dataLimite: "10/08/2026", status: "Concluída" },
-        { assunto: "Retirada de resíduos", farol: "a", dataLimite: "14/08/2026", status: "Em andamento" }
-      ],
-      "PDV": [
-        { assunto: "Instalação de mobiliário", farol: "a", dataLimite: "20/08/2026", status: "Em validação final" }
-      ],
-      "Pré Obra": [
-        { assunto: "Mobilização do canteiro", farol: "a", dataLimite: "25/08/2026", status: "Mobilização em andamento" }
-      ],
-      "Vizinhos": [
-        { assunto: "Comunicado da obra", farol: "g", dataLimite: "08/08/2026", status: "Comunicação realizada" }
-      ]
-    }
+    posseLotes: "01/10/2024", inicioDemolicao: "05/10/2024", terminoDemolicao: "20/11/2024",
+    inicioPDV: "10/12/2024", finalizacaoPDV: "15/01/2025",
+    meeting: "28/01/2026", demolicaoPDV: "05/02/2026",
+    inicioPreObra: "10/02/2026", inicioObra: "21/02/2026",
+    anoLancamento: 2026, ganttInicio: 1, ganttFim: 2,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 2,
-    terreno: "Rua Butantã",
-    bairro: "Pinheiros",
-    statusMacro: "Lançado",
-    segmento: "Full",
-    coordenacao: "Artur Dorfman",
-    doninho: "Giulia Oliveira",
+    id: 2, terreno: "Rua Butantã", bairro: "Pinheiros",
+    statusMacro: "Lançado", segmento: "Full",
+    coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
     statusExecucao: "Não iniciado",
-    posseLotes: "08/02/2024",
-    inicioDemolicao: "—",
-    terminoDemolicao: "—",
-    inicioPDV: "—",
-    finalizacaoPDV: "—",
-    meeting: "06/04/2026",
-    demolicaoPDV: "—",
-    inicioPreObra: "—",
-    inicioObra: "18/04/2026",
-    anoLancamento: 2026,
-    ganttInicio: 3,
-    ganttFim: 4,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Planejamento de demolição", farol: "a", dataLimite: "12/09/2026", status: "A iniciar" }
-      ],
-      "PDV": [
-        { assunto: "Planejamento inicial", farol: "a", dataLimite: "18/09/2026", status: "Aguardando definição" }
-      ],
-      "Pré Obra": [
-        { assunto: "Cronograma preliminar", farol: "a", dataLimite: "25/09/2026", status: "Sem mobilização" }
-      ],
-      "Vizinhos": [
-        { assunto: "Mapeamento inicial", farol: "a", dataLimite: "30/09/2026", status: "Sem comunicação ativa" }
-      ]
-    }
+    posseLotes: "08/02/2024", inicioDemolicao: "—", terminoDemolicao: "—",
+    inicioPDV: "—", finalizacaoPDV: "—",
+    meeting: "06/04/2026", demolicaoPDV: "—",
+    inicioPreObra: "—", inicioObra: "18/04/2026",
+    anoLancamento: 2026, ganttInicio: 3, ganttFim: 4,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 3,
-    terreno: "Fernandes Moreira II",
-    bairro: "Chácara S. Antônio",
-    statusMacro: "Lançado",
-    segmento: "Full",
-    coordenacao: "Artur Dorfman",
-    doninho: "Akemi Yoshikawa",
+    id: 3, terreno: "Fernandes Moreira II", bairro: "Chácara S. Antônio",
+    statusMacro: "Lançado", segmento: "Full",
+    coordenacao: "Artur Dorfman", doninho: "Akemi Yoshikawa",
     statusExecucao: "Finalizado",
-    posseLotes: "06/12/2023",
-    inicioDemolicao: "10/01/2024",
-    terminoDemolicao: "28/02/2024",
-    inicioPDV: "05/03/2024",
-    finalizacaoPDV: "20/04/2024",
-    meeting: "23/04/2026",
-    demolicaoPDV: "25/04/2026",
-    inicioPreObra: "01/05/2026",
-    inicioObra: "16/05/2026",
-    anoLancamento: 2026,
-    ganttInicio: 4,
-    ganttFim: 5,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Execução da demolição", farol: "g", dataLimite: "28/02/2024", status: "Concluída" }
-      ],
-      "PDV": [
-        { assunto: "Implantação do PDV", farol: "g", dataLimite: "20/04/2024", status: "Concluído" }
-      ],
-      "Pré Obra": [
-        { assunto: "Checklist pré obra", farol: "g", dataLimite: "01/05/2026", status: "Concluída" }
-      ],
-      "Vizinhos": [
-        { assunto: "Tratativas com entorno", farol: "g", dataLimite: "15/04/2024", status: "Tratativas encerradas" }
-      ]
-    }
+    posseLotes: "06/12/2023", inicioDemolicao: "10/01/2024", terminoDemolicao: "28/02/2024",
+    inicioPDV: "05/03/2024", finalizacaoPDV: "20/04/2024",
+    meeting: "23/04/2026", demolicaoPDV: "25/04/2026",
+    inicioPreObra: "01/05/2026", inicioObra: "16/05/2026",
+    anoLancamento: 2026, ganttInicio: 4, ganttFim: 5,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 4,
-    terreno: "Chicago",
-    bairro: "Brooklin",
-    statusMacro: "Lançado",
-    segmento: "Padrão",
-    coordenacao: "Denis Pimentel",
-    doninho: "Denis Pimentel",
+    id: 4, terreno: "Chicago", bairro: "Brooklin",
+    statusMacro: "Lançado", segmento: "Padrão",
+    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
     statusExecucao: "Em andamento",
-    posseLotes: "15/03/2024",
-    inicioDemolicao: "20/03/2024",
-    terminoDemolicao: "30/04/2024",
-    inicioPDV: "10/05/2024",
-    finalizacaoPDV: "30/05/2024",
-    meeting: "20/05/2026",
-    demolicaoPDV: "01/06/2026",
-    inicioPreObra: "05/06/2026",
-    inicioObra: "14/06/2026",
-    anoLancamento: 2026,
-    ganttInicio: 5,
-    ganttFim: 6,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Frente de demolição", farol: "g", dataLimite: "30/04/2024", status: "Concluída" }
-      ],
-      "PDV": [
-        { assunto: "Execução do PDV", farol: "g", dataLimite: "30/05/2024", status: "Executado" }
-      ],
-      "Pré Obra": [
-        { assunto: "Checklist de mobilização", farol: "a", dataLimite: "08/06/2026", status: "Checklist parcial" }
-      ],
-      "Vizinhos": [
-        { assunto: "Acompanhamento do entorno", farol: "a", dataLimite: "12/06/2026", status: "Acompanhamento semanal" }
-      ]
-    }
+    posseLotes: "15/03/2024", inicioDemolicao: "20/03/2024", terminoDemolicao: "30/04/2024",
+    inicioPDV: "10/05/2024", finalizacaoPDV: "30/05/2024",
+    meeting: "20/05/2026", demolicaoPDV: "01/06/2026",
+    inicioPreObra: "05/06/2026", inicioObra: "14/06/2026",
+    anoLancamento: 2026, ganttInicio: 5, ganttFim: 6,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 5,
-    terreno: "Guaratuba",
-    bairro: "Conceição",
-    statusMacro: "Previsto",
-    segmento: "Padrão",
-    coordenacao: "Denis Pimentel",
-    doninho: "Denis Pimentel",
+    id: 5, terreno: "Guaratuba", bairro: "Conceição",
+    statusMacro: "Previsto", segmento: "Padrão",
+    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
     statusExecucao: "Não iniciado",
-    posseLotes: "—",
-    inicioDemolicao: "—",
-    terminoDemolicao: "—",
-    inicioPDV: "—",
-    finalizacaoPDV: "—",
-    meeting: "—",
-    demolicaoPDV: "—",
-    inicioPreObra: "—",
-    inicioObra: "Set/2026",
-    anoLancamento: 2026,
-    ganttInicio: 8,
-    ganttFim: 8,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Planejamento inicial", farol: "a", dataLimite: "05/10/2026", status: "Não iniciada" }
-      ],
-      "PDV": [
-        { assunto: "Definição de escopo", farol: "a", dataLimite: "10/10/2026", status: "Não iniciado" }
-      ],
-      "Pré Obra": [
-        { assunto: "Mobilização preliminar", farol: "a", dataLimite: "15/10/2026", status: "Sem mobilização" }
-      ],
-      "Vizinhos": [
-        { assunto: "Contato inicial", farol: "a", dataLimite: "20/10/2026", status: "Aguardando avanço" }
-      ]
-    }
+    posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
+    inicioPDV: "—", finalizacaoPDV: "—",
+    meeting: "—", demolicaoPDV: "—",
+    inicioPreObra: "—", inicioObra: "Set/2026",
+    anoLancamento: 2026, ganttInicio: 8, ganttFim: 8,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 6,
-    terreno: "Antônio das Chagas",
-    bairro: "Chácara S. Antônio",
-    statusMacro: "Previsto",
-    segmento: "Full",
-    coordenacao: "Artur Dorfman",
-    doninho: "Akemi Yoshikawa",
+    id: 6, terreno: "Antônio das Chagas", bairro: "Chácara S. Antônio",
+    statusMacro: "Previsto", segmento: "Full",
+    coordenacao: "Artur Dorfman", doninho: "Akemi Yoshikawa",
     statusExecucao: "Em andamento",
-    posseLotes: "—",
-    inicioDemolicao: "—",
-    terminoDemolicao: "—",
-    inicioPDV: "—",
-    finalizacaoPDV: "—",
-    meeting: "—",
-    demolicaoPDV: "—",
-    inicioPreObra: "—",
-    inicioObra: "Out/2026",
-    anoLancamento: 2026,
-    ganttInicio: 9,
-    ganttFim: 9,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Programação preliminar", farol: "a", dataLimite: "22/10/2026", status: "Programação preliminar" }
-      ],
-      "PDV": [
-        { assunto: "Contratação do PDV", farol: "a", dataLimite: "18/10/2026", status: "Em contratação" }
-      ],
-      "Pré Obra": [
-        { assunto: "Dependências externas", farol: "a", dataLimite: "28/10/2026", status: "Aguardando liberação" }
-      ],
-      "Vizinhos": [
-        { assunto: "Mapeamento do entorno", farol: "g", dataLimite: "14/10/2026", status: "Mapeamento realizado" }
-      ]
-    }
+    posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
+    inicioPDV: "—", finalizacaoPDV: "—",
+    meeting: "—", demolicaoPDV: "—",
+    inicioPreObra: "—", inicioObra: "Out/2026",
+    anoLancamento: 2026, ganttInicio: 9, ganttFim: 9,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 7,
-    terreno: "Canário Moema",
-    bairro: "Moema",
-    statusMacro: "Previsto",
-    segmento: "Full",
-    coordenacao: "Artur Dorfman",
-    doninho: "Giulia Oliveira",
+    id: 7, terreno: "Canário Moema", bairro: "Moema",
+    statusMacro: "Previsto", segmento: "Full",
+    coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
     statusExecucao: "Não iniciado",
-    posseLotes: "—",
-    inicioDemolicao: "—",
-    terminoDemolicao: "—",
-    inicioPDV: "—",
-    finalizacaoPDV: "—",
-    meeting: "—",
-    demolicaoPDV: "—",
-    inicioPreObra: "—",
-    inicioObra: "Nov/2026",
-    anoLancamento: 2026,
-    ganttInicio: 10,
-    ganttFim: 10,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Estratégia inicial", farol: "a", dataLimite: "05/11/2026", status: "Não iniciada" }
-      ],
-      "PDV": [
-        { assunto: "Definição do PDV", farol: "a", dataLimite: "10/11/2026", status: "Aguardando definição" }
-      ],
-      "Pré Obra": [
-        { assunto: "Planejamento de mobilização", farol: "a", dataLimite: "15/11/2026", status: "Não iniciada" }
-      ],
-      "Vizinhos": [
-        { assunto: "Comunicação inicial", farol: "a", dataLimite: "18/11/2026", status: "Sem acionamento" }
-      ]
-    }
+    posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
+    inicioPDV: "—", finalizacaoPDV: "—",
+    meeting: "—", demolicaoPDV: "—",
+    inicioPreObra: "—", inicioObra: "Nov/2026",
+    anoLancamento: 2026, ganttInicio: 10, ganttFim: 10,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 8,
-    terreno: "Dona Inácia Uchôa I",
-    bairro: "Vila Mariana",
-    statusMacro: "Previsto",
-    segmento: "Padrão",
-    coordenacao: "Denis Pimentel",
-    doninho: "Denis Pimentel",
+    id: 8, terreno: "Dona Inácia Uchôa I", bairro: "Vila Mariana",
+    statusMacro: "Previsto", segmento: "Padrão",
+    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
     statusExecucao: "Em andamento",
-    posseLotes: "—",
-    inicioDemolicao: "—",
-    terminoDemolicao: "—",
-    inicioPDV: "—",
-    finalizacaoPDV: "—",
-    meeting: "—",
-    demolicaoPDV: "—",
-    inicioPreObra: "—",
-    inicioObra: "Dez/2026",
-    anoLancamento: 2026,
-    ganttInicio: 11,
-    ganttFim: 12,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Preparação da frente", farol: "a", dataLimite: "02/12/2026", status: "Em preparação" }
-      ],
-      "PDV": [
-        { assunto: "Escopo preliminar", farol: "a", dataLimite: "08/12/2026", status: "Escopo preliminar" }
-      ],
-      "Pré Obra": [
-        { assunto: "Alinhamento operacional", farol: "a", dataLimite: "12/12/2026", status: "Em alinhamento" }
-      ],
-      "Vizinhos": [
-        { assunto: "Contato inicial", farol: "g", dataLimite: "05/12/2026", status: "Contato inicial feito" }
-      ]
-    }
+    posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
+    inicioPDV: "—", finalizacaoPDV: "—",
+    meeting: "—", demolicaoPDV: "—",
+    inicioPreObra: "—", inicioObra: "Dez/2026",
+    anoLancamento: 2026, ganttInicio: 11, ganttFim: 12,
+    detalhes: criarModeloDetalhes()
   },
   {
-    id: 9,
-    terreno: "Otávio Tarquínio",
-    bairro: "Campo Belo",
-    statusMacro: "Coringa",
-    segmento: "Full",
-    coordenacao: "Artur Dorfman",
-    doninho: "Giulia Oliveira",
+    id: 9, terreno: "Otávio Tarquínio", bairro: "Campo Belo",
+    statusMacro: "Coringa", segmento: "Full",
+    coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
     statusExecucao: "Não iniciado",
-    posseLotes: "—",
-    inicioDemolicao: "—",
-    terminoDemolicao: "—",
-    inicioPDV: "—",
-    finalizacaoPDV: "—",
-    meeting: "—",
-    demolicaoPDV: "—",
-    inicioPreObra: "—",
-    inicioObra: "Jan/2027",
-    anoLancamento: 2027,
-    ganttInicio: 11,
-    ganttFim: 12,
+    posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
+    inicioPDV: "—", finalizacaoPDV: "—",
+    meeting: "—", demolicaoPDV: "—",
+    inicioPreObra: "—", inicioObra: "Jan/2027",
+    anoLancamento: 2027, ganttInicio: 11, ganttFim: 12,
     isCoringa: true,
-    detalhes: {
-      "Demolição": [
-        { assunto: "Ativação da frente", farol: "a", dataLimite: "10/01/2027", status: "Sem ativação" }
-      ],
-      "PDV": [
-        { assunto: "Contratação do PDV", farol: "a", dataLimite: "15/01/2027", status: "Sem contratação" }
-      ],
-      "Pré Obra": [
-        { assunto: "Mobilização preliminar", farol: "a", dataLimite: "20/01/2027", status: "Não iniciada" }
-      ],
-      "Vizinhos": [
-        { assunto: "Comunicação com entorno", farol: "a", dataLimite: "25/01/2027", status: "Projeto coringa" }
-      ]
-    }
+    detalhes: criarModeloDetalhes()
   }
 ];
 
-const meses = ["JAN\n2026","FEV\n2026","MAR\n2026","ABR\n2026","MAI\n2026","JUN\n2026","JUL\n2026","AGO\n2026","SET\n2026","OUT\n2026","NOV\n2026","DEZ\n2026","JAN\n2027","FEV\n2027","MAR\n2027","ABR\n2027"];
+// ─────────────────────────────────────────────────────────────
+// GANTT
+// ─────────────────────────────────────────────────────────────
 const mesesLabel = ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ","JAN","FEV","MAR","ABR"];
-const anos2 = [2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2027,2027,2027,2027];
-const HOJE_MES = 7;
+const anos2      = [2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2027,2027,2027,2027];
+const HOJE_MES   = 7;
 let projetosFiltrados = [...projetos];
 let zoomLevel = 1;
 const COL_W = 70;
 
 function getCorProjeto(p, i) {
   if (p.isCoringa && i === p.ganttInicio) return '#8a63a3';
-  if (p.statusMacro === 'Lançado') return '#5f6f52';
+  if (p.statusMacro === 'Lançado')  return '#5f6f52';
   if (p.statusMacro === 'Previsto') return '#4d7399';
-  if (p.statusMacro === 'Coringa') return '#8a63a3';
+  if (p.statusMacro === 'Coringa')  return '#8a63a3';
   return '#6f5b47';
 }
 
 function statusTagMacro(s) {
-  const map = {
-    'Lançado': 'lancado',
-    'Previsto': 'previsto',
-    'Coringa': 'coringa',
-    'Em contratação': 'contratacao'
-  };
-  return `<span class="tag-status tag-${map[s] || 'previsto'}">${s}</span>`;
+  const map = { 'Lançado':'lancado','Previsto':'previsto','Coringa':'coringa','Em contratação':'contratacao' };
+  return `<span class="tag-status tag-${map[s]||'previsto'}">${s}</span>`;
 }
 
 function farolDot(f) {
-  const map = { g: 'farol-g', a: 'farol-a', r: 'farol-r' };
-  return `<span class="farol ${map[f] || 'farol-g'}"></span>`;
+  const map = { g:'farol-g', a:'farol-a', r:'farol-r' };
+  return `<span class="farol ${map[f]||'farol-vazio'}"></span>`;
 }
 
 function normalizarChave(texto) {
-  return texto
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, '-')
-    .toLowerCase();
+  return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-').toLowerCase();
 }
 
 function toggleTopico(projetoId, topico) {
-  const chave = normalizarChave(topico);
+  const chave    = normalizarChave(topico);
   const conteudo = document.getElementById(`topico-${projetoId}-${chave}`);
-  const icone = document.getElementById(`toggle-icon-${projetoId}-${chave}`);
-  const aberto = conteudo.classList.contains('open');
-
+  const icone    = document.getElementById(`toggle-icon-${projetoId}-${chave}`);
+  const aberto   = conteudo.classList.contains('open');
   conteudo.classList.toggle('open', !aberto);
   icone.textContent = aberto ? '+' : '−';
 }
 
 function renderTopicosProjeto(p) {
-  const topicosOrdem = ["Demolição", "PDV", "Pré Obra", "Vizinhos"];
+  const topicosOrdem = ["Demolição","PDV","Pré Obra","Vizinhos"];
 
   return topicosOrdem.map(topico => {
-    const itens = (p.detalhes && p.detalhes[topico]) ? p.detalhes[topico] : [];
+    const bloco = p.detalhes && p.detalhes[topico];
+    const itens = bloco ? bloco.itens : [];
+    const dataInicio = bloco ? bloco.dataInicio : '—';
+    const dataFim    = bloco ? bloco.dataFim    : '—';
+    const chave      = normalizarChave(topico);
 
     return `
       <div class="topico-box">
         <div class="topico-header" onclick="toggleTopico(${p.id}, '${topico}')">
           <div class="topico-titulo">${topico}</div>
-          <div class="topico-toggle" id="toggle-icon-${p.id}-${normalizarChave(topico)}">+</div>
+          <div class="topico-toggle" id="toggle-icon-${p.id}-${chave}">+</div>
         </div>
-        <div class="topico-conteudo" id="topico-${p.id}-${normalizarChave(topico)}">
-          ${
-            itens.length
-              ? itens.map(item => `
-                <div class="topico-linha">
-                  <div>${item.assunto || '—'}</div>
-                  <div>${farolDot(item.farol)}</div>
-                  <div>${item.dataLimite || '—'}</div>
-                  <div style="white-space:pre-line;">${item.status || '—'}</div>
-                </div>
-              `).join('')
-              : `<div class="topico-linha">
-                  <div>—</div>
-                  <div>—</div>
-                  <div>—</div>
-                  <div>Sem informações</div>
-                 </div>`
+        <div class="topico-conteudo" id="topico-${p.id}-${chave}">
+          <div class="topico-datas">
+            <div>📅 Início: <strong>${dataInicio}</strong> &nbsp;→&nbsp; Fim: <strong>${dataFim}</strong></div>
+            <div></div><div></div><div></div><div></div>
+          </div>
+          <div class="topico-col-header">
+            <div>Assunto</div>
+            <div>Farol</div>
+            <div>Venc.</div>
+            <div>Data limite</div>
+            <div>Status / observação</div>
+          </div>
+          ${itens.length
+            ? itens.map(item => `
+              <div class="topico-linha">
+                <div>${item.assunto || '—'}</div>
+                <div>${farolDot(item.farol)}</div>
+                <div>${item.farolVenc ? farolDot(item.farolVencCor || 'a') : '—'}</div>
+                <div>${item.dataLimite || '—'}</div>
+                <div style="white-space:pre-line;">${item.status || '—'}</div>
+              </div>`).join('')
+            : `<div class="topico-linha"><div>—</div><div>—</div><div>—</div><div>—</div><div>Sem informações</div></div>`
           }
         </div>
-      </div>
-    `;
+      </div>`;
   }).join('');
 }
 
 function renderGantt(lista) {
   const container = document.getElementById('ganttContainer');
   const w = COL_W * zoomLevel;
-  const totalW = w * meses.length + 200;
-
-  let html = `<table style="width:${totalW}px;border-collapse:collapse;min-width:${totalW}px;">`;
-  html += '<thead><tr>';
+  const totalW = w * mesesLabel.length + 200;
+  let html = `<table style="width:${totalW}px;border-collapse:collapse;min-width:${totalW}px;"><thead><tr>`;
   html += `<th style="background:rgba(0,0,0,0.1);color:rgba(255,255,255,0.85);font-size:11px;padding:8px 10px;text-align:left;width:200px;border-right:1px solid rgba(255,255,255,0.1);">PROJETO</th>`;
-
-  meses.forEach((m, i) => {
+  mesesLabel.forEach((m, i) => {
     const isHoje = i === HOJE_MES;
-    html += `<th style="background:${isHoje ? 'rgba(229,57,53,0.2)' : 'rgba(0,0,0,0.1)'};color:${isHoje ? '#ffd7d2' : 'rgba(255,255,255,0.85)'};font-size:11px;padding:8px 4px;text-align:center;width:${w}px;border-right:1px solid rgba(255,255,255,0.1);white-space:pre-line;line-height:1.2;">${mesesLabel[i]}\n${anos2[i]}</th>`;
+    html += `<th style="background:${isHoje?'rgba(229,57,53,0.2)':'rgba(0,0,0,0.1)'};color:${isHoje?'#ffd7d2':'rgba(255,255,255,0.85)'};font-size:11px;padding:8px 4px;text-align:center;width:${w}px;border-right:1px solid rgba(255,255,255,0.1);white-space:pre-line;line-height:1.2;">${m}\n${anos2[i]}</th>`;
   });
-
   html += '</tr></thead><tbody>';
-
   lista.forEach(p => {
-    html += '<tr>';
-    html += `<td style="background:#e7dccd;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.2);width:200px;border-right:1px solid rgba(255,255,255,0.1);">
+    html += `<tr><td style="background:#e7dccd;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.2);width:200px;border-right:1px solid rgba(255,255,255,0.1);">
       <div style="font-size:13px;font-weight:700;color:var(--text-dark);">${p.terreno}</div>
-      <div style="font-size:11px;color:var(--text-light);">${p.bairro} · ${p.statusMacro}</div>
-    </td>`;
-
-    meses.forEach((m, i) => {
+      <div style="font-size:11px;color:var(--text-light);">${p.bairro} · ${p.statusMacro}</div></td>`;
+    mesesLabel.forEach((m, i) => {
       const isHoje = i === HOJE_MES;
       let barHTML = '';
-
       if (i >= p.ganttInicio && i <= p.ganttFim) {
         const cor = getCorProjeto(p, i);
-        const isStart = i === p.ganttInicio;
-        const isEnd = i === p.ganttFim;
-        const radius =
-          isStart && isEnd ? '9px'
-          : isStart ? '9px 0 0 9px'
-          : isEnd ? '0 9px 9px 0'
-          : '0';
-
-        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:${cor};border-radius:${radius};left:${isStart ? 4 : 0}px;right:${isEnd ? 4 : 0}px;"></div>`;
+        const isStart = i === p.ganttInicio, isEnd = i === p.ganttFim;
+        const radius = isStart && isEnd ? '9px' : isStart ? '9px 0 0 9px' : isEnd ? '0 9px 9px 0' : '0';
+        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:${cor};border-radius:${radius};left:${isStart?4:0}px;right:${isEnd?4:0}px;"></div>`;
       }
-
-      html += `<td style="background:${isHoje ? 'rgba(229,57,53,0.05)' : 'var(--white)'};border-bottom:1px solid rgba(0,0,0,0.05);border-right:1px solid rgba(0,0,0,0.05);position:relative;height:36px;width:${w}px;padding:0;">
-        ${barHTML}
-        ${isHoje ? `<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e53935;z-index:5;"></div>` : ''}
+      html += `<td style="background:${isHoje?'rgba(229,57,53,0.05)':'var(--white)'};border-bottom:1px solid rgba(0,0,0,0.05);border-right:1px solid rgba(0,0,0,0.05);position:relative;height:36px;width:${w}px;padding:0;">
+        ${barHTML}${isHoje?`<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e53935;z-index:5;"></div>`:''}
       </td>`;
     });
-
     html += '</tr>';
   });
-
   html += '</tbody></table>';
   container.innerHTML = html;
 }
@@ -1109,7 +828,6 @@ function renderGantt(lista) {
 function renderTabela(lista) {
   const tbody = document.getElementById('tbodyProjetos');
   let html = '';
-
   lista.forEach(p => {
     html += `
       <tr>
@@ -1133,19 +851,11 @@ function renderTabela(lista) {
         <td colspan="15" style="padding:0;">
           <div style="background:#eadfce;padding:12px 20px;">
             <div style="font-weight:700;color:var(--bronze);font-size:13px;margin-bottom:8px;letter-spacing:1px;">📋 STATUS — ${p.terreno.toUpperCase()}</div>
-            <div class="topico-col-header">
-              <div>Assunto</div>
-              <div>Farol</div>
-              <div>Data limite para executar</div>
-              <div>Status / observação</div>
-            </div>
             ${renderTopicosProjeto(p)}
           </div>
         </td>
-      </tr>
-    `;
+      </tr>`;
   });
-
   tbody.innerHTML = html;
 }
 
@@ -1153,7 +863,6 @@ function toggleDetalhe(id) {
   const row = document.getElementById(`detail-${id}`);
   const btn = document.getElementById(`btn-${id}`);
   const isOpen = row.classList.contains('open');
-
   row.classList.toggle('open', !isOpen);
   btn.classList.toggle('open', !isOpen);
   btn.textContent = isOpen ? '+' : '−';
@@ -1161,37 +870,27 @@ function toggleDetalhe(id) {
 
 function atualizarKPIs(lista) {
   document.getElementById('kpiLancamentos').textContent = lista.length;
-  document.getElementById('kpiAndamento').textContent = lista.filter(p => p.statusExecucao === 'Em andamento').length;
+  document.getElementById('kpiAndamento').textContent   = lista.filter(p => p.statusExecucao === 'Em andamento').length;
   document.getElementById('kpiNaoIniciado').textContent = lista.filter(p => p.statusExecucao === 'Não iniciado').length;
-  document.getElementById('kpiFinalizado').textContent = lista.filter(p => p.statusExecucao === 'Finalizado').length;
-  document.getElementById('kpiFull').textContent = lista.filter(p => p.segmento === 'Full').length;
+  document.getElementById('kpiFinalizado').textContent  = lista.filter(p => p.statusExecucao === 'Finalizado').length;
+  document.getElementById('kpiFull').textContent        = lista.filter(p => p.segmento === 'Full').length;
 }
 
 function aplicarFiltros() {
-  const ano = document.getElementById('filtroAno').value;
-  const seg = document.getElementById('filtroSegmento').value;
+  const ano     = document.getElementById('filtroAno').value;
+  const seg     = document.getElementById('filtroSegmento').value;
   const doninho = document.getElementById('filtroDoninho').value;
-  const status = document.getElementById('filtroStatus').value;
-  const etapa = document.getElementById('filtroEtapa').value;
-  const busca = document.getElementById('filtroBusca').value.toLowerCase();
+  const status  = document.getElementById('filtroStatus').value;
+  const etapa   = document.getElementById('filtroEtapa').value;
+  const busca   = document.getElementById('filtroBusca').value.toLowerCase();
 
   projetosFiltrados = projetos.filter(p => {
-    if (ano && String(p.anoLancamento) !== ano) return false;
-    if (seg && p.segmento !== seg) return false;
-    if (doninho && p.doninho !== doninho) return false;
-    if (status && p.statusExecucao !== status) return false;
-
-    if (etapa) {
-      const itensDoTopico = p.detalhes?.[etapa] || [];
-      if (!itensDoTopico.length) return false;
-    }
-
-    if (
-      busca &&
-      !p.terreno.toLowerCase().includes(busca) &&
-      !p.bairro.toLowerCase().includes(busca)
-    ) return false;
-
+    if (ano     && String(p.anoLancamento) !== ano) return false;
+    if (seg     && p.segmento !== seg)              return false;
+    if (doninho && p.doninho !== doninho)            return false;
+    if (status  && p.statusExecucao !== status)     return false;
+    if (etapa   && !(p.detalhes && p.detalhes[etapa])) return false;
+    if (busca   && !p.terreno.toLowerCase().includes(busca) && !p.bairro.toLowerCase().includes(busca)) return false;
     return true;
   });
 
@@ -1201,12 +900,8 @@ function aplicarFiltros() {
 }
 
 function limparFiltros() {
-  document.getElementById('filtroAno').value = '';
-  document.getElementById('filtroSegmento').value = '';
-  document.getElementById('filtroDoninho').value = '';
-  document.getElementById('filtroStatus').value = '';
-  document.getElementById('filtroEtapa').value = '';
-  document.getElementById('filtroBusca').value = '';
+  ['filtroAno','filtroSegmento','filtroDoninho','filtroStatus','filtroEtapa','filtroBusca']
+    .forEach(id => { document.getElementById(id).value = ''; });
   aplicarFiltros();
 }
 
@@ -1221,9 +916,7 @@ function irParaHoje() {
 }
 
 document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR', {
-  day: '2-digit',
-  month: 'long',
-  year: 'numeric'
+  day: '2-digit', month: 'long', year: 'numeric'
 });
 
 aplicarFiltros();
@@ -1231,3 +924,12 @@ setTimeout(irParaHoje, 300);
 </script>
 </body>
 </html>
+```O que foi implementado:
+
+---
+
+**`criarModeloDetalhes()`** — função única que gera o checklist completo com os 4 tópicos e todos os subitens reais. Cada projeto chama essa função uma vez, sem repetir código.
+
+**Itens com farol de vencimento** — os campos que você marcou (Alvará de Stand, Alvará de Tapume, ARTs, Seguro de Obra) ganham uma coluna extra **"Venc."** com farol independente. Para atualizar a cor do vencimento de um item específico, basta setar:
+```javascript
+projetos[0].detalhes["PDV"].itens[5].farolVencCor = "r"; // vermelho = vencido
