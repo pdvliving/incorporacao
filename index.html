@@ -436,7 +436,6 @@
           <th style="width:30px"></th>
           <th>Terreno</th>
           <th>Segmento</th>
-          <th>Coordenação</th>
           <th>Doninho</th>
           <th>Status</th>
           <th>Posse do primeiro lote e do último</th>
@@ -598,7 +597,7 @@ const projetos = [
   {
     id: 1, terreno: "Ouvidor Peleja", bairro: "Vila Mariana",
     statusMacro: "Lançado", segmento: "Padrão",
-    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
+    doninho: "Denis Pimentel",
     statusExecucao: "Em andamento",
     posseLotes: "01/10/2024", inicioDemolicao: "05/10/2024", terminoDemolicao: "20/11/2024",
     inicioPDV: "10/12/2024", finalizacaoPDV: "15/01/2025",
@@ -610,7 +609,7 @@ const projetos = [
   {
     id: 2, terreno: "Rua Butantã", bairro: "Pinheiros",
     statusMacro: "Lançado", segmento: "Full",
-    coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
+    doninho: "Giulia Oliveira",
     statusExecucao: "Não iniciado",
     posseLotes: "08/02/2024", inicioDemolicao: "—", terminoDemolicao: "—",
     inicioPDV: "—", finalizacaoPDV: "—",
@@ -622,7 +621,7 @@ const projetos = [
   {
     id: 3, terreno: "Fernandes Moreira II", bairro: "Chácara S. Antônio",
     statusMacro: "Lançado", segmento: "Full",
-    coordenacao: "Artur Dorfman", doninho: "Akemi Yoshikawa",
+    doninho: "Akemi Yoshikawa",
     statusExecucao: "Finalizado",
     posseLotes: "06/12/2023", inicioDemolicao: "10/01/2024", terminoDemolicao: "28/02/2024",
     inicioPDV: "05/03/2024", finalizacaoPDV: "20/04/2024",
@@ -634,7 +633,7 @@ const projetos = [
   {
     id: 4, terreno: "Chicago", bairro: "Brooklin",
     statusMacro: "Lançado", segmento: "Padrão",
-    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
+    doninho: "Denis Pimentel",
     statusExecucao: "Em andamento",
     posseLotes: "15/03/2024", inicioDemolicao: "20/03/2024", terminoDemolicao: "30/04/2024",
     inicioPDV: "10/05/2024", finalizacaoPDV: "30/05/2024",
@@ -646,7 +645,7 @@ const projetos = [
   {
     id: 5, terreno: "Guaratuba", bairro: "Conceição",
     statusMacro: "Previsto", segmento: "Padrão",
-    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
+    doninho: "Denis Pimentel",
     statusExecucao: "Não iniciado",
     posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
     inicioPDV: "—", finalizacaoPDV: "—",
@@ -658,7 +657,7 @@ const projetos = [
   {
     id: 6, terreno: "Antônio das Chagas", bairro: "Chácara S. Antônio",
     statusMacro: "Previsto", segmento: "Full",
-    coordenacao: "Artur Dorfman", doninho: "Akemi Yoshikawa",
+    doninho: "Akemi Yoshikawa",
     statusExecucao: "Em andamento",
     posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
     inicioPDV: "—", finalizacaoPDV: "—",
@@ -670,7 +669,7 @@ const projetos = [
   {
     id: 7, terreno: "Canário Moema", bairro: "Moema",
     statusMacro: "Previsto", segmento: "Full",
-    coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
+    doninho: "Giulia Oliveira",
     statusExecucao: "Não iniciado",
     posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
     inicioPDV: "—", finalizacaoPDV: "—",
@@ -682,7 +681,7 @@ const projetos = [
   {
     id: 8, terreno: "Dona Inácia Uchôa I", bairro: "Vila Mariana",
     statusMacro: "Previsto", segmento: "Padrão",
-    coordenacao: "Denis Pimentel", doninho: "Denis Pimentel",
+    doninho: "Denis Pimentel",
     statusExecucao: "Em andamento",
     posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
     inicioPDV: "—", finalizacaoPDV: "—",
@@ -694,7 +693,7 @@ const projetos = [
   {
     id: 9, terreno: "Otávio Tarquínio", bairro: "Campo Belo",
     statusMacro: "Coringa", segmento: "Full",
-    coordenacao: "Artur Dorfman", doninho: "Giulia Oliveira",
+    doninho: "Giulia Oliveira",
     statusExecucao: "Não iniciado",
     posseLotes: "—", inicioDemolicao: "—", terminoDemolicao: "—",
     inicioPDV: "—", finalizacaoPDV: "—",
@@ -834,7 +833,6 @@ function renderTabela(lista) {
         <td><button class="expand-btn" id="btn-${p.id}" onclick="toggleDetalhe(${p.id})">+</button></td>
         <td><strong>${p.terreno}</strong><br><span style="font-size:11px;color:var(--text-light);">${p.bairro}</span></td>
         <td>${p.segmento}</td>
-        <td>${p.coordenacao}</td>
         <td>${p.doninho}</td>
         <td>${statusTagMacro(p.statusMacro)}</td>
         <td>${p.posseLotes}</td>
