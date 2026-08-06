@@ -7,19 +7,13 @@
 <style>
   :root {
     --verde: #5f6f52;
-    --verde-light: #7d8d6c;
     --bege: #d8cbb8;
     --bege-dark: #c7b79f;
     --bronze: #8c7355;
-    --bronze-light: #a98a68;
     --text-dark: #2f2a24;
     --text-mid: #5d554c;
     --text-light: #857b70;
     --white: #f7f3ee;
-    --lancado: #5f6f52;
-    --previsto: #4d7399;
-    --coringa: #8a63a3;
-    --contratacao: #6f5b47;
     --farol-verde: #4caf50;
     --farol-amarelo: #ff9800;
     --farol-vermelho: #f44336;
@@ -27,15 +21,14 @@
     --radius: 8px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body, button, input, select, textarea {
+  body, button, input, select {
     font-family: "Calibri Light", Calibri, "Segoe UI", Arial, sans-serif;
   }
   body { background: var(--bege); color: var(--text-dark); font-size: 14px; }
 
-  /* ── HEADER ── */
+  /* HEADER */
   .header {
     background: var(--bronze);
-    border-bottom: 2px solid var(--bege-dark);
     padding: 14px 28px;
     display: flex;
     align-items: center;
@@ -45,11 +38,10 @@
     box-shadow: var(--shadow);
   }
   .header-left { display: flex; align-items: center; gap: 18px; }
-  .logo { display: flex; align-items: center; }
   .logo img { height: 30px; width: auto; display: block; }
   .header-title {
     font-size: 13px;
-    color: #ffffff;
+    color: #fff;
     letter-spacing: 2px;
     text-transform: uppercase;
     border-left: 2px solid rgba(255,255,255,0.3);
@@ -57,7 +49,6 @@
   }
 
   .main { padding: 24px 80px; max-width: 1400px; margin: 0 auto; }
-
   .section-label {
     font-size: 11px;
     letter-spacing: 2px;
@@ -67,7 +58,7 @@
     font-weight: 600;
   }
 
-  /* ── FILTROS DESKTOP ── */
+  /* FILTROS */
   .filtros-box {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -82,123 +73,72 @@
     gap: 10px;
     align-items: center;
   }
-  .filtro-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 6px;
-    min-width: 0;
-  }
+  .filtro-item { display: flex; align-items: center; gap: 6px; min-width: 0; }
   .filtro-item label {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-light);
-    font-weight: 600;
-    white-space: nowrap;
-    flex-shrink: 0;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-light); font-weight: 600; white-space: nowrap; flex-shrink: 0;
   }
-  .filtro-item select,
-  .filtro-item input {
+  .filtro-item select, .filtro-item input {
     border: 1.5px solid var(--bege-dark);
-    border-radius: 6px;
-    padding: 7px 10px;
-    font-size: 13px;
-    color: var(--text-dark);
-    background: #efe6da;
-    width: 100%;
-    min-width: 0;
-    outline: none;
-    transition: border 0.2s;
+    border-radius: 6px; padding: 7px 10px; font-size: 13px;
+    color: var(--text-dark); background: #efe6da;
+    width: 100%; min-width: 0; outline: none; transition: border 0.2s;
   }
-  .filtro-item select:focus,
-  .filtro-item input:focus { border-color: var(--bronze); }
+  .filtro-item select:focus, .filtro-item input:focus { border-color: var(--bronze); }
   .btn-limpar {
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 12px;
-    cursor: pointer;
-    border: 1px solid var(--bege-dark);
-    background: var(--white);
-    color: var(--text-mid);
-    transition: all 0.2s;
-    white-space: nowrap;
-    align-self: center;
+    padding: 7px 14px; border-radius: 6px; font-size: 12px; cursor: pointer;
+    border: 1px solid var(--bege-dark); background: var(--white);
+    color: var(--text-mid); white-space: nowrap; transition: all 0.2s;
   }
   .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); background: #f1e8dc; }
 
-  /* ── KPIs ── */
+  /* KPIs */
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 14px;
-    margin-bottom: 24px;
+    gap: 14px; margin-bottom: 24px;
   }
   .kpi-card {
-    background: var(--white);
-    border: 1px solid var(--bege-dark);
-    border-radius: var(--radius);
-    padding: 18px 20px;
-    box-shadow: var(--shadow);
+    background: var(--white); border: 1px solid var(--bege-dark);
+    border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow);
   }
-  .kpi-card.destaque { background: var(--bronze); color: var(--white); border-color: var(--bronze); }
+  .kpi-card.destaque { background: var(--bronze); border-color: var(--bronze); }
   .kpi-card.destaque .kpi-label,
   .kpi-card.destaque .kpi-sub { color: rgba(255,255,255,0.82); }
+  .kpi-card.destaque .kpi-value { color: #fff; font-size: 36px; }
   .kpi-label {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-light);
-    font-weight: 600;
-    margin-bottom: 8px;
-    line-height: 1.4;
+    font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-light); font-weight: 600; margin-bottom: 8px;
   }
-  .kpi-value { font-size: 26px; font-weight: 700; color: var(--text-dark); line-height: 1.1; }
-  .kpi-card.destaque .kpi-value { color: var(--white); font-size: 36px; }
+  .kpi-value { font-size: 26px; font-weight: 700; color: var(--text-dark); }
   .kpi-sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
 
-  /* ── TAGS ── */
+  /* TAGS */
   .tag-status {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 11px;
-    font-weight: 600;
+    display: inline-block; padding: 2px 10px;
+    border-radius: 12px; font-size: 11px; font-weight: 600;
   }
-  .tag-lancado     { background: #e2eadc; color: var(--lancado); }
-  .tag-previsto    { background: #dde8f3; color: var(--previsto); }
-  .tag-coringa     { background: #eee2f5; color: var(--coringa); }
-  .tag-contratacao { background: #e9e0d6; color: var(--contratacao); }
+  .tag-lancado     { background: #e2eadc; color: #5f6f52; }
+  .tag-previsto    { background: #dde8f3; color: #4d7399; }
+  .tag-coringa     { background: #eee2f5; color: #8a63a3; }
+  .tag-contratacao { background: #e9e0d6; color: #6f5b47; }
 
-  /* ── GANTT ── */
+  /* GANTT */
   .gantt-box {
-    background: var(--verde);
-    border-radius: var(--radius);
-    padding: 0;
-    margin-bottom: 24px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
+    background: var(--verde); border-radius: var(--radius);
+    margin-bottom: 24px; overflow: hidden; box-shadow: var(--shadow);
   }
   .gantt-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 18px;
-    background: rgba(0,0,0,0.15);
-    flex-wrap: wrap;
-    gap: 8px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 18px; background: rgba(0,0,0,0.15); flex-wrap: wrap; gap: 8px;
   }
-  .gantt-title { color: var(--white); font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .gantt-title { color: #fff; font-size: 14px; font-weight: 700; }
   .gantt-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .gantt-btn {
-    padding: 5px 12px;
-    border-radius: 5px;
+    padding: 5px 12px; border-radius: 5px;
     border: 1px solid rgba(255,255,255,0.4);
-    background: rgba(255,255,255,0.15);
-    color: var(--white);
-    font-size: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
+    background: rgba(255,255,255,0.15); color: #fff;
+    font-size: 12px; cursor: pointer; transition: background 0.2s;
   }
   .gantt-btn:hover { background: rgba(255,255,255,0.3); }
   .gantt-legend { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
@@ -206,129 +146,85 @@
   .legend-dot { width: 14px; height: 8px; border-radius: 4px; }
   .gantt-scroll { overflow-x: auto; }
 
-  /* ── TABELA DESKTOP ── */
+  /* TABELA */
   .tabela-box {
-    background: var(--white);
-    border: 1px solid var(--bege-dark);
-    border-radius: var(--radius);
-    overflow-x: auto;
-    box-shadow: var(--shadow);
-    margin-bottom: 24px;
+    background: var(--white); border: 1px solid var(--bege-dark);
+    border-radius: var(--radius); overflow-x: auto;
+    box-shadow: var(--shadow); margin-bottom: 24px;
   }
   .tabela-projetos { width: 100%; min-width: 1700px; border-collapse: collapse; }
   .tabela-projetos thead tr { background: var(--bege-dark); }
   .tabela-projetos th {
-    padding: 10px 14px;
-    text-align: left;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-mid);
-    font-weight: 600;
-    border-bottom: 2px solid var(--bege-dark);
-    white-space: nowrap;
+    padding: 10px 14px; text-align: left; font-size: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--text-mid); font-weight: 600;
+    border-bottom: 2px solid var(--bege-dark); white-space: nowrap;
   }
   .tabela-projetos td {
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--bege-dark);
-    font-size: 13px;
-    vertical-align: middle;
-    white-space: nowrap;
+    padding: 10px 14px; border-bottom: 1px solid var(--bege-dark);
+    font-size: 13px; vertical-align: middle; white-space: nowrap;
   }
   .tabela-projetos tr:last-child td { border-bottom: none; }
   .tabela-projetos tr:hover td { background: #f2e9de; }
 
-  /* ── EXPAND ── */
+  /* EXPAND */
   .expand-btn {
-    width: 22px; height: 22px;
-    border-radius: 50%;
-    border: 1.5px solid var(--bronze);
-    background: var(--white);
-    color: var(--bronze);
-    cursor: pointer;
-    font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
-    flex-shrink: 0;
+    width: 22px; height: 22px; border-radius: 50%;
+    border: 1.5px solid var(--bronze); background: var(--white);
+    color: var(--bronze); cursor: pointer; font-size: 14px;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
   }
-  .expand-btn:hover { background: var(--bronze); color: var(--white); }
-  .expand-btn.open  { background: var(--bronze); color: var(--white); }
-  .detail-row      { display: none; }
+  .expand-btn:hover, .expand-btn.open { background: var(--bronze); color: #fff; }
+  .detail-row { display: none; }
   .detail-row.open { display: table-row; }
 
-  /* ── FARÓIS ── */
+  /* FARÓIS */
   .farol { width: 14px; height: 14px; border-radius: 50%; display: inline-block; vertical-align: middle; }
   .farol-g    { background: var(--farol-verde); }
   .farol-a    { background: var(--farol-amarelo); }
   .farol-r    { background: var(--farol-vermelho); }
   .farol-vazio{ background: #ddd; }
 
-  /* ── TÓPICOS ── */
+  /* TÓPICOS */
   .topico-col-header {
     background: var(--bege-dark);
-    display: grid;
-    grid-template-columns: 1fr 70px 70px 160px 2fr;
-    padding: 8px 12px;
-    border-radius: 6px 6px 0 0;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--text-light);
-    font-weight: 600;
+    display: grid; grid-template-columns: 1fr 70px 70px 160px 2fr;
+    padding: 8px 12px; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-light); font-weight: 600;
   }
   .topico-box { border-bottom: 1px solid var(--bege-dark); background: var(--white); }
   .topico-header {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    padding: 10px 12px;
-    cursor: pointer;
-    background: #f3ecdf;
-    border-bottom: 1px solid var(--bege-dark);
-    user-select: none;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; padding: 10px 12px; cursor: pointer;
+    background: #f3ecdf; border-bottom: 1px solid var(--bege-dark); user-select: none;
   }
   .topico-titulo { font-size: 13px; font-weight: 700; color: var(--bronze); }
   .topico-toggle { font-size: 16px; color: var(--bronze); font-weight: 700; }
-  .topico-conteudo      { display: none; }
+  .topico-conteudo { display: none; }
   .topico-conteudo.open { display: block; }
   .topico-datas {
-    display: grid;
-    grid-template-columns: 2fr 70px 70px 160px 2fr;
-    padding: 7px 12px;
-    background: #eee6d8;
+    display: grid; grid-template-columns: 2fr 70px 70px 160px 2fr;
+    padding: 7px 12px; background: #eee6d8;
     border-bottom: 1px solid var(--bege-dark);
-    font-size: 11px;
-    color: var(--text-mid);
-    font-weight: 600;
+    font-size: 11px; color: var(--text-mid); font-weight: 600;
   }
   .topico-linha {
-    display: grid;
-    grid-template-columns: 1fr 70px 70px 160px 2fr;
-    padding: 8px 12px;
-    border-bottom: 1px solid #ede5d8;
-    align-items: center;
-    background: var(--white);
-    font-size: 12px;
+    display: grid; grid-template-columns: 1fr 70px 70px 160px 2fr;
+    padding: 8px 12px; border-bottom: 1px solid #ede5d8;
+    align-items: center; background: var(--white); font-size: 12px;
   }
   .topico-linha:last-child { border-bottom: none; }
   .topico-linha:hover { background: #faf6f0; }
 
-  /* ── CARDS MOBILE ── */
+  /* CARDS MOBILE */
   .card-projeto {
-    background: var(--white);
-    border: 1px solid var(--bege-dark);
-    border-radius: var(--radius);
-    margin-bottom: 12px;
-    box-shadow: var(--shadow);
-    overflow: hidden;
+    background: var(--white); border: 1px solid var(--bege-dark);
+    border-radius: var(--radius); margin-bottom: 12px;
+    box-shadow: var(--shadow); overflow: hidden;
   }
   .card-projeto-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    cursor: pointer;
-    background: #f3ecdf;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 16px; cursor: pointer; background: #f3ecdf;
   }
   .card-projeto-nome { font-size: 14px; font-weight: 700; color: var(--text-dark); }
   .card-projeto-bairro { font-size: 11px; color: var(--text-light); margin-top: 2px; }
@@ -337,23 +233,13 @@
   .card-projeto-chevron { font-size: 14px; color: var(--bronze); flex-shrink: 0; margin-left: 10px; }
   .card-projeto-body { display: none; padding: 14px 16px; }
   .card-projeto-body.open { display: block; }
-  .card-datas-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 14px;
-  }
+  .card-datas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
   .card-data-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); font-weight: 600; }
   .card-data-valor { font-size: 13px; color: var(--text-dark); margin-top: 2px; }
   .card-topico-titulo {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--bronze);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 10px 0 4px;
-    padding-bottom: 4px;
-    border-bottom: 1px solid var(--bege-dark);
+    font-size: 12px; font-weight: 700; color: var(--bronze);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin: 10px 0 4px; padding-bottom: 4px; border-bottom: 1px solid var(--bege-dark);
   }
   .topico-linha-mobile { padding: 6px 0; border-bottom: 1px solid #ede5d8; }
   .topico-linha-mobile-assunto { font-size: 12px; color: var(--text-dark); }
@@ -362,45 +248,24 @@
     font-size: 11px; color: var(--text-light); margin-top: 2px;
   }
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   .footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 11px;
-    color: #ffffff;
-    border-top: 1px solid var(--bronze);
-    margin-top: 10px;
-    background: var(--bronze);
+    text-align: center; padding: 20px; font-size: 11px;
+    color: #fff; border-top: 1px solid var(--bronze);
+    margin-top: 10px; background: var(--bronze);
   }
 
-  /* ── MOBILE ── */
+  /* MOBILE */
   @media (max-width: 768px) {
-    .main { padding: 16px 16px; }
-
-    /* filtros em coluna, label + select alinhados */
-    .filtros-grid {
-      grid-template-columns: 1fr;
-    }
-    .filtro-item {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      align-items: center;
-    }
-    .filtro-item select,
-    .filtro-item input {
-      width: 100%;
-    }
-    .btn-limpar {
-      width: 100%;
-      text-align: center;
-    }
-
-    /* esconde tabela e gantt, mostra cards */
-    .tabela-box  { display: none; }
-    .gantt-box   { display: none; }
-    .cards-mobile-wrapper { display: block !important; }
-
+    .main { padding: 16px; }
+    .filtros-grid { grid-template-columns: 1fr; }
+    .filtro-item { display: grid; grid-template-columns: 90px 1fr; align-items: center; }
+    .filtro-item select, .filtro-item input { width: 100%; }
+    .btn-limpar { width: 100%; text-align: center; }
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .tabela-box { display: none; }
+    .gantt-box  { display: none; }
+    .cards-mobile-wrapper { display: block !important; }
   }
 </style>
 </head>
@@ -417,7 +282,6 @@
 
 <div class="main">
 
-  <!-- FILTROS -->
   <div class="filtros-box">
     <div class="section-label">Filtros</div>
     <div class="filtros-grid">
@@ -425,30 +289,44 @@
         <label>Ano</label>
         <select id="filtroAno" onchange="aplicarFiltros()">
           <option value="">Todos</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Segmento</label>
         <select id="filtroSegmento" onchange="aplicarFiltros()">
           <option value="">Todos</option>
+          <option value="Full">Full</option>
+          <option value="Padrão">Padrão</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Doninho</label>
         <select id="filtroDoninho" onchange="aplicarFiltros()">
           <option value="">Todas</option>
+          <option value="Denis Pimentel">Denis Pimentel</option>
+          <option value="Giulia Oliveira">Giulia Oliveira</option>
+          <option value="Akemi Yoshikawa">Akemi Yoshikawa</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Status</label>
         <select id="filtroStatus" onchange="aplicarFiltros()">
           <option value="">Todos</option>
+          <option value="Não iniciado">Não iniciado</option>
+          <option value="Em andamento">Em andamento</option>
+          <option value="Finalizado">Finalizado</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Etapa</label>
         <select id="filtroEtapa" onchange="aplicarFiltros()">
           <option value="">Todos</option>
+          <option value="Demolição">Demolição</option>
+          <option value="PDV">PDV</option>
+          <option value="Pré Obra">Pré Obra</option>
+          <option value="Vizinhos">Vizinhos</option>
         </select>
       </div>
       <div class="filtro-item">
@@ -459,7 +337,6 @@
     </div>
   </div>
 
-  <!-- KPIs -->
   <div class="section-label">Indicadores</div>
   <div class="kpi-grid">
     <div class="kpi-card destaque">
@@ -489,7 +366,6 @@
     </div>
   </div>
 
-  <!-- GANTT -->
   <div class="section-label">Linha do Tempo — Demolição → Início de Obra</div>
   <div class="gantt-box">
     <div class="gantt-header">
@@ -511,7 +387,6 @@
     </div>
   </div>
 
-  <!-- TABELA DESKTOP -->
   <div class="section-label">Projetos</div>
   <div class="tabela-box">
     <table class="tabela-projetos">
@@ -522,11 +397,11 @@
           <th>Segmento</th>
           <th>Doninho</th>
           <th>Status</th>
-          <th>Posse do primeiro lote e do último</th>
-          <th>Início de demolição</th>
-          <th>Término de demolição</th>
-          <th>Início de PDV</th>
-          <th>Finalização de PDV</th>
+          <th>Posse 1º e último lote</th>
+          <th>Início demolição</th>
+          <th>Término demolição</th>
+          <th>Início PDV</th>
+          <th>Finalização PDV</th>
           <th>Meeting</th>
           <th>Demolição PDV</th>
           <th>Início pré obra</th>
@@ -537,7 +412,6 @@
     </table>
   </div>
 
-  <!-- CARDS MOBILE -->
   <div class="cards-mobile-wrapper" style="display:none;">
     <div id="cardsMobile"></div>
   </div>
@@ -548,10 +422,419 @@
   Living — Painel de Gestão Landbank · Engenharia de Incorporação · <span id="dataAtual"></span>
 </div>
 
-<script src="js/projetos.js"></script>
-<script src="js/filtros.js"></script>
-<script src="js/checklists.js"></script>
-<script src="js/app.js"></script>
+<script>
+// ═══════════════════════════════════════════
+// DADOS — CHECKLIST MODELO
+// ═══════════════════════════════════════════
+function criarModeloDetalhes() {
+  return {
+    "Demolição": {
+      dataInicio:"—", dataFim:"—",
+      itens:[
+        {assunto:"Visita + Orçamentos Demolição",                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Laudo de Boas Vindas",                                farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Laudo de vizinhos (contratação e realizado)",         farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Ronda / Portaria",                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Contratação demolidora",                              farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Contratação tapume demolição",                        farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Documentação LCR",                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Demanda Entrada de Energia Obra",                     farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Solicitação Orçamentos LCR",                          farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Posses (farol por lote + link QF)",                   farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Supressões",                                          farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Ligação de Energia",                                  farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Ligação de Água",                                     farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Ligação de Esgoto",                                   farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Ligação Acréscimo de Obra",                           farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Acréscimo de Energia",                                farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Entrada de Energia de Obra",                          farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Remediação",                                          farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Alvará de Demolição",                                 farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Alvará de Tapume",                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"ART",                                                 farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"PGRCC inicial",                                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"PGRCC final",                                         farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Seguro de Obra",                                      farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Placa de Obra",                                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"PCA",                                                 farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Plano de Demolição",                                  farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Certificado de Britagem",                             farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Início demolição",                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Chapisco + Canaleta",                                 farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Relatório final de visita MA (pós demo)",             farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Plani Pós Demo",                                      farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Pendências",                                          farol:"a",dataLimite:"—",status:"—"}
+      ]
+    },
+    "PDV": {
+      dataInicio:"—", dataFim:"—",
+      itens:[
+        {assunto:"Sinal",                                                                            farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Cronograma Projetos Stand",                                                        farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Projetos Stand (Cronograma, Param., EST, FUN, ELE, HID, STAND, DEC, MINI EXEC)",  farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Kick off",                                                                         farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Pasta de obra",                                                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Alvará de Stand",        farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"Alvará de Tapume",       farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"ART Cyrela",             farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"ART Empreiteira",        farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"ART Segurança do Trabalho",farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"PGRCC inicial",                                                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"PGRCC final",                                                                      farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Seguro de Obra",         farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"Placa de Obra",                                                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"PCA",                                                                              farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Ar Condicionado (Croqui e Orçamento)",                                            farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Escopo",                                                                           farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Marcenaria (Croqui e Orçamento)",                                                 farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Pisos (Stand e Backoffice)",                                                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Quintal urbano",                                                                   farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Checklist",                                                                        farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Concessionárias",                                                                  farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Tapume",                                                                           farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Portaria",                                                                         farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Laudo de Taludes",                                                                 farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Laudo de Estrutura",                                                               farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Laudo de Estanqueidade",                                                           farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Laudo de Telhados",                                                                farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Laudo Corante",                                                                    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Aditivo",                                                                          farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Pendências",                                                                       farol:"a",dataLimite:"—",status:"—"}
+      ]
+    },
+    "Pré Obra": {
+      dataInicio:"—", dataFim:"—",
+      itens:[
+        {assunto:"Tapume de obra",                                                                            farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Projeto de Canteiro",                                                                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Custo planejado para tapume",                                                               farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Validação Eng. Obra",                                                                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Solicitação do orçamento e programação da instalação e envelopamento",                      farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Desmobilização (AC, Marcenaria)",                                                           farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Demolição stand (contratação e programação)",                                               farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Pasta de obra",                                                                             farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Alvará de Tapume",          farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"ART Empreiteira",           farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"ART Segurança do Trabalho", farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"PGRCC inicial",                                                                             farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"PGRCC final",                                                                               farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Seguro de Obra",            farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
+        {assunto:"TCA",                                                                                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Certificado de Britagem",                                                                   farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Concessionária",                                                                            farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Relatório de vizinhos",                                                                     farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Manejo Arbóreo",                                                                            farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Passagem de obra (FVS, Drone, Fotos, Validação Plani Pós Demo, Rel. vizinhos, e-mail)",    farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Pendências",                                                                                farol:"a",dataLimite:"—",status:"—"}
+      ]
+    },
+    "Vizinhos": {
+      dataInicio:"—", dataFim:"—",
+      itens:[
+        {assunto:"Descrição do Caso",                                     farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Formalização da reclamação (e-mail e telefone)",        farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Abertura do sinistro junto à EPL + Envio Documentação", farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Vistoria do Perito + Fornecedores",                     farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Orçamentos",                                            farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Análise da Seguradora",                                 farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Assinatura da Minuta Inicial",                          farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Início dos Serviços / Reembolso",                       farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Assinatura da Minuta Final",                            farol:"a",dataLimite:"—",status:"—"},
+        {assunto:"Reembolso EPL",                                         farol:"a",dataLimite:"—",status:"—"}
+      ]
+    }
+  };
+}
 
+// ═══════════════════════════════════════════
+// PROJETOS
+// ═══════════════════════════════════════════
+var projetos = [
+  { id:1, terreno:"Ouvidor Peleja",      bairro:"Vila Mariana",       statusMacro:"Lançado",  segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"Em andamento", posseLotes:"01/10/2024", inicioDemolicao:"05/10/2024", terminoDemolicao:"20/11/2024", inicioPDV:"10/12/2024", finalizacaoPDV:"15/01/2025", meeting:"28/01/2026", demolicaoPDV:"05/02/2026", inicioPreObra:"10/02/2026", inicioObra:"21/02/2026", anoLancamento:2026, ganttInicio:1, ganttFim:2,  detalhes:criarModeloDetalhes() },
+  { id:2, terreno:"Rua Butantã",         bairro:"Pinheiros",          statusMacro:"Lançado",  segmento:"Full",   doninho:"Giulia Oliveira", statusExecucao:"Não iniciado", posseLotes:"08/02/2024", inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"06/04/2026", demolicaoPDV:"—",          inicioPreObra:"—",          inicioObra:"18/04/2026", anoLancamento:2026, ganttInicio:3, ganttFim:4,  detalhes:criarModeloDetalhes() },
+  { id:3, terreno:"Fernandes Moreira II",bairro:"Chácara S. Antônio", statusMacro:"Lançado",  segmento:"Full",   doninho:"Akemi Yoshikawa", statusExecucao:"Finalizado",   posseLotes:"06/12/2023", inicioDemolicao:"10/01/2024", terminoDemolicao:"28/02/2024", inicioPDV:"05/03/2024", finalizacaoPDV:"20/04/2024", meeting:"23/04/2026", demolicaoPDV:"25/04/2026", inicioPreObra:"01/05/2026", inicioObra:"16/05/2026", anoLancamento:2026, ganttInicio:4, ganttFim:5,  detalhes:criarModeloDetalhes() },
+  { id:4, terreno:"Chicago",             bairro:"Brooklin",           statusMacro:"Lançado",  segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"Em andamento", posseLotes:"15/03/2024", inicioDemolicao:"20/03/2024", terminoDemolicao:"30/04/2024", inicioPDV:"10/05/2024", finalizacaoPDV:"30/05/2024", meeting:"20/05/2026", demolicaoPDV:"01/06/2026", inicioPreObra:"05/06/2026", inicioObra:"14/06/2026", anoLancamento:2026, ganttInicio:5, ganttFim:6,  detalhes:criarModeloDetalhes() },
+  { id:5, terreno:"Guaratuba",           bairro:"Conceição",          statusMacro:"Previsto", segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"Não iniciado", posseLotes:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          demolicaoPDV:"—",          inicioPreObra:"—",          inicioObra:"Set/2026",   anoLancamento:2026, ganttInicio:8, ganttFim:8,  detalhes:criarModeloDetalhes() },
+  { id:6, terreno:"Antônio das Chagas",  bairro:"Chácara S. Antônio", statusMacro:"Previsto", segmento:"Full",   doninho:"Akemi Yoshikawa", statusExecucao:"Em andamento", posseLotes:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          demolicaoPDV:"—",          inicioPreObra:"—",          inicioObra:"Out/2026",   anoLancamento:2026, ganttInicio:9, ganttFim:9,  detalhes:criarModeloDetalhes() },
+  { id:7, terreno:"Canário Moema",       bairro:"Moema",              statusMacro:"Previsto", segmento:"Full",   doninho:"Giulia Oliveira", statusExecucao:"Não iniciado", posseLotes:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          demolicaoPDV:"—",          inicioPreObra:"—",          inicioObra:"Nov/2026",   anoLancamento:2026, ganttInicio:10,ganttFim:10, detalhes:criarModeloDetalhes() },
+  { id:8, terreno:"Dona Inácia Uchôa I", bairro:"Vila Mariana",       statusMacro:"Previsto", segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"Em andamento", posseLotes:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          demolicaoPDV:"—",          inicioPreObra:"—",          inicioObra:"Dez/2026",   anoLancamento:2026, ganttInicio:11,ganttFim:12, detalhes:criarModeloDetalhes() },
+  { id:9, terreno:"Otávio Tarquínio",    bairro:"Campo Belo",         statusMacro:"Coringa",  segmento:"Full",   doninho:"Giulia Oliveira", statusExecucao:"Não iniciado", posseLotes:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          demolicaoPDV:"—",          inicioPreObra:"—",          inicioObra:"Jan/2027",   anoLancamento:2027, ganttInicio:11,ganttFim:12, isCoringa:true, detalhes:criarModeloDetalhes() }
+];
+
+// ═══════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════
+const mesesLabel = ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ","JAN","FEV","MAR","ABR"];
+const anos2      = [2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2027,2027,2027,2027];
+const HOJE_MES   = 7;
+let zoomLevel    = 1;
+const COL_W      = 70;
+let projetosFiltrados = [...projetos];
+
+function getCorProjeto(p, i) {
+  if (p.isCoringa && i === p.ganttInicio) return '#8a63a3';
+  if (p.statusMacro === 'Lançado')        return '#5f6f52';
+  if (p.statusMacro === 'Previsto')       return '#4d7399';
+  if (p.statusMacro === 'Coringa')        return '#8a63a3';
+  return '#6f5b47';
+}
+function statusTagMacro(s) {
+  const map = {Lançado:'lancado',Previsto:'previsto',Coringa:'coringa','Em contratação':'contratacao'};
+  return `<span class="tag-status tag-${map[s]||'previsto'}">${s}</span>`;
+}
+function farolDot(f) {
+  const map = {g:'farol-g',a:'farol-a',r:'farol-r'};
+  return `<span class="farol ${map[f]||'farol-vazio'}"></span>`;
+}
+function normalizarChave(texto) {
+  return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-').toLowerCase();
+}
+
+// ═══════════════════════════════════════════
+// FILTROS E KPIs
+// ═══════════════════════════════════════════
+function aplicarFiltros() {
+  const ano     = document.getElementById('filtroAno').value;
+  const seg     = document.getElementById('filtroSegmento').value;
+  const doninho = document.getElementById('filtroDoninho').value;
+  const status  = document.getElementById('filtroStatus').value;
+  const etapa   = document.getElementById('filtroEtapa').value;
+  const busca   = document.getElementById('filtroBusca').value.toLowerCase();
+
+  projetosFiltrados = projetos.filter(p => {
+    if (ano     && String(p.anoLancamento) !== ano)               return false;
+    if (seg     && p.segmento !== seg)                            return false;
+    if (doninho && p.doninho !== doninho)                         return false;
+    if (status  && p.statusExecucao !== status)                   return false;
+    if (etapa   && !(p.detalhes && p.detalhes[etapa]))            return false;
+    if (busca   && !p.terreno.toLowerCase().includes(busca)
+                && !p.bairro.toLowerCase().includes(busca))       return false;
+    return true;
+  });
+
+  document.getElementById('kpiLancamentos').textContent = projetosFiltrados.length;
+  document.getElementById('kpiAndamento').textContent   = projetosFiltrados.filter(p => p.statusExecucao === 'Em andamento').length;
+  document.getElementById('kpiNaoIniciado').textContent = projetosFiltrados.filter(p => p.statusExecucao === 'Não iniciado').length;
+  document.getElementById('kpiFinalizado').textContent  = projetosFiltrados.filter(p => p.statusExecucao === 'Finalizado').length;
+  document.getElementById('kpiFull').textContent        = projetosFiltrados.filter(p => p.segmento === 'Full').length;
+
+  renderGantt(projetosFiltrados);
+  renderTabela(projetosFiltrados);
+  renderCards(projetosFiltrados);
+}
+
+function limparFiltros() {
+  ['filtroAno','filtroSegmento','filtroDoninho','filtroStatus','filtroEtapa','filtroBusca']
+    .forEach(id => { document.getElementById(id).value = ''; });
+  aplicarFiltros();
+}
+
+// ═══════════════════════════════════════════
+// GANTT
+// ═══════════════════════════════════════════
+function renderGantt(lista) {
+  const container = document.getElementById('ganttContainer');
+  const w = COL_W * zoomLevel;
+  const totalW = w * mesesLabel.length + 200;
+  let html = `<table style="width:${totalW}px;border-collapse:collapse;"><thead><tr>`;
+  html += `<th style="background:rgba(0,0,0,0.1);color:rgba(255,255,255,0.85);font-size:11px;padding:8px 10px;text-align:left;width:200px;border-right:1px solid rgba(255,255,255,0.1);">PROJETO</th>`;
+  mesesLabel.forEach((m, i) => {
+    const isHoje = i === HOJE_MES;
+    html += `<th style="background:${isHoje?'rgba(229,57,53,0.2)':'rgba(0,0,0,0.1)'};color:${isHoje?'#ffd7d2':'rgba(255,255,255,0.85)'};font-size:11px;padding:8px 4px;text-align:center;width:${w}px;border-right:1px solid rgba(255,255,255,0.1);white-space:pre-line;line-height:1.2;">${m}\n${anos2[i]}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+  lista.forEach(p => {
+    html += `<tr><td style="background:#e7dccd;padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.2);width:200px;border-right:1px solid rgba(255,255,255,0.1);">
+      <div style="font-size:13px;font-weight:700;color:var(--text-dark);">${p.terreno}</div>
+      <div style="font-size:11px;color:var(--text-light);">${p.bairro} · ${p.statusMacro}</div></td>`;
+    mesesLabel.forEach((m, i) => {
+      const isHoje = i === HOJE_MES;
+      let barHTML = '';
+      if (i >= p.ganttInicio && i <= p.ganttFim) {
+        const cor = getCorProjeto(p, i);
+        const isStart = i === p.ganttInicio, isEnd = i === p.ganttFim;
+        const radius = isStart && isEnd ? '9px' : isStart ? '9px 0 0 9px' : isEnd ? '0 9px 9px 0' : '0';
+        barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:18px;background:${cor};border-radius:${radius};left:${isStart?4:0}px;right:${isEnd?4:0}px;"></div>`;
+      }
+      const hojeBar = isHoje ? `<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e53935;z-index:5;"></div>` : '';
+      html += `<td style="background:${isHoje?'rgba(229,57,53,0.05)':'var(--white)'};border-bottom:1px solid rgba(0,0,0,0.05);border-right:1px solid rgba(0,0,0,0.05);position:relative;height:36px;width:${w}px;padding:0;">${barHTML}${hojeBar}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+function zoomGantt(dir) {
+  zoomLevel = Math.max(0.6, Math.min(2, zoomLevel + dir * 0.2));
+  renderGantt(projetosFiltrados);
+}
+function irParaHoje() {
+  const scroll = document.getElementById('ganttScroll');
+  scroll.scrollLeft = (200 + HOJE_MES * COL_W * zoomLevel) - 300;
+}
+
+// ═══════════════════════════════════════════
+// TÓPICOS (checklist expandível)
+// ═══════════════════════════════════════════
+function toggleTopico(projetoId, topico) {
+  const chave    = normalizarChave(topico);
+  const conteudo = document.getElementById('topico-' + projetoId + '-' + chave);
+  const icone    = document.getElementById('toggle-icon-' + projetoId + '-' + chave);
+  const aberto   = conteudo.classList.contains('open');
+  conteudo.classList.toggle('open', !aberto);
+  icone.textContent = aberto ? '+' : '−';
+}
+function renderTopicosProjeto(p) {
+  const topicosOrdem = ["Demolição","PDV","Pré Obra","Vizinhos"];
+  return topicosOrdem.map(topico => {
+    const bloco      = p.detalhes && p.detalhes[topico];
+    const itens      = bloco ? bloco.itens : [];
+    const dataInicio = bloco ? bloco.dataInicio : '—';
+    const dataFim    = bloco ? bloco.dataFim    : '—';
+    const chave      = normalizarChave(topico);
+    return `
+      <div class="topico-box">
+        <div class="topico-header" onclick="toggleTopico(${p.id}, '${topico}')">
+          <div class="topico-titulo">${topico}</div>
+          <div class="topico-toggle" id="toggle-icon-${p.id}-${chave}">+</div>
+        </div>
+        <div class="topico-conteudo" id="topico-${p.id}-${chave}">
+          <div class="topico-datas">
+            <div>📅 Início: <strong>${dataInicio}</strong> → Fim: <strong>${dataFim}</strong></div>
+            <div></div><div></div><div></div><div></div>
+          </div>
+          <div class="topico-col-header">
+            <div>Assunto</div><div>Farol</div><div>Venc.</div><div>Data limite</div><div>Status / observação</div>
+          </div>
+          ${itens.length
+            ? itens.map(item => `
+              <div class="topico-linha">
+                <div>${item.assunto||'—'}</div>
+                <div>${farolDot(item.farol)}</div>
+                <div>${item.farolVenc ? farolDot(item.farolVencCor||'a') : '—'}</div>
+                <div>${item.dataLimite||'—'}</div>
+                <div style="white-space:pre-line;">${item.status||'—'}</div>
+              </div>`).join('')
+            : '<div class="topico-linha"><div>Sem informações</div></div>'
+          }
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// TABELA DESKTOP
+// ═══════════════════════════════════════════
+function renderTabela(lista) {
+  const tbody = document.getElementById('tbodyProjetos');
+  tbody.innerHTML = lista.map(p => `
+    <tr>
+      <td><button class="expand-btn" id="btn-${p.id}" onclick="toggleDetalhe(${p.id})">+</button></td>
+      <td><strong>${p.terreno}</strong><br><span style="font-size:11px;color:var(--text-light);">${p.bairro}</span></td>
+      <td>${p.segmento}</td>
+      <td>${p.doninho}</td>
+      <td>${statusTagMacro(p.statusMacro)}</td>
+      <td>${p.posseLotes}</td>
+      <td>${p.inicioDemolicao}</td>
+      <td>${p.terminoDemolicao}</td>
+      <td>${p.inicioPDV}</td>
+      <td>${p.finalizacaoPDV}</td>
+      <td>${p.meeting}</td>
+      <td>${p.demolicaoPDV}</td>
+      <td>${p.inicioPreObra}</td>
+      <td>${p.inicioObra}</td>
+    </tr>
+    <tr class="detail-row" id="detail-${p.id}">
+      <td colspan="14" style="padding:0;">
+        <div style="background:#eadfce;padding:12px 40px;">
+          <div style="font-weight:700;color:var(--bronze);font-size:13px;margin-bottom:8px;letter-spacing:1px;">📋 STATUS — ${p.terreno.toUpperCase()}</div>
+          ${renderTopicosProjeto(p)}
+        </div>
+      </td>
+    </tr>`).join('');
+}
+function toggleDetalhe(id) {
+  const row = document.getElementById('detail-' + id);
+  const btn = document.getElementById('btn-' + id);
+  const isOpen = row.classList.contains('open');
+  row.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.textContent = isOpen ? '+' : '−';
+}
+
+// ═══════════════════════════════════════════
+// CARDS MOBILE
+// ═══════════════════════════════════════════
+function renderCards(lista) {
+  const container = document.getElementById('cardsMobile');
+  if (!container) return;
+  container.innerHTML = lista.map(p => `
+    <div class="card-projeto">
+      <div class="card-projeto-header" onclick="toggleCard(${p.id})">
+        <div class="card-projeto-info">
+          <div class="card-projeto-nome">${p.terreno}</div>
+          <div class="card-projeto-bairro">${p.bairro}</div>
+          <div class="card-projeto-meta">
+            ${statusTagMacro(p.statusMacro)}
+            <span class="card-meta-item">${p.segmento}</span>
+            <span class="card-meta-item">👤 ${p.doninho}</span>
+          </div>
+        </div>
+        <div class="card-projeto-chevron" id="chevron-${p.id}">▼</div>
+      </div>
+      <div class="card-projeto-body" id="card-body-${p.id}">
+        <div class="card-datas-grid">
+          <div class="card-data-item">
+            <div class="card-data-label">Início demolição</div>
+            <div class="card-data-valor">${p.inicioDemolicao}</div>
+          </div>
+          <div class="card-data-item">
+            <div class="card-data-label">Término demolição</div>
+            <div class="card-data-valor">${p.terminoDemolicao}</div>
+          </div>
+          <div class="card-data-item">
+            <div class="card-data-label">Início PDV</div>
+            <div class="card-data-valor">${p.inicioPDV}</div>
+          </div>
+          <div class="card-data-item">
+            <div class="card-data-label">Início obra</div>
+            <div class="card-data-valor">${p.inicioObra}</div>
+          </div>
+        </div>
+        <div class="card-topicos">
+          ${["Demolição","PDV","Pré Obra","Vizinhos"].map(topico => {
+            const bloco = p.detalhes && p.detalhes[topico];
+            const itens = bloco ? bloco.itens : [];
+            return `<div class="card-topico-titulo">${topico}</div>
+              ${itens.map(item => `
+                <div class="topico-linha-mobile">
+                  <div class="topico-linha-mobile-assunto">${item.assunto}</div>
+                  <div class="topico-linha-mobile-meta">
+                    ${farolDot(item.farol)}
+                    <span>${item.dataLimite !== '—' ? item.dataLimite : 'Sem prazo'}</span>
+                  </div>
+                </div>`).join('')}`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+}
+function toggleCard(id) {
+  const body    = document.getElementById('card-body-' + id);
+  const chevron = document.getElementById('chevron-' + id);
+  const aberto  = body.classList.contains('open');
+  body.classList.toggle('open', !aberto);
+  chevron.textContent = aberto ? '▼' : '▲';
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR', {
+  day:'2-digit', month:'long', year:'numeric'
+});
+aplicarFiltros();
+setTimeout(irParaHoje, 300);
+</script>
 </body>
 </html>
