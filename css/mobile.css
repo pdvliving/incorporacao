@@ -1,0 +1,144 @@
+/* ── MOBILE — até 768px ──────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Layout geral */
+  .main { padding: 16px; }
+
+  /* Esconde tabela desktop, mostra cards */
+  #tabelaDesktop { display: none; }
+  .cards-mobile-container { display: block; }
+
+  /* Esconde Gantt no mobile (muito largo) */
+  .gantt-box { display: none; }
+
+  /* Filtros empilhados */
+  .filtros-grid { flex-direction: column; }
+  .filtro-item select,
+  .filtro-item input { min-width: 100%; width: 100%; }
+  .btn-limpar { width: 100%; }
+
+  /* KPIs em 2 colunas */
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .kpi-card.destaque { grid-column: 1 / -1; }
+
+  /* Header compacto */
+  .header-title { font-size: 11px; letter-spacing: 1px; }
+}
+
+/* ── DESKTOP — oculta cards mobile ──────────────────────────── */
+@media (min-width: 769px) {
+  .cards-mobile-container { display: none; }
+}
+
+/* ── CARD DE PROJETO (mobile) ────────────────────────────────── */
+.card-projeto {
+  background: var(--white);
+  border: 1px solid var(--bege-dark);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.card-projeto-header {
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  background: #f3ecdf;
+  cursor: pointer;
+}
+.card-projeto-info { flex: 1; }
+.card-projeto-nome {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+.card-projeto-bairro {
+  font-size: 12px;
+  color: var(--text-light);
+}
+.card-projeto-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.card-meta-item {
+  font-size: 11px;
+  color: var(--text-mid);
+  background: rgba(0,0,0,0.05);
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+.card-projeto-chevron {
+  font-size: 18px;
+  color: var(--bronze);
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.card-projeto-body {
+  display: none;
+  padding: 0;
+}
+.card-projeto-body.open { display: block; }
+
+/* Datas resumidas no card */
+.card-datas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--bege-dark);
+  border-top: 1px solid var(--bege-dark);
+}
+.card-data-item {
+  background: var(--white);
+  padding: 10px 14px;
+}
+.card-data-label {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+.card-data-valor {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Tópicos dentro do card mobile — reaproveita estilos do desktop */
+.card-topicos { padding: 0; }
+.card-topico-titulo {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  padding: 10px 16px 4px;
+  font-weight: 700;
+  border-top: 1px solid var(--bege-dark);
+  background: #f9f4ed;
+}
+
+/* Linha de checklist no mobile — empilhada */
+.topico-linha-mobile {
+  padding: 8px 16px;
+  border-bottom: 1px solid #ede5d8;
+  background: var(--white);
+}
+.topico-linha-mobile:last-child { border-bottom: none; }
+.topico-linha-mobile-assunto {
+  font-size: 12px;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.topico-linha-mobile-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--text-light);
+}
