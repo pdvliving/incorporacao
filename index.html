@@ -32,6 +32,7 @@
   }
   body { background: var(--bege); color: var(--text-dark); font-size: 14px; }
 
+  /* ── HEADER ── */
   .header {
     background: var(--bronze);
     border-bottom: 2px solid var(--bege-dark);
@@ -66,7 +67,7 @@
     font-weight: 600;
   }
 
-   /* ── FILTROS ── */
+  /* ── FILTROS DESKTOP ── */
   .filtros-box {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -126,27 +127,6 @@
   }
   .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); background: #f1e8dc; }
 
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    .main { padding: 16px 16px; }
-    .filtros-grid {
-      grid-template-columns: 1fr;
-    }
-    .filtro-item {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      align-items: center;
-    }
-    .filtro-item select,
-    .filtro-item input {
-      width: 100%;
-    }
-    .btn-limpar {
-      width: 100%;
-      text-align: center;
-    }
-    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
-  }
   /* ── KPIs ── */
   .kpi-grid {
     display: grid;
@@ -226,7 +206,7 @@
   .legend-dot { width: 14px; height: 8px; border-radius: 4px; }
   .gantt-scroll { overflow-x: auto; }
 
-  /* ── TABELA ── */
+  /* ── TABELA DESKTOP ── */
   .tabela-box {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -332,9 +312,54 @@
   }
   .topico-linha:last-child { border-bottom: none; }
   .topico-linha:hover { background: #faf6f0; }
-  .farol-venc {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 11px; color: var(--text-light);
+
+  /* ── CARDS MOBILE ── */
+  .card-projeto {
+    background: var(--white);
+    border: 1px solid var(--bege-dark);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card-projeto-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    cursor: pointer;
+    background: #f3ecdf;
+  }
+  .card-projeto-nome { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+  .card-projeto-bairro { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+  .card-projeto-meta { display: flex; gap: 8px; align-items: center; margin-top: 6px; flex-wrap: wrap; }
+  .card-meta-item { font-size: 11px; color: var(--text-mid); }
+  .card-projeto-chevron { font-size: 14px; color: var(--bronze); flex-shrink: 0; margin-left: 10px; }
+  .card-projeto-body { display: none; padding: 14px 16px; }
+  .card-projeto-body.open { display: block; }
+  .card-datas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .card-data-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); font-weight: 600; }
+  .card-data-valor { font-size: 13px; color: var(--text-dark); margin-top: 2px; }
+  .card-topico-titulo {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bronze);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px 0 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--bege-dark);
+  }
+  .topico-linha-mobile { padding: 6px 0; border-bottom: 1px solid #ede5d8; }
+  .topico-linha-mobile-assunto { font-size: 12px; color: var(--text-dark); }
+  .topico-linha-mobile-meta {
+    display: flex; gap: 8px; align-items: center;
+    font-size: 11px; color: var(--text-light); margin-top: 2px;
   }
 
   /* ── FOOTER ── */
@@ -351,7 +376,30 @@
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     .main { padding: 16px 16px; }
-    .filtro-item { min-width: 100%; }
+
+    /* filtros em coluna, label + select alinhados */
+    .filtros-grid {
+      grid-template-columns: 1fr;
+    }
+    .filtro-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      align-items: center;
+    }
+    .filtro-item select,
+    .filtro-item input {
+      width: 100%;
+    }
+    .btn-limpar {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* esconde tabela e gantt, mostra cards */
+    .tabela-box  { display: none; }
+    .gantt-box   { display: none; }
+    .cards-mobile-wrapper { display: block !important; }
+
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
@@ -363,11 +411,13 @@
     <div class="logo">
       <img src="https://www.meuliving.com.br/themes/living/img/icons/logo.svg" alt="Living" />
     </div>
-    <div class="header-title">PDV Living - Eng. Incorporação</div>
+    <div class="header-title">PDV Living · Eng. Incorporação</div>
   </div>
 </div>
 
 <div class="main">
+
+  <!-- FILTROS -->
   <div class="filtros-box">
     <div class="section-label">Filtros</div>
     <div class="filtros-grid">
@@ -375,45 +425,30 @@
         <label>Ano</label>
         <select id="filtroAno" onchange="aplicarFiltros()">
           <option value="">Todos</option>
-          <option value="2026" selected>2026</option>
-          <option value="2027">2027</option>
-          <option value="2028">2028</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Segmento</label>
         <select id="filtroSegmento" onchange="aplicarFiltros()">
           <option value="">Todos</option>
-          <option value="Full">Full</option>
-          <option value="Padrão">Padrão</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Doninho</label>
         <select id="filtroDoninho" onchange="aplicarFiltros()">
           <option value="">Todas</option>
-          <option value="Denis Pimentel">Denis Pimentel</option>
-          <option value="Giulia Oliveira">Giulia Oliveira</option>
-          <option value="Akemi Yoshikawa">Akemi Yoshikawa</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Status</label>
         <select id="filtroStatus" onchange="aplicarFiltros()">
           <option value="">Todos</option>
-          <option value="Não iniciado">Não iniciado</option>
-          <option value="Em andamento">Em andamento</option>
-          <option value="Finalizado">Finalizado</option>
         </select>
       </div>
       <div class="filtro-item">
         <label>Etapa</label>
         <select id="filtroEtapa" onchange="aplicarFiltros()">
           <option value="">Todos</option>
-          <option value="Demolição">Demolição</option>
-          <option value="PDV">PDV</option>
-          <option value="Pré Obra">Pré Obra</option>
-          <option value="Vizinhos">Vizinhos</option>
         </select>
       </div>
       <div class="filtro-item">
@@ -424,6 +459,7 @@
     </div>
   </div>
 
+  <!-- KPIs -->
   <div class="section-label">Indicadores</div>
   <div class="kpi-grid">
     <div class="kpi-card destaque">
@@ -432,12 +468,12 @@
       <div class="kpi-sub">projetos no dashboard</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Em andamento</div>
+      <div class="kpi-label">Em Andamento</div>
       <div class="kpi-value" id="kpiAndamento">—</div>
       <div class="kpi-sub">status de execução</div>
     </div>
     <div class="kpi-card">
-      <div class="kpi-label">Não iniciado</div>
+      <div class="kpi-label">Não Iniciado</div>
       <div class="kpi-value" id="kpiNaoIniciado">—</div>
       <div class="kpi-sub">status de execução</div>
     </div>
@@ -453,6 +489,7 @@
     </div>
   </div>
 
+  <!-- GANTT -->
   <div class="section-label">Linha do Tempo — Demolição → Início de Obra</div>
   <div class="gantt-box">
     <div class="gantt-header">
@@ -474,6 +511,7 @@
     </div>
   </div>
 
+  <!-- TABELA DESKTOP -->
   <div class="section-label">Projetos</div>
   <div class="tabela-box">
     <table class="tabela-projetos">
@@ -498,22 +536,22 @@
       <tbody id="tbodyProjetos"></tbody>
     </table>
   </div>
+
+  <!-- CARDS MOBILE -->
+  <div class="cards-mobile-wrapper" style="display:none;">
+    <div id="cardsMobile"></div>
+  </div>
+
 </div>
 
 <div class="footer">
-  Living — Painel de Gestão Landbank - Engenharia de Incorporação · <span id="dataAtual"></span>
+  Living — Painel de Gestão Landbank · Engenharia de Incorporação · <span id="dataAtual"></span>
 </div>
 
 <script src="js/projetos.js"></script>
 <script src="js/filtros.js"></script>
-<script src="js/gantt.js"></script>
-<script src="js/tabela.js"></script>
-<script>
-  document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR', {
-    day: '2-digit', month: 'long', year: 'numeric'
-  });
-  aplicarFiltros();
-  setTimeout(irParaHoje, 300);
-</script>
+<script src="js/checklists.js"></script>
+<script src="js/app.js"></script>
+
 </body>
 </html>
