@@ -66,7 +66,7 @@
     font-weight: 600;
   }
 
-  /* ── FILTROS ── */
+   /* ── FILTROS ── */
   .filtros-box {
     background: var(--white);
     border: 1px solid var(--bege-dark);
@@ -76,18 +76,17 @@
     box-shadow: var(--shadow);
   }
   .filtros-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr) auto;
     gap: 10px;
-    flex-wrap: wrap;
     align-items: center;
   }
   .filtro-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
-    flex: 1 1 auto;
-    min-width: 200px;
+    gap: 6px;
+    min-width: 0;
   }
   .filtro-item label {
     font-size: 10px;
@@ -96,24 +95,25 @@
     color: var(--text-light);
     font-weight: 600;
     white-space: nowrap;
-    min-width: fit-content;
+    flex-shrink: 0;
   }
   .filtro-item select,
   .filtro-item input {
     border: 1.5px solid var(--bege-dark);
     border-radius: 6px;
-    padding: 7px 12px;
+    padding: 7px 10px;
     font-size: 13px;
     color: var(--text-dark);
     background: #efe6da;
     width: 100%;
+    min-width: 0;
     outline: none;
     transition: border 0.2s;
   }
   .filtro-item select:focus,
   .filtro-item input:focus { border-color: var(--bronze); }
   .btn-limpar {
-    padding: 7px 16px;
+    padding: 7px 14px;
     border-radius: 6px;
     font-size: 12px;
     cursor: pointer;
@@ -121,11 +121,32 @@
     background: var(--white);
     color: var(--text-mid);
     transition: all 0.2s;
-    align-self: center;
     white-space: nowrap;
+    align-self: center;
   }
   .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); background: #f1e8dc; }
 
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .main { padding: 16px 16px; }
+    .filtros-grid {
+      grid-template-columns: 1fr;
+    }
+    .filtro-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      align-items: center;
+    }
+    .filtro-item select,
+    .filtro-item input {
+      width: 100%;
+    }
+    .btn-limpar {
+      width: 100%;
+      text-align: center;
+    }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   /* ── KPIs ── */
   .kpi-grid {
     display: grid;
