@@ -125,7 +125,7 @@ function criarModeloDetalhes() {
 // ─────────────────────────────────────────────────────────────
 // PROJETOS
 // ─────────────────────────────────────────────────────────────
-const projetos = [
+var projetos = [
   {
     id: 1, terreno: "Ouvidor Peleja", bairro: "Vila Mariana",
     statusMacro: "Lançado", segmento: "Padrão",
