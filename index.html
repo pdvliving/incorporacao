@@ -26,16 +26,67 @@
   .edit-badge.show { display: inline-block; }
   .main { padding: 24px 80px; max-width: 1500px; margin: 0 auto; }
   .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 12px; font-weight: 600; }
-  .filtros-box { background: var(--white); border: 1px solid var(--bege-dark); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 24px; box-shadow: var(--shadow); }
-  .filtros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 18px; }
-  .filtros-grid-row2 { display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 14px 18px; margin-top: 4px; }
-  .filtro-item { display: flex; flex-direction: column; gap: 5px; }
-  .filtro-item label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
-  .filtro-item select, .filtro-item input { border: 1.5px solid var(--bege-dark); border-radius: 6px; padding: 8px 10px; font-size: 13px; color: var(--text-dark); background: #efe6da; width: 100%; outline: none; transition: border 0.2s; height: 36px; }
+
+  /* ══ FILTROS — linha única compacta ══ */
+  .filtros-box {
+    background: var(--white);
+    border: 1px solid var(--bege-dark);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  .filtros-linha {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+  .filtro-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+  }
+  .filtro-item label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .filtro-item select,
+  .filtro-item input {
+    border: 1.5px solid var(--bege-dark);
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 12px;
+    color: var(--text-dark);
+    background: #efe6da;
+    width: 100%;
+    outline: none;
+    transition: border 0.2s;
+    height: 30px;
+  }
   .filtro-item select:focus, .filtro-item input:focus { border-color: var(--bronze); }
-  .filtro-btn-wrap { display: flex; align-items: flex-end; }
-  .btn-limpar { padding: 8px 18px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid var(--bege-dark); background: var(--white); color: var(--text-mid); white-space: nowrap; transition: all 0.2s; height: 36px; }
+  .filtro-item.busca { flex: 1.4; }
+  .filtro-btn-wrap { flex-shrink: 0; }
+  .btn-limpar {
+    padding: 5px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    border: 1px solid var(--bege-dark);
+    background: var(--white);
+    color: var(--text-mid);
+    white-space: nowrap;
+    transition: all 0.2s;
+    height: 30px;
+  }
   .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); }
+
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
   .kpi-card { background: var(--white); border: 1px solid var(--bege-dark); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
   .kpi-card.destaque { background: var(--bronze); border-color: var(--bronze); }
@@ -109,8 +160,6 @@
 
   /* ══ TÓPICOS ══ */
   .topico-box { border-bottom: 1px solid var(--bege-dark); }
-
-  /* Header agora é flex e contém título + campos inline + toggle */
   .topico-header {
     display: flex;
     align-items: center;
@@ -128,7 +177,7 @@
     color: #fff;
     white-space: nowrap;
     min-width: 90px;
-    margin-right: 100px; /* espaço de 100px após o título */
+    margin-right: 100px;
     flex-shrink: 0;
   }
   .topico-inline-fields {
@@ -156,20 +205,9 @@
     width: 105px;
   }
   .topico-inline-fields input::placeholder { color: rgba(255,255,255,0.5); }
-  .topico-inline-fields input.unlocked {
-    pointer-events: all;
-    background: rgba(255,255,255,0.22);
-    cursor: text;
-  }
-  .topico-inline-fields input.unlocked:focus {
-    outline: 2px solid rgba(255,255,255,0.7);
-    background: rgba(255,255,255,0.28);
-  }
-  .topico-inline-sep {
-    color: rgba(255,255,255,0.6);
-    font-size: 13px;
-    flex-shrink: 0;
-  }
+  .topico-inline-fields input.unlocked { pointer-events: all; background: rgba(255,255,255,0.22); cursor: text; }
+  .topico-inline-fields input.unlocked:focus { outline: 2px solid rgba(255,255,255,0.7); background: rgba(255,255,255,0.28); }
+  .topico-inline-sep { color: rgba(255,255,255,0.6); font-size: 13px; flex-shrink: 0; }
   .topico-inline-fields select {
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 5px;
@@ -182,34 +220,41 @@
     min-width: 90px;
   }
   .topico-inline-fields select option { color: var(--text-dark); background: #fff; }
-  .topico-inline-fields select.unlocked {
-    pointer-events: all;
-    cursor: pointer;
-    background: rgba(255,255,255,0.22);
-  }
-  .topico-inline-fields select.unlocked:focus {
-    outline: 2px solid rgba(255,255,255,0.7);
-  }
-  .topico-toggle {
-    font-size: 16px;
-    color: #fff;
-    font-weight: 700;
-    margin-left: auto;
-    flex-shrink: 0;
-    padding-left: 12px;
-  }
+  .topico-inline-fields select.unlocked { pointer-events: all; cursor: pointer; background: rgba(255,255,255,0.22); }
+  .topico-inline-fields select.unlocked:focus { outline: 2px solid rgba(255,255,255,0.7); }
+  .topico-toggle { font-size: 16px; color: #fff; font-weight: 700; margin-left: auto; flex-shrink: 0; padding-left: 12px; }
   .topico-conteudo { display: none; }
   .topico-conteudo.open { display: block; }
-
-  /* Colunas normais */
-  .topico-col-header { background: #c7b79f; display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-mid); font-weight: 600; gap: 6px; }
-  .topico-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: var(--white); font-size: 12px; gap: 6px; }
-  .topico-linha:last-child { border-bottom: none; }
-  .topico-linha:hover { background: #faf6f0; }
-
-  /* Remove estilos antigos que não são mais usados */
   .topico-datas { display: none; }
   .topico-fornecedor { display: none; }
+
+  /* ══ GRID LINHAS — Assunto menor, Farol à direita próximo da data ══ */
+  /* Assunto | Farol | Status | Data Limite | Observação */
+  /* Antes: 2fr 50px 110px 120px 2fr — agora Assunto vira 1fr */
+  .topico-col-header {
+    background: #c7b79f;
+    display: grid;
+    grid-template-columns: 1fr 50px 110px 120px 1.5fr;
+    padding: 7px 14px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    font-weight: 600;
+    gap: 6px;
+  }
+  .topico-linha {
+    display: grid;
+    grid-template-columns: 1fr 50px 110px 120px 1.5fr;
+    padding: 7px 14px;
+    border-bottom: 1px solid #ede5d8;
+    align-items: center;
+    background: var(--white);
+    font-size: 12px;
+    gap: 6px;
+  }
+  .topico-linha:last-child { border-bottom: none; }
+  .topico-linha:hover { background: #faf6f0; }
 
   .linha-status-sel { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 2px 5px; font-size: 11px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; width: 100%; }
   .linha-status-sel.unlocked { pointer-events: all; cursor: pointer; }
@@ -225,8 +270,28 @@
   .subpasta-toggle { font-size: 14px; color: var(--bronze); font-weight: 700; }
   .subpasta-conteudo { display: none; }
   .subpasta-conteudo.open { display: block; }
-  .subpasta-col-header { background: #ede5d8; display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 5px 14px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-light); font-weight: 600; gap: 6px; }
-  .subpasta-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 6px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: #faf6f0; font-size: 12px; gap: 6px; }
+  .subpasta-col-header {
+    background: #ede5d8;
+    display: grid;
+    grid-template-columns: 1fr 50px 110px 120px 1.5fr;
+    padding: 5px 14px;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    font-weight: 600;
+    gap: 6px;
+  }
+  .subpasta-linha {
+    display: grid;
+    grid-template-columns: 1fr 50px 110px 120px 1.5fr;
+    padding: 6px 14px;
+    border-bottom: 1px solid #ede5d8;
+    align-items: center;
+    background: #faf6f0;
+    font-size: 12px;
+    gap: 6px;
+  }
   .subpasta-linha:last-child { border-bottom: none; }
   .subpasta-linha:hover { background: #f5efe5; }
 
@@ -259,16 +324,35 @@
   .vizinho-info-textarea.unlocked { pointer-events: all; }
   .vizinho-info-textarea.unlocked:focus { outline: 2px solid var(--bronze); border-color: var(--bronze); }
   .vizinho-checklist { background: var(--white); }
-  .vizinho-check-header { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; background: #c7b79f; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-mid); font-weight: 600; gap: 6px; }
-  .vizinho-check-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: var(--white); font-size: 12px; gap: 6px; }
+  .vizinho-check-header {
+    display: grid;
+    grid-template-columns: 1fr 50px 110px 120px 1.5fr;
+    padding: 7px 14px;
+    background: #c7b79f;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    font-weight: 600;
+    gap: 6px;
+  }
+  .vizinho-check-linha {
+    display: grid;
+    grid-template-columns: 1fr 50px 110px 120px 1.5fr;
+    padding: 7px 14px;
+    border-bottom: 1px solid #ede5d8;
+    align-items: center;
+    background: var(--white);
+    font-size: 12px;
+    gap: 6px;
+  }
   .vizinho-check-linha:last-child { border-bottom: none; }
   .vizinho-check-linha:hover { background: #faf6f0; }
   .footer { text-align: center; padding: 20px; font-size: 11px; color: #fff; border-top: 1px solid var(--bronze); margin-top: 10px; background: var(--bronze); }
-  @media (max-width: 768px) {
+
+  @media (max-width: 900px) {
     .main { padding: 12px 10px; }
-    .filtros-grid { grid-template-columns: 1fr 1fr; }
-    .filtros-grid-row2 { grid-template-columns: 1fr 1fr; }
-    .filtro-btn-wrap { grid-column: 1 / -1; }
+    .filtros-linha { flex-wrap: wrap; }
     .kpi-grid { grid-template-columns: repeat(2,1fr); }
     .tabela-box, .gantt-box { display: none; }
     .vizinho-inner { grid-template-columns: 1fr; }
@@ -291,6 +375,7 @@
     </div>
   </div>
 </div>
+
 <div class="header">
   <div class="header-left">
     <div class="logo"><img src="https://www.meuliving.com.br/themes/living/img/icons/logo.svg" alt="Living" /></div>
@@ -301,10 +386,12 @@
     <button class="btn-edit-mode" id="btnEditMode" onclick="toggleEditMode()">✏️ Editar</button>
   </div>
 </div>
+
 <div class="main">
+  <!-- FILTROS — linha única -->
   <div class="filtros-box">
-    <div class="section-label">Filtros</div>
-    <div class="filtros-grid">
+    <div class="section-label" style="margin-bottom:8px;">Filtros</div>
+    <div class="filtros-linha">
       <div class="filtro-item">
         <label>Ano</label>
         <select id="filtroAno" onchange="aplicarFiltros()">
@@ -337,8 +424,6 @@
           <option value="Finalizado">Finalizado</option>
         </select>
       </div>
-    </div>
-    <div class="filtros-grid-row2" style="margin-top:10px;">
       <div class="filtro-item">
         <label>Etapa</label>
         <select id="filtroEtapa" onchange="aplicarFiltros()">
@@ -372,16 +457,16 @@
           </optgroup>
         </select>
       </div>
-      <div class="filtro-item">
+      <div class="filtro-item busca">
         <label>Buscar</label>
         <input type="text" id="filtroBusca" placeholder="Nome do terreno..." oninput="aplicarFiltros()" />
       </div>
-      <div class="filtro-item" style="visibility:hidden;"></div>
       <div class="filtro-btn-wrap">
         <button class="btn-limpar" onclick="limparFiltros()">↺ Limpar</button>
       </div>
     </div>
   </div>
+
   <div class="section-label">Indicadores</div>
   <div class="kpi-grid">
     <div class="kpi-card destaque">
@@ -410,6 +495,7 @@
       <div class="kpi-sub">segmento</div>
     </div>
   </div>
+
   <div class="section-label">Linha do Tempo</div>
   <div class="gantt-box">
     <div class="gantt-header">
@@ -429,6 +515,7 @@
       <div id="ganttContainer"></div>
     </div>
   </div>
+
   <div class="section-label">Projetos</div>
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
     <button class="btn-add-projeto" id="btnAddProjeto" onclick="adicionarProjeto()">＋ Novo Projeto</button>
@@ -440,23 +527,11 @@
         <tr>
           <th style="width:28px"></th>
           <th style="width:26px"></th>
-          <th>Terreno</th>
-          <th>Bairro</th>
-          <th>Segmento</th>
-          <th>Doninho</th>
-          <th>Status</th>
-          <th>Ano</th>
-          <th>Posse<br>Primeiro Lote</th>
-          <th>Posse<br>Último Lote</th>
-          <th>Início<br>Demolição</th>
-          <th>Término<br>Demolição</th>
-          <th>Dias<br>Demolição</th>
-          <th>Início PDV</th>
-          <th>Fim PDV</th>
-          <th>Meeting</th>
-          <th>Desmobilização<br>PDV</th>
-          <th>Início<br>Pré Obra</th>
-          <th>Início Obra</th>
+          <th>Terreno</th><th>Bairro</th><th>Segmento</th><th>Doninho</th><th>Status</th><th>Ano</th>
+          <th>Posse<br>Primeiro Lote</th><th>Posse<br>Último Lote</th>
+          <th>Início<br>Demolição</th><th>Término<br>Demolição</th><th>Dias<br>Demolição</th>
+          <th>Início PDV</th><th>Fim PDV</th><th>Meeting</th><th>Desmobilização<br>PDV</th>
+          <th>Início<br>Pré Obra</th><th>Início Obra</th>
         </tr>
       </thead>
       <tbody id="tbodyProjetos"></tbody>
@@ -467,6 +542,7 @@
 <div class="footer">
   Living — Painel de Gestão Landbank · Engenharia de Incorporação · <span id="dataAtual"></span>
 </div>
+
 <script>
 // ══ SENHA ══
 const SENHA_CORRETA = 'engpdv123';
@@ -493,8 +569,7 @@ function aplicarModoEdicao() {
   }
   document.querySelectorAll('.cell-edit,.cell-select,.linha-status-sel,.linha-obs').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
   document.querySelectorAll('.btn-del-row,.btn-del-vizinho,.btn-add-vizinho').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
-  // Campos inline do header dos tópicos
-  document.querySelectorAll('.topico-inline-fields input, .topico-inline-fields select').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
+  document.querySelectorAll('.topico-inline-fields input,.topico-inline-fields select').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
   document.querySelectorAll('.vizinho-info-input,.vizinho-info-select,.vizinho-info-textarea').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
 }
 
@@ -509,7 +584,6 @@ const FORNECEDORES = {
 };
 const STATUS_OPTS = ['','Ok','N/A','Em andamento'];
 
-// ══ VIZINHOS CHECKLIST ITENS ══
 const VIZINHO_ETAPAS = [
   'Descrição do Caso','Formalização da reclamação (e-mail e telefone)',
   'Abertura do sinistro junto à EPL + Envio Documentação',
@@ -519,14 +593,12 @@ const VIZINHO_ETAPAS = [
 ];
 function criarVizinho(nome) {
   return {
-    id: Date.now() + Math.random(),
-    nome: nome || 'Novo Vizinho',
+    id: Date.now() + Math.random(), nome: nome || 'Novo Vizinho',
     endereco:'', status:'', vencimento:'', dataLimite:'', email:'', telefone:'', observacoes:'',
     itens: VIZINHO_ETAPAS.map(a=>({assunto:a, farol:'a', statusLinha:'', dataLimite:'', obs:''}))
   };
 }
 
-// ══ MODELO DETALHES ══
 function criarModeloDetalhes() {
   return {
     "Demolição": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
@@ -631,7 +703,6 @@ function criarModeloDetalhes() {
   };
 }
 
-// ══ LOCAL STORAGE ══
 const LS_KEY = 'pdvliving_v5';
 function carregarProjetos() {
   try {
@@ -656,7 +727,6 @@ const PROJETOS_PADRAO = [
 let projetos = carregarProjetos();
 let projetosFiltrados = [...projetos];
 
-// ══ HELPERS ══
 const mesesLabel=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ","JAN","FEV","MAR","ABR"];
 const anos2=[2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2027,2027,2027,2027];
 const MES_MAP={};
@@ -672,15 +742,6 @@ function farolDot(f){const map={g:'farol-g',a:'farol-a',r:'farol-r'};return `<sp
 function statusTag(s){const map={'A Iniciar':'a-iniciar','Em andamento':'em-andamento','Finalizado':'finalizado'};return `<span class="tag-status tag-${map[s]||'a-iniciar'}">${s||'—'}</span>`;}
 function inp(id,val,ph){return `<input class="cell-edit" id="${id}" value="${(val||'').replace(/"/g,'&quot;')}" placeholder="${ph||''}" onchange="autoSave()" />`;}
 function sel(id,val,opts){return `<select class="cell-select" id="${id}" onchange="autoSave()">${opts.map(o=>`<option value="${o}" ${o===val?'selected':''}>${o}</option>`).join('')}</select>`;}
-function statusSelLinha(uid, val) {
-  const opts = STATUS_OPTS.map(o=>`<option value="${o}" ${o===val?'selected':''}>${o||'—'}</option>`).join('');
-  const cls = modoEdicao ? 'unlocked' : '';
-  return `<select class="linha-status-sel ${cls}" id="ls-${uid}" onchange="autoSave()">${opts}</select>`;
-}
-function obsInput(uid, val) {
-  const cls = modoEdicao ? 'unlocked' : '';
-  return `<input class="linha-obs ${cls}" id="lo-${uid}" value="${(val||'').replace(/"/g,'&quot;')}" placeholder="Observação..." onchange="autoSave()" />`;
-}
 function autoSave(){
   if(!modoEdicao)return;
   coletarEdicoes();
@@ -701,7 +762,6 @@ function coletarEdicoes(){
   });
 }
 
-// ══ FILTROS ══
 function getFornecedoresProjeto(p){if(!p.detalhes)return[];return Object.values(p.detalhes).map(d=>d.fornecedor).filter(f=>f&&f!=='—');}
 function aplicarFiltros(){
   const ano=document.getElementById('filtroAno').value;
@@ -712,8 +772,7 @@ function aplicarFiltros(){
   const forn=document.getElementById('filtroFornecedor').value;
   const busca=document.getElementById('filtroBusca').value.toLowerCase();
   projetosFiltrados=projetos.filter(p=>{
-    const anoPosse=extrairAno(p.possePrimeiro);
-    if(ano&&String(anoPosse)!==ano)return false;
+    if(ano&&String(extrairAno(p.possePrimeiro))!==ano)return false;
     if(seg&&p.segmento!==seg)return false;
     if(doninho&&p.doninho!==doninho)return false;
     if(status&&p.statusExecucao!==status)return false;
@@ -732,7 +791,6 @@ function aplicarFiltros(){
 }
 function limparFiltros(){['filtroAno','filtroSegmento','filtroDoninho','filtroStatus','filtroEtapa','filtroFornecedor','filtroBusca'].forEach(id=>document.getElementById(id).value='');aplicarFiltros();}
 
-// ══ SALVAR TUDO ══
 function salvarTudo(){
   if(!modoEdicao)return;
   coletarEdicoes();
@@ -747,7 +805,6 @@ function salvarTudo(){
       if(fim)p.detalhes[t].dataFim=fim.value||'—';
       if(forn)p.detalhes[t].fornecedor=forn.value||'—';
     });
-    // Salvar itens dos tópicos
     ['Demolição','PDV','Pré Obra'].forEach(t=>{
       const chave=normalizarChave(t);
       const bloco=p.detalhes[t];
@@ -782,7 +839,6 @@ function salvarTudo(){
   setTimeout(()=>toast.classList.remove('show'),2600);
 }
 
-// ══ GANTT ══
 function renderGantt(lista){
   const container=document.getElementById('ganttContainer');
   const w=COL_W*zoomLevel;
@@ -830,7 +886,6 @@ function renderGantt(lista){
 function zoomGantt(dir){zoomLevel=Math.max(0.5,Math.min(2.5,zoomLevel+dir*0.2));renderGantt(projetosFiltrados);}
 function irParaHoje(){document.getElementById('ganttScroll').scrollLeft=220+HOJE_MES*COL_W*zoomLevel-300;}
 
-// ══ ADICIONAR / DELETAR PROJETO ══
 function adicionarProjeto(){
   if(!modoEdicao)return;
   const novoId=projetos.length>0?Math.max(...projetos.map(p=>p.id))+1:1;
@@ -840,7 +895,6 @@ function adicionarProjeto(){
 }
 function deletarProjeto(id){if(!modoEdicao)return;if(!confirm('Remover este projeto?'))return;projetos=projetos.filter(p=>p.id!==id);projetosFiltrados=projetosFiltrados.filter(p=>p.id!==id);aplicarFiltros();}
 
-// ══ VIZINHOS ══
 function adicionarVizinho(pid){
   if(!modoEdicao)return;
   const p=projetos.find(x=>x.id===pid);
@@ -852,10 +906,7 @@ function adicionarVizinho(pid){
   salvarProjetos();
   const chave=normalizarChave('Vizinhos');
   const cont=document.getElementById(`topico-${pid}-${chave}`);
-  if(cont){
-    cont.querySelector('.vizinhos-wrapper').innerHTML=renderVizinhosInner(p);
-    if(modoEdicao)aplicarModoEdicao();
-  }
+  if(cont){cont.querySelector('.vizinhos-wrapper').innerHTML=renderVizinhosInner(p);if(modoEdicao)aplicarModoEdicao();}
 }
 function deletarVizinho(pid,vid){
   if(!modoEdicao)return;
@@ -894,34 +945,20 @@ function renderVizinhosInner(p) {
         <div class="vizinho-inner">
           <div class="vizinho-info-box">
             <div class="vizinho-info-titulo">Dados do Vizinho</div>
-            <div class="vizinho-info-field">
-              <div class="vizinho-info-label">Endereço</div>
-              <input class="vizinho-info-input ${infoCls}" value="${v.endereco||''}" placeholder="Endereço completo..." onchange="atualizarVizinho(${p.id},${v.id},'endereco',this.value)" />
-            </div>
-            <div class="vizinho-info-field">
-              <div class="vizinho-info-label">Status</div>
-              <select class="vizinho-info-select ${infoCls}" onchange="atualizarVizinho(${p.id},${v.id},'status',this.value)">${statusOpts}</select>
-            </div>
-            <div class="vizinho-info-field">
-              <div class="vizinho-info-label">Vencimento</div>
-              <input class="vizinho-info-input ${infoCls}" value="${v.vencimento||''}" placeholder="dd/mm/aaaa" onchange="atualizarVizinho(${p.id},${v.id},'vencimento',this.value)" />
-            </div>
-            <div class="vizinho-info-field">
-              <div class="vizinho-info-label">Data Limite</div>
-              <input class="vizinho-info-input ${infoCls}" value="${v.dataLimite||''}" placeholder="dd/mm/aaaa" onchange="atualizarVizinho(${p.id},${v.id},'dataLimite',this.value)" />
-            </div>
-            <div class="vizinho-info-field">
-              <div class="vizinho-info-label">E-mail</div>
-              <input class="vizinho-info-input ${infoCls}" value="${v.email||''}" placeholder="email@..." onchange="atualizarVizinho(${p.id},${v.id},'email',this.value)" />
-            </div>
-            <div class="vizinho-info-field">
-              <div class="vizinho-info-label">Telefone</div>
-              <input class="vizinho-info-input ${infoCls}" value="${v.telefone||''}" placeholder="(11) 9..." onchange="atualizarVizinho(${p.id},${v.id},'telefone',this.value)" />
-            </div>
-            <div class="vizinho-info-field">
-              <div class="vizinho-info-label">Observações</div>
-              <textarea class="vizinho-info-textarea ${infoCls}" placeholder="Observações..." onchange="atualizarVizinho(${p.id},${v.id},'observacoes',this.value)">${v.observacoes||''}</textarea>
-            </div>
+            <div class="vizinho-info-field"><div class="vizinho-info-label">Endereço</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.endereco||''}" placeholder="Endereço completo..." onchange="atualizarVizinho(${p.id},${v.id},'endereco',this.value)" /></div>
+            <div class="vizinho-info-field"><div class="vizinho-info-label">Status</div>
+              <select class="vizinho-info-select ${infoCls}" onchange="atualizarVizinho(${p.id},${v.id},'status',this.value)">${statusOpts}</select></div>
+            <div class="vizinho-info-field"><div class="vizinho-info-label">Vencimento</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.vencimento||''}" placeholder="dd/mm/aaaa" onchange="atualizarVizinho(${p.id},${v.id},'vencimento',this.value)" /></div>
+            <div class="vizinho-info-field"><div class="vizinho-info-label">Data Limite</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.dataLimite||''}" placeholder="dd/mm/aaaa" onchange="atualizarVizinho(${p.id},${v.id},'dataLimite',this.value)" /></div>
+            <div class="vizinho-info-field"><div class="vizinho-info-label">E-mail</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.email||''}" placeholder="email@..." onchange="atualizarVizinho(${p.id},${v.id},'email',this.value)" /></div>
+            <div class="vizinho-info-field"><div class="vizinho-info-label">Telefone</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.telefone||''}" placeholder="(11) 9..." onchange="atualizarVizinho(${p.id},${v.id},'telefone',this.value)" /></div>
+            <div class="vizinho-info-field"><div class="vizinho-info-label">Observações</div>
+              <textarea class="vizinho-info-textarea ${infoCls}" placeholder="Observações..." onchange="atualizarVizinho(${p.id},${v.id},'observacoes',this.value)">${v.observacoes||''}</textarea></div>
           </div>
           <div class="vizinho-checklist">
             <div class="vizinho-check-header">
@@ -948,17 +985,14 @@ function renderVizinhosInner(p) {
 function atualizarVizinho(pid,vid,campo,valor){
   const p=projetos.find(x=>x.id===pid);if(!p)return;
   const v=p.detalhes['Vizinhos'].vizinhos.find(x=>x.id===vid);if(!v)return;
-  v[campo]=valor;
-  salvarProjetos();
+  v[campo]=valor; salvarProjetos();
 }
 function atualizarVizinhoItem(pid,vid,idx,campo,valor){
   const p=projetos.find(x=>x.id===pid);if(!p)return;
   const v=p.detalhes['Vizinhos'].vizinhos.find(x=>x.id===vid);if(!v)return;
-  v.itens[idx][campo]=valor;
-  salvarProjetos();
+  v.itens[idx][campo]=valor; salvarProjetos();
 }
 
-// ══ SUBPASTAS ══
 function toggleSubpasta(uid){const el=document.getElementById('sub-'+uid),icon=document.getElementById('sub-icon-'+uid);const open=el.classList.contains('open');el.classList.toggle('open',!open);icon.textContent=open?'+':'−';}
 function renderSubpasta(item,uid){
   const sCls=modoEdicao?'unlocked':'';
@@ -984,14 +1018,12 @@ function renderSubpasta(item,uid){
   </div>`;
 }
 
-// ══ TÓPICOS ══
 function toggleTopico(pid,topico){
   const chave=normalizarChave(topico);
   const el=document.getElementById('topico-'+pid+'-'+chave),icon=document.getElementById('toggle-icon-'+pid+'-'+chave);
   const open=el.classList.contains('open');
   el.classList.toggle('open',!open);icon.textContent=open?'+':'−';
 }
-
 function renderTopicosProjeto(p){
   return ["Demolição","PDV","Pré Obra","Vizinhos"].map(topico=>{
     const bloco=p.detalhes&&p.detalhes[topico];
@@ -1000,8 +1032,6 @@ function renderTopicosProjeto(p){
     const fim=bloco?(bloco.dataFim==='—'?'':bloco.dataFim):'';
     const forn=bloco?(bloco.fornecedor||'—'):'—';
     const cls=modoEdicao?'unlocked':'';
-
-    // Campos inline no header (apenas para tópicos que não são Vizinhos)
     const headerFields = topico !== 'Vizinhos' ? `
       <div class="topico-inline-fields" onclick="event.stopPropagation()">
         <label>Início:</label>
@@ -1010,13 +1040,8 @@ function renderTopicosProjeto(p){
         <label>Fim:</label>
         <input id="df-${p.id}-${chave}" class="${cls}" value="${fim}" placeholder="dd/mm/aaaa" onchange="autoSave()" />
         <label style="margin-left:12px;">Fornecedor:</label>
-        ${(()=>{
-          const lista=FORNECEDORES[topico]||['—'];
-          const opts=lista.map(f=>`<option value="${f}" ${f===forn?'selected':''}>${f}</option>`).join('');
-          return `<select id="forn-${p.id}-${chave}" class="${cls}" onchange="autoSave()">${opts}</select>`;
-        })()}
+        ${(()=>{const lista=FORNECEDORES[topico]||['—'];const opts=lista.map(f=>`<option value="${f}" ${f===forn?'selected':''}>${f}</option>`).join('');return `<select id="forn-${p.id}-${chave}" class="${cls}" onchange="autoSave()">${opts}</select>`;})()}
       </div>` : '';
-
     let conteudoInterno='';
     if(topico==='Vizinhos'){
       conteudoInterno=`<div class="vizinhos-wrapper">${renderVizinhosInner(p)}</div>`;
@@ -1026,7 +1051,7 @@ function renderTopicosProjeto(p){
       conteudoInterno=`
         <div class="topico-col-header"><div>Assunto</div><div>Farol</div><div>Status</div><div>Data Limite</div><div>Observação</div></div>
         ${itens.map((item,idx)=>{
-          if(item.isSubpasta) return renderSubpasta(item,`${p.id}-${chave}-${idx}`);
+          if(item.isSubpasta)return renderSubpasta(item,`${p.id}-${chave}-${idx}`);
           const iuid=`${p.id}-${chave}-${idx}`;
           const sOpts=STATUS_OPTS.map(o=>`<option value="${o}" ${o===(item.statusLinha||'')?'selected':''}>${o||'—'}</option>`).join('');
           return `<div class="topico-linha">
@@ -1038,21 +1063,17 @@ function renderTopicosProjeto(p){
           </div>`;
         }).join('')}`;
     }
-
     return `<div class="topico-box">
       <div class="topico-header" onclick="toggleTopico(${p.id},'${topico}')">
         <div class="topico-titulo">${topico}</div>
         ${headerFields}
         <div class="topico-toggle" id="toggle-icon-${p.id}-${chave}">+</div>
       </div>
-      <div class="topico-conteudo" id="topico-${p.id}-${chave}">
-        ${conteudoInterno}
-      </div>
+      <div class="topico-conteudo" id="topico-${p.id}-${chave}">${conteudoInterno}</div>
     </div>`;
   }).join('');
 }
 
-// ══ TABELA ══
 function renderTabela(lista){
   document.getElementById('tbodyProjetos').innerHTML=lista.map(p=>{
     const dias=calcDiasDemo(p.inicioDemolicao,p.terminoDemolicao);
@@ -1114,7 +1135,6 @@ function toggleDetalhe(id){
   btn.textContent=isOpen?'+':'−';
 }
 
-// ══ INIT ══
 document.getElementById('dataAtual').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
 aplicarFiltros();
 setTimeout(irParaHoje,300);
