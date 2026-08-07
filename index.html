@@ -811,6 +811,7 @@ function adicionarVizinho(pid){
 }
 function deletarVizinho(pid,vid){
   if(!modoEdicao)return;
+  if(!confirm('Remover este vizinho? Esta ação não pode ser desfeita.'))return;
   const p=projetos.find(x=>x.id===pid);
   if(!p||!p.detalhes['Vizinhos'])return;
   p.detalhes['Vizinhos'].vizinhos=p.detalhes['Vizinhos'].vizinhos.filter(v=>v.id!==vid);
