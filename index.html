@@ -14,8 +14,6 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body, button, input, select, textarea { font-family: "Calibri Light", Calibri, "Segoe UI", Arial, sans-serif; }
   body { background: var(--bege); color: var(--text-dark); font-size: 14px; }
-
-  /* HEADER */
   .header { background: var(--bronze); padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
   .header-left { display: flex; align-items: center; gap: 18px; }
   .logo img { height: 30px; width: auto; display: block; }
@@ -26,45 +24,18 @@
   .btn-edit-mode.active { background: #fff; color: var(--bronze); border-color: #fff; }
   .edit-badge { background: #e65100; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; letter-spacing: 1px; display: none; }
   .edit-badge.show { display: inline-block; }
-
-  /* MAIN */
   .main { padding: 24px 80px; max-width: 1500px; margin: 0 auto; }
   .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 12px; font-weight: 600; }
-
-  /* FILTROS DESKTOP */
   .filtros-box { background: var(--white); border: 1px solid var(--bege-dark); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 24px; box-shadow: var(--shadow); }
-  .filtros-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px 18px;
-  }
-  .filtros-grid-row2 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr) auto;
-    gap: 14px 18px;
-    margin-top: 4px;
-  }
+  .filtros-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 18px; }
+  .filtros-grid-row2 { display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 14px 18px; margin-top: 4px; }
   .filtro-item { display: flex; flex-direction: column; gap: 5px; }
   .filtro-item label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
-  .filtro-item select,
-  .filtro-item input {
-    border: 1.5px solid var(--bege-dark);
-    border-radius: 6px;
-    padding: 8px 10px;
-    font-size: 13px;
-    color: var(--text-dark);
-    background: #efe6da;
-    width: 100%;
-    outline: none;
-    transition: border 0.2s;
-    height: 36px;
-  }
+  .filtro-item select, .filtro-item input { border: 1.5px solid var(--bege-dark); border-radius: 6px; padding: 8px 10px; font-size: 13px; color: var(--text-dark); background: #efe6da; width: 100%; outline: none; transition: border 0.2s; height: 36px; }
   .filtro-item select:focus, .filtro-item input:focus { border-color: var(--bronze); }
   .filtro-btn-wrap { display: flex; align-items: flex-end; }
   .btn-limpar { padding: 8px 18px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid var(--bege-dark); background: var(--white); color: var(--text-mid); white-space: nowrap; transition: all 0.2s; height: 36px; }
   .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); }
-
-  /* KPIs */
   .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
   .kpi-card { background: var(--white); border: 1px solid var(--bege-dark); border-radius: var(--radius); padding: 18px 20px; box-shadow: var(--shadow); }
   .kpi-card.destaque { background: var(--bronze); border-color: var(--bronze); }
@@ -73,14 +44,10 @@
   .kpi-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
   .kpi-value { font-size: 26px; font-weight: 700; color: var(--text-dark); }
   .kpi-sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
-
-  /* STATUS TAGS */
   .tag-status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; }
   .tag-a-iniciar { background: #dde8f3; color: #4d7399; }
   .tag-em-andamento { background: #fff3e0; color: #e65100; }
   .tag-finalizado { background: #e2eadc; color: #5f6f52; }
-
-  /* GANTT */
   .gantt-box { background: var(--verde); border-radius: var(--radius); margin-bottom: 24px; overflow: hidden; box-shadow: var(--shadow); }
   .gantt-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; background: rgba(0,0,0,0.15); flex-wrap: wrap; gap: 8px; }
   .gantt-title { color: #fff; font-size: 14px; font-weight: 700; }
@@ -91,8 +58,6 @@
   .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: rgba(255,255,255,0.9); }
   .legend-dot { width: 14px; height: 8px; border-radius: 4px; }
   .gantt-scroll { overflow-x: auto; }
-
-  /* TABELA */
   .tabela-box { background: var(--white); border: 1px solid var(--bege-dark); border-radius: var(--radius); overflow-x: auto; box-shadow: var(--shadow); margin-bottom: 24px; }
   .tabela-projetos { width: 100%; min-width: 2100px; border-collapse: collapse; }
   .tabela-projetos thead tr { background: var(--bege-dark); }
@@ -100,7 +65,6 @@
   .tabela-projetos td { padding: 7px 8px; border-bottom: 1px solid var(--bege-dark); font-size: 13px; vertical-align: middle; white-space: nowrap; }
   .tabela-projetos tr:last-child td { border-bottom: none; }
   .tabela-projetos tbody tr:not(.detail-row):hover td { background: #f2e9de; }
-
   .cell-calc { font-size: 12px; font-weight: 700; color: var(--bronze); background: #f5ede0; border-radius: 4px; padding: 3px 8px; text-align: center; white-space: nowrap; display: inline-block; }
   .cell-edit { border: none; background: transparent; font-size: 13px; color: var(--text-dark); width: 100%; min-width: 70px; font-family: inherit; padding: 2px 4px; border-radius: 4px; pointer-events: none; }
   .cell-edit.unlocked { pointer-events: all; transition: background 0.15s; }
@@ -110,7 +74,6 @@
   .cell-select.unlocked { pointer-events: all; cursor: pointer; appearance: auto; -webkit-appearance: auto; transition: background 0.15s; }
   .cell-select.unlocked:hover { background: #e8ddd0; }
   .cell-select.unlocked:focus { background: #fff; outline: 2px solid var(--bronze); }
-
   .btn-add-projeto { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--bronze); color: #fff; border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; opacity: 0.4; pointer-events: none; }
   .btn-add-projeto.unlocked { opacity: 1; pointer-events: all; }
   .btn-add-projeto:hover { background: #7a6248; }
@@ -124,12 +87,9 @@
   .expand-btn:hover, .expand-btn.open { background: var(--bronze); color: #fff; }
   .detail-row { display: none; }
   .detail-row.open { display: table-row; }
-
   .save-toast { display: none; position: fixed; bottom: 30px; right: 30px; background: var(--verde); color: #fff; padding: 12px 22px; border-radius: var(--radius); font-size: 13px; font-weight: 600; box-shadow: var(--shadow); z-index: 999; }
   .save-toast.show { display: block; animation: fadeInOut 2.5s forwards; }
   @keyframes fadeInOut { 0%{opacity:0;transform:translateY(10px)} 15%{opacity:1;transform:translateY(0)} 80%{opacity:1} 100%{opacity:0} }
-
-  /* MODAL SENHA */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 500; align-items: center; justify-content: center; }
   .modal-overlay.show { display: flex; }
   .modal-box { background: var(--white); border-radius: var(--radius); padding: 32px 36px; width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); text-align: center; }
@@ -141,37 +101,116 @@
   .modal-btns { display: flex; gap: 10px; justify-content: center; }
   .modal-btn-ok { padding: 9px 24px; background: var(--bronze); color: #fff; border: none; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
   .modal-btn-cancel { padding: 9px 24px; background: var(--white); color: var(--text-mid); border: 1px solid var(--bege-dark); border-radius: 6px; font-size: 13px; cursor: pointer; }
-
-  /* FAROL */
   .farol { width: 13px; height: 13px; border-radius: 50%; display: inline-block; vertical-align: middle; }
   .farol-g { background: var(--farol-verde); }
   .farol-a { background: var(--farol-amarelo); }
   .farol-r { background: var(--farol-vermelho); }
   .farol-vazio { background: #ddd; }
 
-  /* TÓPICOS PRINCIPAIS */
+  /* ══ TÓPICOS ══ */
   .topico-box { border-bottom: 1px solid var(--bege-dark); }
-  .topico-header { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 10px 14px; cursor: pointer; background: #8c7355; border-bottom: 1px solid #7a6248; user-select: none; }
-  .topico-titulo { font-size: 13px; font-weight: 700; color: #fff; }
-  .topico-toggle { font-size: 16px; color: #fff; font-weight: 700; }
+
+  /* Header agora é flex e contém título + campos inline + toggle */
+  .topico-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    cursor: pointer;
+    background: #8c7355;
+    border-bottom: 1px solid #7a6248;
+    user-select: none;
+    gap: 0;
+    min-height: 42px;
+  }
+  .topico-titulo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    min-width: 90px;
+    margin-right: 100px; /* espaço de 100px após o título */
+    flex-shrink: 0;
+  }
+  .topico-inline-fields {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    flex-wrap: nowrap;
+  }
+  .topico-inline-fields label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .topico-inline-fields input {
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 11px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-family: inherit;
+    pointer-events: none;
+    width: 105px;
+  }
+  .topico-inline-fields input::placeholder { color: rgba(255,255,255,0.5); }
+  .topico-inline-fields input.unlocked {
+    pointer-events: all;
+    background: rgba(255,255,255,0.22);
+    cursor: text;
+  }
+  .topico-inline-fields input.unlocked:focus {
+    outline: 2px solid rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.28);
+  }
+  .topico-inline-sep {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .topico-inline-fields select {
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 11px;
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-family: inherit;
+    pointer-events: none;
+    min-width: 90px;
+  }
+  .topico-inline-fields select option { color: var(--text-dark); background: #fff; }
+  .topico-inline-fields select.unlocked {
+    pointer-events: all;
+    cursor: pointer;
+    background: rgba(255,255,255,0.22);
+  }
+  .topico-inline-fields select.unlocked:focus {
+    outline: 2px solid rgba(255,255,255,0.7);
+  }
+  .topico-toggle {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding-left: 12px;
+  }
   .topico-conteudo { display: none; }
   .topico-conteudo.open { display: block; }
 
-  /* COLUNAS TÓPICOS NORMAIS — Assunto | Farol | Status | Data Limite | Observação */
+  /* Colunas normais */
   .topico-col-header { background: #c7b79f; display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-mid); font-weight: 600; gap: 6px; }
   .topico-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: var(--white); font-size: 12px; gap: 6px; }
   .topico-linha:last-child { border-bottom: none; }
   .topico-linha:hover { background: #faf6f0; }
 
-  .topico-datas { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: #d8cbb8; border-bottom: 1px solid var(--bege-dark); font-size: 11px; color: var(--text-mid); font-weight: 600; flex-wrap: wrap; }
-  .topico-datas input { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 3px 7px; font-size: 11px; background: var(--white); color: var(--text-dark); font-family: inherit; width: 110px; pointer-events: none; }
-  .topico-datas input.unlocked { pointer-events: all; }
-  .topico-datas input.unlocked:focus { outline: 2px solid var(--bronze); }
-  .topico-fornecedor { display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e8dfd0; border-bottom: 1px solid var(--bege-dark); font-size: 11px; color: var(--text-mid); font-weight: 600; }
-  .topico-fornecedor select { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 3px 8px; font-size: 12px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; }
-  .topico-fornecedor select.unlocked { pointer-events: all; cursor: pointer; }
+  /* Remove estilos antigos que não são mais usados */
+  .topico-datas { display: none; }
+  .topico-fornecedor { display: none; }
 
-  /* STATUS SELECT nas linhas */
   .linha-status-sel { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 2px 5px; font-size: 11px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; width: 100%; }
   .linha-status-sel.unlocked { pointer-events: all; cursor: pointer; }
   .linha-obs { border: none; background: transparent; font-size: 12px; color: var(--text-dark); font-family: inherit; width: 100%; pointer-events: none; padding: 2px 4px; border-radius: 4px; }
@@ -191,13 +230,11 @@
   .subpasta-linha:last-child { border-bottom: none; }
   .subpasta-linha:hover { background: #f5efe5; }
 
-  /* ══ VIZINHOS ══ */
+  /* VIZINHOS */
   .vizinhos-wrapper { padding: 10px 14px; background: #f7f3ee; }
   .btn-add-vizinho { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--bronze); color: #fff; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 12px; transition: background 0.2s; opacity: 0.4; pointer-events: none; }
   .btn-add-vizinho.unlocked { opacity: 1; pointer-events: all; }
   .btn-add-vizinho:hover { background: #7a6248; }
-
-  /* Cada vizinho = subpasta */
   .vizinho-box { border: 1px solid var(--bege-dark); border-radius: 6px; margin-bottom: 10px; overflow: hidden; }
   .vizinho-header { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; background: #f3ecdf; cursor: pointer; border-bottom: 1px solid var(--bege-dark); user-select: none; }
   .vizinho-header-left { display: flex; align-items: center; gap: 8px; }
@@ -206,14 +243,9 @@
   .btn-del-vizinho { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #f44336; background: transparent; color: #f44336; cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center; opacity: 0.3; pointer-events: none; transition: all 0.2s; }
   .btn-del-vizinho.unlocked { opacity: 1; pointer-events: all; }
   .btn-del-vizinho:hover { background: #f44336; color: #fff; }
-
   .vizinho-conteudo { display: none; }
   .vizinho-conteudo.open { display: block; }
-
-  /* Layout interno do vizinho: info à esquerda | checklist à direita */
   .vizinho-inner { display: grid; grid-template-columns: 280px 1fr; gap: 0; }
-
-  /* BOX INFO */
   .vizinho-info-box { background: #ede5d8; border-right: 1px solid var(--bege-dark); padding: 14px; display: flex; flex-direction: column; gap: 10px; }
   .vizinho-info-titulo { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
   .vizinho-info-field { display: flex; flex-direction: column; gap: 3px; }
@@ -226,17 +258,12 @@
   .vizinho-info-textarea { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 5px 8px; font-size: 12px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; width: 100%; resize: none; min-height: 58px; }
   .vizinho-info-textarea.unlocked { pointer-events: all; }
   .vizinho-info-textarea.unlocked:focus { outline: 2px solid var(--bronze); border-color: var(--bronze); }
-
-  /* CHECKLIST VIZINHO */
   .vizinho-checklist { background: var(--white); }
   .vizinho-check-header { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; background: #c7b79f; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-mid); font-weight: 600; gap: 6px; }
   .vizinho-check-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: var(--white); font-size: 12px; gap: 6px; }
   .vizinho-check-linha:last-child { border-bottom: none; }
   .vizinho-check-linha:hover { background: #faf6f0; }
-
   .footer { text-align: center; padding: 20px; font-size: 11px; color: #fff; border-top: 1px solid var(--bronze); margin-top: 10px; background: var(--bronze); }
-
-  /* MOBILE */
   @media (max-width: 768px) {
     .main { padding: 12px 10px; }
     .filtros-grid { grid-template-columns: 1fr 1fr; }
@@ -245,11 +272,12 @@
     .kpi-grid { grid-template-columns: repeat(2,1fr); }
     .tabela-box, .gantt-box { display: none; }
     .vizinho-inner { grid-template-columns: 1fr; }
+    .topico-inline-fields { flex-wrap: wrap; }
+    .topico-titulo { margin-right: 20px; }
   }
 </style>
 </head>
 <body>
-
 <!-- MODAL SENHA -->
 <div class="modal-overlay" id="modalSenha">
   <div class="modal-box">
@@ -263,7 +291,6 @@
     </div>
   </div>
 </div>
-
 <div class="header">
   <div class="header-left">
     <div class="logo"><img src="https://www.meuliving.com.br/themes/living/img/icons/logo.svg" alt="Living" /></div>
@@ -274,10 +301,7 @@
     <button class="btn-edit-mode" id="btnEditMode" onclick="toggleEditMode()">✏️ Editar</button>
   </div>
 </div>
-
 <div class="main">
-
-  <!-- FILTROS -->
   <div class="filtros-box">
     <div class="section-label">Filtros</div>
     <div class="filtros-grid">
@@ -358,7 +382,6 @@
       </div>
     </div>
   </div>
-
   <div class="section-label">Indicadores</div>
   <div class="kpi-grid">
     <div class="kpi-card destaque">
@@ -387,7 +410,6 @@
       <div class="kpi-sub">segmento</div>
     </div>
   </div>
-
   <div class="section-label">Linha do Tempo</div>
   <div class="gantt-box">
     <div class="gantt-header">
@@ -407,7 +429,6 @@
       <div id="ganttContainer"></div>
     </div>
   </div>
-
   <div class="section-label">Projetos</div>
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
     <button class="btn-add-projeto" id="btnAddProjeto" onclick="adicionarProjeto()">＋ Novo Projeto</button>
@@ -442,12 +463,10 @@
     </table>
   </div>
 </div>
-
 <div class="save-toast" id="saveToast">✅ Dados salvos!</div>
 <div class="footer">
   Living — Painel de Gestão Landbank · Engenharia de Incorporação · <span id="dataAtual"></span>
 </div>
-
 <script>
 // ══ SENHA ══
 const SENHA_CORRETA = 'engpdv123';
@@ -474,7 +493,8 @@ function aplicarModoEdicao() {
   }
   document.querySelectorAll('.cell-edit,.cell-select,.linha-status-sel,.linha-obs').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
   document.querySelectorAll('.btn-del-row,.btn-del-vizinho,.btn-add-vizinho').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
-  document.querySelectorAll('.topico-datas input,.topico-fornecedor select').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
+  // Campos inline do header dos tópicos
+  document.querySelectorAll('.topico-inline-fields input, .topico-inline-fields select').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
   document.querySelectorAll('.vizinho-info-input,.vizinho-info-select,.vizinho-info-textarea').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
 }
 
@@ -487,7 +507,6 @@ const FORNECEDORES = {
   'Tapume':['—','Newcom','Logoplaca','VJL','Criare','Tecnomidia'],
   'Vizinhos':['—']
 };
-
 const STATUS_OPTS = ['','Ok','N/A','Em andamento'];
 
 // ══ VIZINHOS CHECKLIST ITENS ══
@@ -498,7 +517,6 @@ const VIZINHO_ETAPAS = [
   'Assinatura da Minuta Inicial','Início dos Serviços / Reembolso',
   'Assinatura da Minuta Final','Reembolso EPL'
 ];
-
 function criarVizinho(nome) {
   return {
     id: Date.now() + Math.random(),
@@ -635,7 +653,6 @@ const PROJETOS_PADRAO = [
   {id:8,terreno:"Dona Inácia Uchôa I",bairro:"Vila Mariana",segmento:"Padrão",doninho:"Denis Pimentel",statusExecucao:"Em andamento",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"Dez/2026"},
   {id:9,terreno:"Otávio Tarquínio",bairro:"Campo Belo",segmento:"Full",doninho:"Giulia Oliveira",statusExecucao:"A Iniciar",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"Jan/2027"}
 ];
-
 let projetos = carregarProjetos();
 let projetosFiltrados = [...projetos];
 
@@ -647,7 +664,6 @@ anos2.forEach((a,i)=>{MES_MAP[`${mesesLabel[i]}-${a}`]=i;});
 const HOJE_MES=7;
 let zoomLevel=1;
 const COL_W=70;
-
 function normalizarChave(t){return t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-').toLowerCase();}
 function extrairAno(str){if(!str||str==='—')return null;const p=str.split('/');if(p.length===3)return parseInt(p[2]);return null;}
 function dataParaGanttIdx(str){if(!str||str==='—')return null;const p=str.split('/');if(p.length!==3)return null;const labels=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];const key=`${labels[parseInt(p[1])-1]}-${parseInt(p[2])}`;return MES_MAP[key]!==undefined?MES_MAP[key]:null;}
@@ -656,7 +672,6 @@ function farolDot(f){const map={g:'farol-g',a:'farol-a',r:'farol-r'};return `<sp
 function statusTag(s){const map={'A Iniciar':'a-iniciar','Em andamento':'em-andamento','Finalizado':'finalizado'};return `<span class="tag-status tag-${map[s]||'a-iniciar'}">${s||'—'}</span>`;}
 function inp(id,val,ph){return `<input class="cell-edit" id="${id}" value="${(val||'').replace(/"/g,'&quot;')}" placeholder="${ph||''}" onchange="autoSave()" />`;}
 function sel(id,val,opts){return `<select class="cell-select" id="${id}" onchange="autoSave()">${opts.map(o=>`<option value="${o}" ${o===val?'selected':''}>${o}</option>`).join('')}</select>`;}
-
 function statusSelLinha(uid, val) {
   const opts = STATUS_OPTS.map(o=>`<option value="${o}" ${o===val?'selected':''}>${o||'—'}</option>`).join('');
   const cls = modoEdicao ? 'unlocked' : '';
@@ -666,8 +681,15 @@ function obsInput(uid, val) {
   const cls = modoEdicao ? 'unlocked' : '';
   return `<input class="linha-obs ${cls}" id="lo-${uid}" value="${(val||'').replace(/"/g,'&quot;')}" placeholder="Observação..." onchange="autoSave()" />`;
 }
-
-function autoSave(){if(!modoEdicao)return;coletarEdicoes();salvarProjetos();projetos.forEach(p=>{const el=document.getElementById(`ano-calc-${p.id}`);if(el)el.textContent=extrairAno(p.possePrimeiro)||'—';});}
+function autoSave(){
+  if(!modoEdicao)return;
+  coletarEdicoes();
+  salvarProjetos();
+  projetos.forEach(p=>{
+    const el=document.getElementById(`ano-calc-${p.id}`);
+    if(el)el.textContent=extrairAno(p.possePrimeiro)||'—';
+  });
+}
 function coletarEdicoes(){
   projetos.forEach(p=>{
     const g=campo=>{const e=document.getElementById(`edit-${p.id}-${campo}`);return e?e.value:p[campo];};
@@ -725,6 +747,33 @@ function salvarTudo(){
       if(fim)p.detalhes[t].dataFim=fim.value||'—';
       if(forn)p.detalhes[t].fornecedor=forn.value||'—';
     });
+    // Salvar itens dos tópicos
+    ['Demolição','PDV','Pré Obra'].forEach(t=>{
+      const chave=normalizarChave(t);
+      const bloco=p.detalhes[t];
+      if(!bloco||!bloco.itens)return;
+      bloco.itens.forEach((item,idx)=>{
+        if(item.isSubpasta){
+          (item.itens||[]).forEach((si,sidx)=>{
+            const iuid=`${p.id}-${chave}-${idx}-${sidx}`;
+            const lsEl=document.getElementById(`ls-${iuid}`);
+            const loDlEl=document.getElementById(`lo-dl-${iuid}`);
+            const loEl=document.getElementById(`lo-${iuid}`);
+            if(lsEl)si.statusLinha=lsEl.value;
+            if(loDlEl)si.dataLimite=loDlEl.value;
+            if(loEl)si.obs=loEl.value;
+          });
+        } else {
+          const iuid=`${p.id}-${chave}-${idx}`;
+          const lsEl=document.getElementById(`ls-${iuid}`);
+          const loDlEl=document.getElementById(`lo-dl-${iuid}`);
+          const loEl=document.getElementById(`lo-${iuid}`);
+          if(lsEl)item.statusLinha=lsEl.value;
+          if(loDlEl)item.dataLimite=loDlEl.value;
+          if(loEl)item.obs=loEl.value;
+        }
+      });
+    });
   });
   salvarProjetos();
   renderGantt(projetosFiltrados);
@@ -757,7 +806,7 @@ function renderGantt(lista){
       <div style="margin-top:4px;">${statusTag(p.statusExecucao)}</div>
     </td>`;
     faixas.forEach((f,fi)=>{
-      html+=`<tr>`;
+      html+='<tr>';
       if(fi===0)html+=nomeCell;
       const isLast=fi===2;
       mesesLabel.forEach((_,i)=>{
@@ -801,7 +850,6 @@ function adicionarVizinho(pid){
   if(!nome)return;
   p.detalhes['Vizinhos'].vizinhos.push(criarVizinho(nome));
   salvarProjetos();
-  // Re-render detalhe
   const chave=normalizarChave('Vizinhos');
   const cont=document.getElementById(`topico-${pid}-${chave}`);
   if(cont){
@@ -825,7 +873,6 @@ function toggleVizinho(uid){
   const open=el.classList.contains('open');
   el.classList.toggle('open',!open);icon.textContent=open?'+':'−';
 }
-
 function renderVizinhosInner(p) {
   const vizinhos=(p.detalhes['Vizinhos']&&p.detalhes['Vizinhos'].vizinhos)||[];
   const addCls=modoEdicao?'unlocked':'';
@@ -845,7 +892,6 @@ function renderVizinhosInner(p) {
       </div>
       <div class="vizinho-conteudo" id="vz-${uid}">
         <div class="vizinho-inner">
-          <!-- INFO BOX -->
           <div class="vizinho-info-box">
             <div class="vizinho-info-titulo">Dados do Vizinho</div>
             <div class="vizinho-info-field">
@@ -877,13 +923,11 @@ function renderVizinhosInner(p) {
               <textarea class="vizinho-info-textarea ${infoCls}" placeholder="Observações..." onchange="atualizarVizinho(${p.id},${v.id},'observacoes',this.value)">${v.observacoes||''}</textarea>
             </div>
           </div>
-          <!-- CHECKLIST -->
           <div class="vizinho-checklist">
             <div class="vizinho-check-header">
               <div>Etapa</div><div>Farol</div><div>Status</div><div>Data Limite</div><div>Observação</div>
             </div>
             ${v.itens.map((item,idx)=>{
-              const iuid=`${uid}-${idx}`;
               const sOpts=STATUS_OPTS.map(o=>`<option value="${o}" ${o===item.statusLinha?'selected':''}>${o||'—'}</option>`).join('');
               const sCls=modoEdicao?'unlocked':'';
               return `<div class="vizinho-check-linha">
@@ -901,12 +945,10 @@ function renderVizinhosInner(p) {
   });
   return html;
 }
-
 function atualizarVizinho(pid,vid,campo,valor){
   const p=projetos.find(x=>x.id===pid);if(!p)return;
   const v=p.detalhes['Vizinhos'].vizinhos.find(x=>x.id===vid);if(!v)return;
   v[campo]=valor;
-  if(campo==='nome'){const el=document.querySelector(`[data-vz-nome="${pid}-${vid}"]`);if(el)el.textContent=valor;}
   salvarProjetos();
 }
 function atualizarVizinhoItem(pid,vid,idx,campo,valor){
@@ -943,13 +985,11 @@ function renderSubpasta(item,uid){
 }
 
 // ══ TÓPICOS ══
-function toggleTopico(pid,topico){const chave=normalizarChave(topico);const el=document.getElementById('topico-'+pid+'-'+chave),icon=document.getElementById('toggle-icon-'+pid+'-'+chave);const open=el.classList.contains('open');el.classList.toggle('open',!open);icon.textContent=open?'+':'−';}
-
-function renderFornecedorSelect(pid,chave,topico,valorAtual){
-  const lista=FORNECEDORES[topico]||['—'];
-  const opts=lista.map(f=>`<option value="${f}" ${f===valorAtual?'selected':''}>${f}</option>`).join('');
-  const cls=modoEdicao?'unlocked':'';
-  return `<div class="topico-fornecedor"><span>Fornecedor:</span><select id="forn-${pid}-${chave}" class="${cls}" onchange="autoSave()">${opts}</select></div>`;
+function toggleTopico(pid,topico){
+  const chave=normalizarChave(topico);
+  const el=document.getElementById('topico-'+pid+'-'+chave),icon=document.getElementById('toggle-icon-'+pid+'-'+chave);
+  const open=el.classList.contains('open');
+  el.classList.toggle('open',!open);icon.textContent=open?'+':'−';
 }
 
 function renderTopicosProjeto(p){
@@ -960,13 +1000,29 @@ function renderTopicosProjeto(p){
     const fim=bloco?(bloco.dataFim==='—'?'':bloco.dataFim):'';
     const forn=bloco?(bloco.fornecedor||'—'):'—';
     const cls=modoEdicao?'unlocked':'';
-    const sCls=modoEdicao?'unlocked':'';
+
+    // Campos inline no header (apenas para tópicos que não são Vizinhos)
+    const headerFields = topico !== 'Vizinhos' ? `
+      <div class="topico-inline-fields" onclick="event.stopPropagation()">
+        <label>Início:</label>
+        <input id="di-${p.id}-${chave}" class="${cls}" value="${ini}" placeholder="dd/mm/aaaa" onchange="autoSave()" />
+        <span class="topico-inline-sep">→</span>
+        <label>Fim:</label>
+        <input id="df-${p.id}-${chave}" class="${cls}" value="${fim}" placeholder="dd/mm/aaaa" onchange="autoSave()" />
+        <label style="margin-left:12px;">Fornecedor:</label>
+        ${(()=>{
+          const lista=FORNECEDORES[topico]||['—'];
+          const opts=lista.map(f=>`<option value="${f}" ${f===forn?'selected':''}>${f}</option>`).join('');
+          return `<select id="forn-${p.id}-${chave}" class="${cls}" onchange="autoSave()">${opts}</select>`;
+        })()}
+      </div>` : '';
 
     let conteudoInterno='';
     if(topico==='Vizinhos'){
       conteudoInterno=`<div class="vizinhos-wrapper">${renderVizinhosInner(p)}</div>`;
     } else {
       const itens=(bloco&&bloco.itens)||[];
+      const sCls=modoEdicao?'unlocked':'';
       conteudoInterno=`
         <div class="topico-col-header"><div>Assunto</div><div>Farol</div><div>Status</div><div>Data Limite</div><div>Observação</div></div>
         ${itens.map((item,idx)=>{
@@ -986,17 +1042,10 @@ function renderTopicosProjeto(p){
     return `<div class="topico-box">
       <div class="topico-header" onclick="toggleTopico(${p.id},'${topico}')">
         <div class="topico-titulo">${topico}</div>
+        ${headerFields}
         <div class="topico-toggle" id="toggle-icon-${p.id}-${chave}">+</div>
       </div>
       <div class="topico-conteudo" id="topico-${p.id}-${chave}">
-        ${topico!=='Vizinhos'?`
-        <div class="topico-datas">
-          <span>Início:</span>
-          <input id="di-${p.id}-${chave}" class="${cls}" value="${ini}" placeholder="dd/mm/aaaa" onchange="autoSave()" />
-          <span>→ Fim:</span>
-          <input id="df-${p.id}-${chave}" class="${cls}" value="${fim}" placeholder="dd/mm/aaaa" onchange="autoSave()" />
-        </div>
-        ${renderFornecedorSelect(p.id,chave,topico,forn)}`:''}
         ${conteudoInterno}
       </div>
     </div>`;
@@ -1040,7 +1089,6 @@ function renderTabela(lista){
       </td>
     </tr>`;
   }).join('');
-
   lista.forEach(p=>{
     ['inicioDemolicao','terminoDemolicao'].forEach(campo=>{
       const el=document.getElementById(`edit-${p.id}-${campo}`);
@@ -1059,7 +1107,6 @@ function renderTabela(lista){
   });
   if(modoEdicao)aplicarModoEdicao();
 }
-
 function toggleDetalhe(id){
   const row=document.getElementById('detail-'+id),btn=document.getElementById('btn-'+id);
   const isOpen=row.classList.contains('open');
