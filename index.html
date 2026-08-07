@@ -12,7 +12,7 @@
     --shadow: 0 2px 8px rgba(0,0,0,0.08); --radius: 8px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body, button, input, select { font-family: "Calibri Light", Calibri, "Segoe UI", Arial, sans-serif; }
+  body, button, input, select, textarea { font-family: "Calibri Light", Calibri, "Segoe UI", Arial, sans-serif; }
   body { background: var(--bege); color: var(--text-dark); font-size: 14px; }
 
   /* HEADER */
@@ -31,14 +31,37 @@
   .main { padding: 24px 80px; max-width: 1500px; margin: 0 auto; }
   .section-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 12px; font-weight: 600; }
 
-  /* FILTROS */
+  /* FILTROS DESKTOP */
   .filtros-box { background: var(--white); border: 1px solid var(--bege-dark); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 24px; box-shadow: var(--shadow); }
-  .filtros-grid { display: grid; grid-template-columns: repeat(7, 1fr) auto; gap: 10px; align-items: center; }
-  .filtro-item { display: flex; align-items: center; gap: 6px; min-width: 0; }
-  .filtro-item label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-weight: 600; white-space: nowrap; flex-shrink: 0; }
-  .filtro-item select, .filtro-item input { border: 1.5px solid var(--bege-dark); border-radius: 6px; padding: 7px 10px; font-size: 13px; color: var(--text-dark); background: #efe6da; width: 100%; min-width: 0; outline: none; transition: border 0.2s; }
+  .filtros-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px 18px;
+  }
+  .filtros-grid-row2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 14px 18px;
+    margin-top: 4px;
+  }
+  .filtro-item { display: flex; flex-direction: column; gap: 5px; }
+  .filtro-item label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .filtro-item select,
+  .filtro-item input {
+    border: 1.5px solid var(--bege-dark);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: var(--text-dark);
+    background: #efe6da;
+    width: 100%;
+    outline: none;
+    transition: border 0.2s;
+    height: 36px;
+  }
   .filtro-item select:focus, .filtro-item input:focus { border-color: var(--bronze); }
-  .btn-limpar { padding: 7px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid var(--bege-dark); background: var(--white); color: var(--text-mid); white-space: nowrap; transition: all 0.2s; }
+  .filtro-btn-wrap { display: flex; align-items: flex-end; }
+  .btn-limpar { padding: 8px 18px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid var(--bege-dark); background: var(--white); color: var(--text-mid); white-space: nowrap; transition: all 0.2s; height: 36px; }
   .btn-limpar:hover { border-color: var(--bronze); color: var(--bronze); }
 
   /* KPIs */
@@ -78,10 +101,7 @@
   .tabela-projetos tr:last-child td { border-bottom: none; }
   .tabela-projetos tbody tr:not(.detail-row):hover td { background: #f2e9de; }
 
-  /* COLUNA CALCULADA */
   .cell-calc { font-size: 12px; font-weight: 700; color: var(--bronze); background: #f5ede0; border-radius: 4px; padding: 3px 8px; text-align: center; white-space: nowrap; display: inline-block; }
-
-  /* EDITABLE — bloqueado por padrão */
   .cell-edit { border: none; background: transparent; font-size: 13px; color: var(--text-dark); width: 100%; min-width: 70px; font-family: inherit; padding: 2px 4px; border-radius: 4px; pointer-events: none; }
   .cell-edit.unlocked { pointer-events: all; transition: background 0.15s; }
   .cell-edit.unlocked:hover { background: #e8ddd0; }
@@ -91,7 +111,6 @@
   .cell-select.unlocked:hover { background: #e8ddd0; }
   .cell-select.unlocked:focus { background: #fff; outline: 2px solid var(--bronze); }
 
-  /* BOTÕES */
   .btn-add-projeto { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--bronze); color: #fff; border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; opacity: 0.4; pointer-events: none; }
   .btn-add-projeto.unlocked { opacity: 1; pointer-events: all; }
   .btn-add-projeto:hover { background: #7a6248; }
@@ -130,14 +149,20 @@
   .farol-r { background: var(--farol-vermelho); }
   .farol-vazio { background: #ddd; }
 
-  /* TÓPICOS PRINCIPAIS — mais escuros */
+  /* TÓPICOS PRINCIPAIS */
   .topico-box { border-bottom: 1px solid var(--bege-dark); }
   .topico-header { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 10px 14px; cursor: pointer; background: #8c7355; border-bottom: 1px solid #7a6248; user-select: none; }
   .topico-titulo { font-size: 13px; font-weight: 700; color: #fff; }
   .topico-toggle { font-size: 16px; color: #fff; font-weight: 700; }
   .topico-conteudo { display: none; }
   .topico-conteudo.open { display: block; }
-  .topico-col-header { background: #c7b79f; display: grid; grid-template-columns: 1fr 55px 55px 130px 2fr 160px; padding: 7px 14px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-mid); font-weight: 600; }
+
+  /* COLUNAS TÓPICOS NORMAIS — Assunto | Farol | Status | Data Limite | Observação */
+  .topico-col-header { background: #c7b79f; display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-mid); font-weight: 600; gap: 6px; }
+  .topico-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: var(--white); font-size: 12px; gap: 6px; }
+  .topico-linha:last-child { border-bottom: none; }
+  .topico-linha:hover { background: #faf6f0; }
+
   .topico-datas { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: #d8cbb8; border-bottom: 1px solid var(--bege-dark); font-size: 11px; color: var(--text-mid); font-weight: 600; flex-wrap: wrap; }
   .topico-datas input { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 3px 7px; font-size: 11px; background: var(--white); color: var(--text-dark); font-family: inherit; width: 110px; pointer-events: none; }
   .topico-datas input.unlocked { pointer-events: all; }
@@ -145,24 +170,82 @@
   .topico-fornecedor { display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: #e8dfd0; border-bottom: 1px solid var(--bege-dark); font-size: 11px; color: var(--text-mid); font-weight: 600; }
   .topico-fornecedor select { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 3px 8px; font-size: 12px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; }
   .topico-fornecedor select.unlocked { pointer-events: all; cursor: pointer; }
-  .topico-linha { display: grid; grid-template-columns: 1fr 55px 55px 130px 2fr 160px; padding: 7px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: var(--white); font-size: 12px; }
-  .topico-linha:last-child { border-bottom: none; }
-  .topico-linha:hover { background: #faf6f0; }
 
-  /* SUBPASTAS — mesma cor dos tópicos principais antes (bronze claro) */
+  /* STATUS SELECT nas linhas */
+  .linha-status-sel { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 2px 5px; font-size: 11px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; width: 100%; }
+  .linha-status-sel.unlocked { pointer-events: all; cursor: pointer; }
+  .linha-obs { border: none; background: transparent; font-size: 12px; color: var(--text-dark); font-family: inherit; width: 100%; pointer-events: none; padding: 2px 4px; border-radius: 4px; }
+  .linha-obs.unlocked { pointer-events: all; }
+  .linha-obs.unlocked:hover { background: #e8ddd0; }
+  .linha-obs.unlocked:focus { background: #fff; outline: 2px solid var(--bronze); }
+
+  /* SUBPASTAS */
   .subpasta-box { border-bottom: 1px solid var(--bege-dark); }
   .subpasta-header { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 9px 14px; cursor: pointer; background: #f3ecdf; border-bottom: 1px solid var(--bege-dark); user-select: none; }
   .subpasta-titulo { font-size: 12px; font-weight: 700; color: var(--bronze); }
   .subpasta-toggle { font-size: 14px; color: var(--bronze); font-weight: 700; }
   .subpasta-conteudo { display: none; }
   .subpasta-conteudo.open { display: block; }
-  .subpasta-col-header { background: #ede5d8; display: grid; grid-template-columns: 1fr 55px 55px 130px 2fr 160px; padding: 5px 14px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
-  .subpasta-linha { display: grid; grid-template-columns: 1fr 55px 55px 130px 2fr 160px; padding: 6px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: #faf6f0; font-size: 12px; }
+  .subpasta-col-header { background: #ede5d8; display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 5px 14px; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-light); font-weight: 600; gap: 6px; }
+  .subpasta-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 6px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: #faf6f0; font-size: 12px; gap: 6px; }
   .subpasta-linha:last-child { border-bottom: none; }
   .subpasta-linha:hover { background: #f5efe5; }
 
+  /* ══ VIZINHOS ══ */
+  .vizinhos-wrapper { padding: 10px 14px; background: #f7f3ee; }
+  .btn-add-vizinho { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--bronze); color: #fff; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; margin-bottom: 12px; transition: background 0.2s; opacity: 0.4; pointer-events: none; }
+  .btn-add-vizinho.unlocked { opacity: 1; pointer-events: all; }
+  .btn-add-vizinho:hover { background: #7a6248; }
+
+  /* Cada vizinho = subpasta */
+  .vizinho-box { border: 1px solid var(--bege-dark); border-radius: 6px; margin-bottom: 10px; overflow: hidden; }
+  .vizinho-header { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; background: #f3ecdf; cursor: pointer; border-bottom: 1px solid var(--bege-dark); user-select: none; }
+  .vizinho-header-left { display: flex; align-items: center; gap: 8px; }
+  .vizinho-nome { font-size: 12px; font-weight: 700; color: var(--bronze); }
+  .vizinho-toggle { font-size: 14px; color: var(--bronze); font-weight: 700; }
+  .btn-del-vizinho { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #f44336; background: transparent; color: #f44336; cursor: pointer; font-size: 11px; display: flex; align-items: center; justify-content: center; opacity: 0.3; pointer-events: none; transition: all 0.2s; }
+  .btn-del-vizinho.unlocked { opacity: 1; pointer-events: all; }
+  .btn-del-vizinho:hover { background: #f44336; color: #fff; }
+
+  .vizinho-conteudo { display: none; }
+  .vizinho-conteudo.open { display: block; }
+
+  /* Layout interno do vizinho: info à esquerda | checklist à direita */
+  .vizinho-inner { display: grid; grid-template-columns: 280px 1fr; gap: 0; }
+
+  /* BOX INFO */
+  .vizinho-info-box { background: #ede5d8; border-right: 1px solid var(--bege-dark); padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .vizinho-info-titulo { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 2px; }
+  .vizinho-info-field { display: flex; flex-direction: column; gap: 3px; }
+  .vizinho-info-label { font-size: 10px; color: var(--text-light); font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; }
+  .vizinho-info-input { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 5px 8px; font-size: 12px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; width: 100%; }
+  .vizinho-info-input.unlocked { pointer-events: all; }
+  .vizinho-info-input.unlocked:focus { outline: 2px solid var(--bronze); border-color: var(--bronze); }
+  .vizinho-info-select { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 5px 8px; font-size: 12px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; width: 100%; }
+  .vizinho-info-select.unlocked { pointer-events: all; cursor: pointer; }
+  .vizinho-info-textarea { border: 1px solid var(--bege-dark); border-radius: 4px; padding: 5px 8px; font-size: 12px; background: var(--white); color: var(--text-dark); font-family: inherit; pointer-events: none; width: 100%; resize: none; min-height: 58px; }
+  .vizinho-info-textarea.unlocked { pointer-events: all; }
+  .vizinho-info-textarea.unlocked:focus { outline: 2px solid var(--bronze); border-color: var(--bronze); }
+
+  /* CHECKLIST VIZINHO */
+  .vizinho-checklist { background: var(--white); }
+  .vizinho-check-header { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; background: #c7b79f; font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-mid); font-weight: 600; gap: 6px; }
+  .vizinho-check-linha { display: grid; grid-template-columns: 2fr 50px 110px 120px 2fr; padding: 7px 14px; border-bottom: 1px solid #ede5d8; align-items: center; background: var(--white); font-size: 12px; gap: 6px; }
+  .vizinho-check-linha:last-child { border-bottom: none; }
+  .vizinho-check-linha:hover { background: #faf6f0; }
+
   .footer { text-align: center; padding: 20px; font-size: 11px; color: #fff; border-top: 1px solid var(--bronze); margin-top: 10px; background: var(--bronze); }
-  @media (max-width: 768px) { .main { padding: 16px; } .filtros-grid { grid-template-columns: 1fr; } .kpi-grid { grid-template-columns: repeat(2,1fr); } .tabela-box, .gantt-box { display: none; } }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .main { padding: 12px 10px; }
+    .filtros-grid { grid-template-columns: 1fr 1fr; }
+    .filtros-grid-row2 { grid-template-columns: 1fr 1fr; }
+    .filtro-btn-wrap { grid-column: 1 / -1; }
+    .kpi-grid { grid-template-columns: repeat(2,1fr); }
+    .tabela-box, .gantt-box { display: none; }
+    .vizinho-inner { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -194,22 +277,26 @@
 
 <div class="main">
 
+  <!-- FILTROS -->
   <div class="filtros-box">
     <div class="section-label">Filtros</div>
     <div class="filtros-grid">
-      <div class="filtro-item"><label>Ano</label>
+      <div class="filtro-item">
+        <label>Ano</label>
         <select id="filtroAno" onchange="aplicarFiltros()">
           <option value="">Todos</option>
           <option value="2024">2024</option><option value="2025">2025</option>
           <option value="2026">2026</option><option value="2027">2027</option>
         </select>
       </div>
-      <div class="filtro-item"><label>Segmento</label>
+      <div class="filtro-item">
+        <label>Segmento</label>
         <select id="filtroSegmento" onchange="aplicarFiltros()">
           <option value="">Todos</option><option value="Full">Full</option><option value="Padrão">Padrão</option>
         </select>
       </div>
-      <div class="filtro-item"><label>Doninho</label>
+      <div class="filtro-item">
+        <label>Doninho</label>
         <select id="filtroDoninho" onchange="aplicarFiltros()">
           <option value="">Todas</option>
           <option value="Denis Pimentel">Denis Pimentel</option>
@@ -217,7 +304,8 @@
           <option value="Akemi Yoshikawa">Akemi Yoshikawa</option>
         </select>
       </div>
-      <div class="filtro-item"><label>Status</label>
+      <div class="filtro-item">
+        <label>Status</label>
         <select id="filtroStatus" onchange="aplicarFiltros()">
           <option value="">Todos</option>
           <option value="A Iniciar">A Iniciar</option>
@@ -225,7 +313,10 @@
           <option value="Finalizado">Finalizado</option>
         </select>
       </div>
-      <div class="filtro-item"><label>Etapa</label>
+    </div>
+    <div class="filtros-grid-row2" style="margin-top:10px;">
+      <div class="filtro-item">
+        <label>Etapa</label>
         <select id="filtroEtapa" onchange="aplicarFiltros()">
           <option value="">Todas</option>
           <option value="Demolição">Demolição</option>
@@ -234,7 +325,8 @@
           <option value="Vizinhos">Vizinhos</option>
         </select>
       </div>
-      <div class="filtro-item"><label>Fornecedor</label>
+      <div class="filtro-item">
+        <label>Fornecedor</label>
         <select id="filtroFornecedor" onchange="aplicarFiltros()">
           <option value="">Todos</option>
           <optgroup label="Demolição">
@@ -242,32 +334,28 @@
             <option value="Minas e Diez">Minas e Diez</option>
           </optgroup>
           <optgroup label="PDV">
-            <option value="FAAE">FAAE</option>
-            <option value="Newcom">Newcom</option>
-            <option value="LK2">LK2</option>
-            <option value="Quattri">Quattri</option>
+            <option value="FAAE">FAAE</option><option value="Newcom">Newcom</option>
+            <option value="LK2">LK2</option><option value="Quattri">Quattri</option>
           </optgroup>
-          <optgroup label="Pré Obra">
-            <option value="Diez">Diez</option>
-          </optgroup>
+          <optgroup label="Pré Obra"><option value="Diez">Diez</option></optgroup>
           <optgroup label="Portaria">
-            <option value="Stanford">Stanford</option>
-            <option value="Street">Street</option>
-            <option value="Libra">Libra</option>
-            <option value="Pavcan">Pavcan</option>
+            <option value="Stanford">Stanford</option><option value="Street">Street</option>
+            <option value="Libra">Libra</option><option value="Pavcan">Pavcan</option>
           </optgroup>
           <optgroup label="Tapume">
-            <option value="Logoplaca">Logoplaca</option>
-            <option value="VJL">VJL</option>
-            <option value="Criare">Criare</option>
-            <option value="Tecnomidia">Tecnomidia</option>
+            <option value="Logoplaca">Logoplaca</option><option value="VJL">VJL</option>
+            <option value="Criare">Criare</option><option value="Tecnomidia">Tecnomidia</option>
           </optgroup>
         </select>
       </div>
-      <div class="filtro-item"><label>Buscar</label>
+      <div class="filtro-item">
+        <label>Buscar</label>
         <input type="text" id="filtroBusca" placeholder="Nome do terreno..." oninput="aplicarFiltros()" />
       </div>
-      <button class="btn-limpar" onclick="limparFiltros()">↺ Limpar</button>
+      <div class="filtro-item" style="visibility:hidden;"></div>
+      <div class="filtro-btn-wrap">
+        <button class="btn-limpar" onclick="limparFiltros()">↺ Limpar</button>
+      </div>
     </div>
   </div>
 
@@ -356,571 +444,591 @@
 </div>
 
 <div class="save-toast" id="saveToast">✅ Dados salvos!</div>
-
 <div class="footer">
   Living — Painel de Gestão Landbank · Engenharia de Incorporação · <span id="dataAtual"></span>
 </div>
 
 <script>
-// ══════════════════════════════════════════════════════
-// SENHA / MODO EDIÇÃO
-// ══════════════════════════════════════════════════════
+// ══ SENHA ══
 const SENHA_CORRETA = 'engpdv123';
 let modoEdicao = false;
-
 function toggleEditMode() {
-  if (modoEdicao) {
-    // Sair do modo edição
-    modoEdicao = false;
-    aplicarModoEdicao();
-  } else {
-    document.getElementById('inputSenha').value = '';
-    document.getElementById('erroSenha').textContent = '';
-    document.getElementById('modalSenha').classList.add('show');
-    setTimeout(() => document.getElementById('inputSenha').focus(), 100);
-  }
+  if (modoEdicao) { modoEdicao = false; aplicarModoEdicao(); }
+  else { document.getElementById('inputSenha').value=''; document.getElementById('erroSenha').textContent=''; document.getElementById('modalSenha').classList.add('show'); setTimeout(()=>document.getElementById('inputSenha').focus(),100); }
 }
 function fecharModal() { document.getElementById('modalSenha').classList.remove('show'); }
 function confirmarSenha() {
   const v = document.getElementById('inputSenha').value;
-  if (v === SENHA_CORRETA) {
-    modoEdicao = true;
-    fecharModal();
-    aplicarModoEdicao();
-  } else {
-    document.getElementById('erroSenha').textContent = 'Senha incorreta. Tente novamente.';
-    document.getElementById('inputSenha').value = '';
-    document.getElementById('inputSenha').focus();
-  }
+  if (v===SENHA_CORRETA) { modoEdicao=true; fecharModal(); aplicarModoEdicao(); }
+  else { document.getElementById('erroSenha').textContent='Senha incorreta.'; document.getElementById('inputSenha').value=''; document.getElementById('inputSenha').focus(); }
 }
 function aplicarModoEdicao() {
-  const btn = document.getElementById('btnEditMode');
-  const badge = document.getElementById('editBadge');
-  const btnAdd = document.getElementById('btnAddProjeto');
-  const btnSalvar = document.getElementById('btnSalvar');
+  const btn=document.getElementById('btnEditMode'), badge=document.getElementById('editBadge');
+  const btnAdd=document.getElementById('btnAddProjeto'), btnSalvar=document.getElementById('btnSalvar');
   if (modoEdicao) {
-    btn.textContent = '🔓 Sair da Edição';
-    btn.classList.add('active');
-    badge.classList.add('show');
-    btnAdd.classList.add('unlocked');
-    btnSalvar.classList.add('unlocked');
+    btn.textContent='🔓 Sair da Edição'; btn.classList.add('active');
+    badge.classList.add('show'); btnAdd.classList.add('unlocked'); btnSalvar.classList.add('unlocked');
   } else {
-    btn.textContent = '✏️ Editar';
-    btn.classList.remove('active');
-    badge.classList.remove('show');
-    btnAdd.classList.remove('unlocked');
-    btnSalvar.classList.remove('unlocked');
+    btn.textContent='✏️ Editar'; btn.classList.remove('active');
+    badge.classList.remove('show'); btnAdd.classList.remove('unlocked'); btnSalvar.classList.remove('unlocked');
   }
-  // Atualizar todos os inputs/selects da tabela
-  document.querySelectorAll('.cell-edit, .cell-select').forEach(el => {
-    el.classList.toggle('unlocked', modoEdicao);
-  });
-  // Botões de deletar
-  document.querySelectorAll('.btn-del-row').forEach(el => el.classList.toggle('unlocked', modoEdicao));
-  // Inputs dos tópicos
-  document.querySelectorAll('.topico-datas input, .topico-fornecedor select').forEach(el => el.classList.toggle('unlocked', modoEdicao));
+  document.querySelectorAll('.cell-edit,.cell-select,.linha-status-sel,.linha-obs').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
+  document.querySelectorAll('.btn-del-row,.btn-del-vizinho,.btn-add-vizinho').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
+  document.querySelectorAll('.topico-datas input,.topico-fornecedor select').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
+  document.querySelectorAll('.vizinho-info-input,.vizinho-info-select,.vizinho-info-textarea').forEach(el=>el.classList.toggle('unlocked',modoEdicao));
 }
 
-// ══════════════════════════════════════════════════════
-// FORNECEDORES POR ETAPA
-// ══════════════════════════════════════════════════════
+// ══ FORNECEDORES ══
 const FORNECEDORES = {
-  'Demolição': ['—','Minas','Minas e Diez'],
-  'PDV':       ['—','FAAE','Newcom','LK2','Quattri'],
-  'Pré Obra':  ['—','Diez'],
-  'Portaria':  ['—','Stanford','Street','Libra','Pavcan'],
-  'Tapume':    ['—','Newcom','Logoplaca','VJL','Criare','Tecnomidia'],
-  'Vizinhos':  ['—']
+  'Demolição':['—','Minas','Minas e Diez'],
+  'PDV':['—','FAAE','Newcom','LK2','Quattri'],
+  'Pré Obra':['—','Diez'],
+  'Portaria':['—','Stanford','Street','Libra','Pavcan'],
+  'Tapume':['—','Newcom','Logoplaca','VJL','Criare','Tecnomidia'],
+  'Vizinhos':['—']
 };
 
-// ══════════════════════════════════════════════════════
-// CHECKLIST MODEL
-// ══════════════════════════════════════════════════════
-function criarModeloDetalhes() {
+const STATUS_OPTS = ['','Ok','N/A','Em andamento'];
+
+// ══ VIZINHOS CHECKLIST ITENS ══
+const VIZINHO_ETAPAS = [
+  'Descrição do Caso','Formalização da reclamação (e-mail e telefone)',
+  'Abertura do sinistro junto à EPL + Envio Documentação',
+  'Vistoria do Perito + Fornecedores','Orçamentos','Análise da Seguradora',
+  'Assinatura da Minuta Inicial','Início dos Serviços / Reembolso',
+  'Assinatura da Minuta Final','Reembolso EPL'
+];
+
+function criarVizinho(nome) {
   return {
-    "Demolição": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
-      {assunto:"Visita + Orçamentos Demolição",              farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Laudo de Boas Vindas",                       farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Laudo de vizinhos (contratação e realizado)",farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Ronda / Portaria",                           farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Contratação demolidora",                     farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Contratação tapume demolição",               farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Documentação LCR",                           farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Demanda Entrada de Energia Obra",            farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Solicitação Orçamentos LCR",                 farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Posses (farol por lote + link QF)",          farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Supressões",                                 farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Ligação de Energia",                         farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Ligação de Água",                            farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Ligação de Esgoto",                          farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Ligação Acréscimo de Obra",                  farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Acréscimo de Energia",                       farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Entrada de Energia de Obra",                 farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Remediação",                                 farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Pasta de Obra", isSubpasta:true, itens:[
-        {assunto:"Alvará de Demolição",    farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Alvará de Tapume",       farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"ART",                    farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PGRCC inicial",          farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PGRCC final",            farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Seguro de Obra",         farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Placa de Obra",          farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PCA",                    farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Plano de Demolição",     farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Certificado de Britagem",farol:"a",dataLimite:"—",status:"—"}
-      ]},
-      {assunto:"Início demolição",                           farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Chapisco + Canaleta",                        farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Relatório final de visita MA (pós demo)",    farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Plani Pós Demo",                             farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Pendências",                                 farol:"a",dataLimite:"—",status:"—"}
-    ]},
-    "PDV": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
-      {assunto:"Sinal",                                      farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Cronograma Projetos Stand",                  farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Projetos Stand (Cronograma, Param., EST, FUN, ELE, HID, STAND, DEC, MINI EXEC)",farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Kick off",                                   farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Pasta de Obra", isSubpasta:true, itens:[
-        {assunto:"Alvará de Stand",              farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Alvará de Tapume",             farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"ART Cyrela",                   farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"ART Empreiteira",              farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"ART Segurança do Trabalho",    farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PGRCC inicial",                farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PGRCC final",                  farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Seguro de Obra",               farol:"a",farolVenc:true,dataLimite:"—",status:"—"},
-        {assunto:"Placa de Obra",                farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PCA",                          farol:"a",dataLimite:"—",status:"—"}
-      ]},
-      {assunto:"Ar Condicionado (Croqui e Orçamento)",       farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Escopo",                                     farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Marcenaria (Croqui e Orçamento)",            farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Pisos (Stand e Backoffice)",                 farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Quintal urbano",                             farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Checklist",                                  farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Concessionárias",                            farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Tapume",                                     farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Portaria",                                   farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Laudo de Taludes",                           farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Laudo de Estrutura",                         farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Laudo de Estanqueidade",                     farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Laudo de Telhados",                          farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Laudo Corante",                              farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Aditivo",                                    farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Pendências",                                 farol:"a",dataLimite:"—",status:"—"}
-    ]},
-    "Pré Obra": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
-      {assunto:"Tapume de Obra", isSubpasta:true, itens:[
-        {assunto:"Projeto de Canteiro",              farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Custo planejado para tapume",      farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Validação Eng. Obra",              farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Solicitação do orçamento",         farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Programação da instalação",        farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Envelopamento",                    farol:"a",dataLimite:"—",status:"—"}
-      ]},
-      {assunto:"Desmobilização (AC, Marcenaria)",            farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Demolição stand (contratação e programação)",farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Pasta de Obra", isSubpasta:true, itens:[
-        {assunto:"Alvará de Tapume",             farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"ART Empreiteira",              farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"ART Segurança do Trabalho",    farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PGRCC inicial",                farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"PGRCC final",                  farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Seguro de Obra",               farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"TCA",                          farol:"a",dataLimite:"—",status:"—"},
-        {assunto:"Certificado de Britagem",      farol:"a",dataLimite:"—",status:"—"}
-      ]},
-      {assunto:"Concessionária",                             farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Relatório de vizinhos",                      farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Manejo Arbóreo",                             farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Passagem de obra (FVS, Drone, Fotos, Validação Plani Pós Demo, Rel. vizinhos, e-mail)",farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Pendências",                                 farol:"a",dataLimite:"—",status:"—"}
-    ]},
-    "Vizinhos": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
-      {assunto:"Descrição do Caso",                                     farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Formalização da reclamação (e-mail e telefone)",        farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Abertura do sinistro junto à EPL + Envio Documentação", farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Vistoria do Perito + Fornecedores",                     farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Orçamentos",                                            farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Análise da Seguradora",                                 farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Assinatura da Minuta Inicial",                          farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Início dos Serviços / Reembolso",                       farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Assinatura da Minuta Final",                            farol:"a",dataLimite:"—",status:"—"},
-      {assunto:"Reembolso EPL",                                         farol:"a",dataLimite:"—",status:"—"}
-    ]}
+    id: Date.now() + Math.random(),
+    nome: nome || 'Novo Vizinho',
+    endereco:'', status:'', vencimento:'', dataLimite:'', email:'', telefone:'', observacoes:'',
+    itens: VIZINHO_ETAPAS.map(a=>({assunto:a, farol:'a', statusLinha:'', dataLimite:'', obs:''}))
   };
 }
 
-// ══════════════════════════════════════════════════════
-// DADOS PADRÃO
-// ══════════════════════════════════════════════════════
-const PROJETOS_PADRAO = [
-  { id:1, terreno:"Ouvidor Peleja",       bairro:"Vila Mariana",       segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"Em andamento", possePrimeiro:"01/10/2024", posseUltimo:"01/10/2024", inicioDemolicao:"05/10/2024", terminoDemolicao:"20/11/2024", inicioPDV:"10/12/2024", finalizacaoPDV:"15/01/2025", meeting:"28/01/2026", desmobPDV:"05/02/2026", inicioPreObra:"10/02/2026", inicioObra:"21/02/2026" },
-  { id:2, terreno:"Rua Butantã",          bairro:"Pinheiros",          segmento:"Full",   doninho:"Giulia Oliveira", statusExecucao:"A Iniciar",     possePrimeiro:"08/02/2024", posseUltimo:"08/02/2024", inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"06/04/2026", desmobPDV:"—",          inicioPreObra:"—",          inicioObra:"18/04/2026" },
-  { id:3, terreno:"Fernandes Moreira II", bairro:"Chácara S. Antônio", segmento:"Full",   doninho:"Akemi Yoshikawa", statusExecucao:"Finalizado",    possePrimeiro:"06/12/2023", posseUltimo:"06/12/2023", inicioDemolicao:"10/01/2024", terminoDemolicao:"28/02/2024", inicioPDV:"05/03/2024", finalizacaoPDV:"20/04/2024", meeting:"23/04/2026", desmobPDV:"25/04/2026", inicioPreObra:"01/05/2026", inicioObra:"16/05/2026" },
-  { id:4, terreno:"Chicago",              bairro:"Brooklin",           segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"Em andamento", possePrimeiro:"15/03/2024", posseUltimo:"15/03/2024", inicioDemolicao:"20/03/2024", terminoDemolicao:"30/04/2024", inicioPDV:"10/05/2024", finalizacaoPDV:"30/05/2024", meeting:"20/05/2026", desmobPDV:"01/06/2026", inicioPreObra:"05/06/2026", inicioObra:"14/06/2026" },
-  { id:5, terreno:"Guaratuba",            bairro:"Conceição",          segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"A Iniciar",     possePrimeiro:"—",          posseUltimo:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          desmobPDV:"—",          inicioPreObra:"—",          inicioObra:"Set/2026" },
-  { id:6, terreno:"Antônio das Chagas",   bairro:"Chácara S. Antônio", segmento:"Full",   doninho:"Akemi Yoshikawa", statusExecucao:"Em andamento", possePrimeiro:"—",          posseUltimo:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          desmobPDV:"—",          inicioPreObra:"—",          inicioObra:"Out/2026" },
-  { id:7, terreno:"Canário Moema",        bairro:"Moema",              segmento:"Full",   doninho:"Giulia Oliveira", statusExecucao:"A Iniciar",     possePrimeiro:"—",          posseUltimo:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          desmobPDV:"—",          inicioPreObra:"—",          inicioObra:"Nov/2026" },
-  { id:8, terreno:"Dona Inácia Uchôa I",  bairro:"Vila Mariana",       segmento:"Padrão", doninho:"Denis Pimentel",  statusExecucao:"Em andamento", possePrimeiro:"—",          posseUltimo:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          desmobPDV:"—",          inicioPreObra:"—",          inicioObra:"Dez/2026" },
-  { id:9, terreno:"Otávio Tarquínio",     bairro:"Campo Belo",         segmento:"Full",   doninho:"Giulia Oliveira", statusExecucao:"A Iniciar",     possePrimeiro:"—",          posseUltimo:"—",          inicioDemolicao:"—",          terminoDemolicao:"—",          inicioPDV:"—",          finalizacaoPDV:"—",          meeting:"—",          desmobPDV:"—",          inicioPreObra:"—",          inicioObra:"Jan/2027" }
-];
+// ══ MODELO DETALHES ══
+function criarModeloDetalhes() {
+  return {
+    "Demolição": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
+      {assunto:"Visita + Orçamentos Demolição",               farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Laudo de Boas Vindas",                        farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Laudo de vizinhos (contratação e realizado)", farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Ronda / Portaria",                            farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Contratação demolidora",                      farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Contratação tapume demolição",                farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Documentação LCR",                            farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Demanda Entrada de Energia Obra",             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Solicitação Orçamentos LCR",                  farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Posses (farol por lote + link QF)",           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Supressões",                                  farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Ligação de Energia",                          farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Ligação de Água",                             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Ligação de Esgoto",                           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Ligação Acréscimo de Obra",                   farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Acréscimo de Energia",                        farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Entrada de Energia de Obra",                  farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Remediação",                                  farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Pasta de Obra", isSubpasta:true, itens:[
+        {assunto:"Alvará de Demolição",     farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Alvará de Tapume",        farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"ART",                     farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PGRCC inicial",           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PGRCC final",             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Seguro de Obra",          farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Placa de Obra",           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PCA",                     farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Plano de Demolição",      farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Certificado de Britagem", farol:"a",statusLinha:"",dataLimite:"—",obs:""}
+      ]},
+      {assunto:"Início demolição",                            farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Chapisco + Canaleta",                         farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Relatório final de visita MA (pós demo)",     farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Plani Pós Demo",                              farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Pendências",                                  farol:"a",statusLinha:"",dataLimite:"—",obs:""}
+    ]},
+    "PDV": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
+      {assunto:"Sinal",                                       farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Cronograma Projetos Stand",                   farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Projetos Stand",                              farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Kick off",                                    farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Pasta de Obra", isSubpasta:true, itens:[
+        {assunto:"Alvará de Stand",           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Alvará de Tapume",          farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"ART Cyrela",                farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"ART Empreiteira",           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"ART Segurança do Trabalho", farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PGRCC inicial",             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PGRCC final",               farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Seguro de Obra",            farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Placa de Obra",             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PCA",                       farol:"a",statusLinha:"",dataLimite:"—",obs:""}
+      ]},
+      {assunto:"Ar Condicionado (Croqui e Orçamento)",        farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Escopo",                                      farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Marcenaria (Croqui e Orçamento)",             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Pisos (Stand e Backoffice)",                  farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Quintal urbano",                              farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Checklist",                                   farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Concessionárias",                             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Tapume",                                      farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Portaria",                                    farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Laudo de Taludes",                            farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Laudo de Estrutura",                          farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Laudo de Estanqueidade",                      farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Laudo de Telhados",                           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Laudo Corante",                               farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Aditivo",                                     farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Pendências",                                  farol:"a",statusLinha:"",dataLimite:"—",obs:""}
+    ]},
+    "Pré Obra": { dataInicio:"—", dataFim:"—", fornecedor:"—", itens:[
+      {assunto:"Tapume de Obra", isSubpasta:true, itens:[
+        {assunto:"Projeto de Canteiro",         farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Custo planejado para tapume", farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Validação Eng. Obra",         farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Solicitação do orçamento",    farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Programação da instalação",   farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Envelopamento",               farol:"a",statusLinha:"",dataLimite:"—",obs:""}
+      ]},
+      {assunto:"Desmobilização (AC, Marcenaria)",             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Demolição stand (contratação e programação)", farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Pasta de Obra", isSubpasta:true, itens:[
+        {assunto:"Alvará de Tapume",          farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"ART Empreiteira",           farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"ART Segurança do Trabalho", farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PGRCC inicial",             farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"PGRCC final",               farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Seguro de Obra",            farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"TCA",                       farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+        {assunto:"Certificado de Britagem",   farol:"a",statusLinha:"",dataLimite:"—",obs:""}
+      ]},
+      {assunto:"Concessionária",                              farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Relatório de vizinhos",                       farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Manejo Arbóreo",                              farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Passagem de obra",                            farol:"a",statusLinha:"",dataLimite:"—",obs:""},
+      {assunto:"Pendências",                                  farol:"a",statusLinha:"",dataLimite:"—",obs:""}
+    ]},
+    "Vizinhos": { dataInicio:"—", dataFim:"—", fornecedor:"—", vizinhos:[] }
+  };
+}
 
-// ══════════════════════════════════════════════════════
-// LOCAL STORAGE
-// ══════════════════════════════════════════════════════
-const LS_KEY = 'pdvliving_v4';
+// ══ LOCAL STORAGE ══
+const LS_KEY = 'pdvliving_v5';
 function carregarProjetos() {
   try {
     const s = localStorage.getItem(LS_KEY);
-    if (s) return JSON.parse(s).map(p => ({...p, detalhes: p.detalhes || criarModeloDetalhes()}));
+    if (s) return JSON.parse(s).map(p=>({...p, detalhes:p.detalhes||criarModeloDetalhes()}));
   } catch(e){}
-  return PROJETOS_PADRAO.map(p => ({...p, detalhes: criarModeloDetalhes()}));
+  return PROJETOS_PADRAO.map(p=>({...p, detalhes:criarModeloDetalhes()}));
 }
 function salvarProjetos() { localStorage.setItem(LS_KEY, JSON.stringify(projetos)); }
 
-function salvarTudo() {
-  if (!modoEdicao) return;
+const PROJETOS_PADRAO = [
+  {id:1,terreno:"Ouvidor Peleja",bairro:"Vila Mariana",segmento:"Padrão",doninho:"Denis Pimentel",statusExecucao:"Em andamento",possePrimeiro:"01/10/2024",posseUltimo:"01/10/2024",inicioDemolicao:"05/10/2024",terminoDemolicao:"20/11/2024",inicioPDV:"10/12/2024",finalizacaoPDV:"15/01/2025",meeting:"28/01/2026",desmobPDV:"05/02/2026",inicioPreObra:"10/02/2026",inicioObra:"21/02/2026"},
+  {id:2,terreno:"Rua Butantã",bairro:"Pinheiros",segmento:"Full",doninho:"Giulia Oliveira",statusExecucao:"A Iniciar",possePrimeiro:"08/02/2024",posseUltimo:"08/02/2024",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"06/04/2026",desmobPDV:"—",inicioPreObra:"—",inicioObra:"18/04/2026"},
+  {id:3,terreno:"Fernandes Moreira II",bairro:"Chácara S. Antônio",segmento:"Full",doninho:"Akemi Yoshikawa",statusExecucao:"Finalizado",possePrimeiro:"06/12/2023",posseUltimo:"06/12/2023",inicioDemolicao:"10/01/2024",terminoDemolicao:"28/02/2024",inicioPDV:"05/03/2024",finalizacaoPDV:"20/04/2024",meeting:"23/04/2026",desmobPDV:"25/04/2026",inicioPreObra:"01/05/2026",inicioObra:"16/05/2026"},
+  {id:4,terreno:"Chicago",bairro:"Brooklin",segmento:"Padrão",doninho:"Denis Pimentel",statusExecucao:"Em andamento",possePrimeiro:"15/03/2024",posseUltimo:"15/03/2024",inicioDemolicao:"20/03/2024",terminoDemolicao:"30/04/2024",inicioPDV:"10/05/2024",finalizacaoPDV:"30/05/2024",meeting:"20/05/2026",desmobPDV:"01/06/2026",inicioPreObra:"05/06/2026",inicioObra:"14/06/2026"},
+  {id:5,terreno:"Guaratuba",bairro:"Conceição",segmento:"Padrão",doninho:"Denis Pimentel",statusExecucao:"A Iniciar",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"Set/2026"},
+  {id:6,terreno:"Antônio das Chagas",bairro:"Chácara S. Antônio",segmento:"Full",doninho:"Akemi Yoshikawa",statusExecucao:"Em andamento",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"Out/2026"},
+  {id:7,terreno:"Canário Moema",bairro:"Moema",segmento:"Full",doninho:"Giulia Oliveira",statusExecucao:"A Iniciar",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"Nov/2026"},
+  {id:8,terreno:"Dona Inácia Uchôa I",bairro:"Vila Mariana",segmento:"Padrão",doninho:"Denis Pimentel",statusExecucao:"Em andamento",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"Dez/2026"},
+  {id:9,terreno:"Otávio Tarquínio",bairro:"Campo Belo",segmento:"Full",doninho:"Giulia Oliveira",statusExecucao:"A Iniciar",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"Jan/2027"}
+];
+
+let projetos = carregarProjetos();
+let projetosFiltrados = [...projetos];
+
+// ══ HELPERS ══
+const mesesLabel=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ","JAN","FEV","MAR","ABR"];
+const anos2=[2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2027,2027,2027,2027];
+const MES_MAP={};
+anos2.forEach((a,i)=>{MES_MAP[`${mesesLabel[i]}-${a}`]=i;});
+const HOJE_MES=7;
+let zoomLevel=1;
+const COL_W=70;
+
+function normalizarChave(t){return t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-').toLowerCase();}
+function extrairAno(str){if(!str||str==='—')return null;const p=str.split('/');if(p.length===3)return parseInt(p[2]);return null;}
+function dataParaGanttIdx(str){if(!str||str==='—')return null;const p=str.split('/');if(p.length!==3)return null;const labels=["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];const key=`${labels[parseInt(p[1])-1]}-${parseInt(p[2])}`;return MES_MAP[key]!==undefined?MES_MAP[key]:null;}
+function calcDiasDemo(ini,fim){if(!ini||!fim||ini==='—'||fim==='—')return'—';const parse=s=>{const p=s.split('/');return new Date(p[2],p[1]-1,p[0]);};try{const d=Math.round((parse(fim)-parse(ini))/86400000);return d>=0?`${d}d`:'—';}catch(e){return'—';}}
+function farolDot(f){const map={g:'farol-g',a:'farol-a',r:'farol-r'};return `<span class="farol ${map[f]||'farol-vazio'}"></span>`;}
+function statusTag(s){const map={'A Iniciar':'a-iniciar','Em andamento':'em-andamento','Finalizado':'finalizado'};return `<span class="tag-status tag-${map[s]||'a-iniciar'}">${s||'—'}</span>`;}
+function inp(id,val,ph){return `<input class="cell-edit" id="${id}" value="${(val||'').replace(/"/g,'&quot;')}" placeholder="${ph||''}" onchange="autoSave()" />`;}
+function sel(id,val,opts){return `<select class="cell-select" id="${id}" onchange="autoSave()">${opts.map(o=>`<option value="${o}" ${o===val?'selected':''}>${o}</option>`).join('')}</select>`;}
+
+function statusSelLinha(uid, val) {
+  const opts = STATUS_OPTS.map(o=>`<option value="${o}" ${o===val?'selected':''}>${o||'—'}</option>`).join('');
+  const cls = modoEdicao ? 'unlocked' : '';
+  return `<select class="linha-status-sel ${cls}" id="ls-${uid}" onchange="autoSave()">${opts}</select>`;
+}
+function obsInput(uid, val) {
+  const cls = modoEdicao ? 'unlocked' : '';
+  return `<input class="linha-obs ${cls}" id="lo-${uid}" value="${(val||'').replace(/"/g,'&quot;')}" placeholder="Observação..." onchange="autoSave()" />`;
+}
+
+function autoSave(){if(!modoEdicao)return;coletarEdicoes();salvarProjetos();projetos.forEach(p=>{const el=document.getElementById(`ano-calc-${p.id}`);if(el)el.textContent=extrairAno(p.possePrimeiro)||'—';});}
+function coletarEdicoes(){
+  projetos.forEach(p=>{
+    const g=campo=>{const e=document.getElementById(`edit-${p.id}-${campo}`);return e?e.value:p[campo];};
+    p.terreno=g('terreno');p.bairro=g('bairro');p.segmento=g('segmento');p.doninho=g('doninho');
+    p.statusExecucao=g('statusExecucao');p.possePrimeiro=g('possePrimeiro');p.posseUltimo=g('posseUltimo');
+    p.inicioDemolicao=g('inicioDemolicao');p.terminoDemolicao=g('terminoDemolicao');
+    p.inicioPDV=g('inicioPDV');p.finalizacaoPDV=g('finalizacaoPDV');
+    p.meeting=g('meeting');p.desmobPDV=g('desmobPDV');p.inicioPreObra=g('inicioPreObra');p.inicioObra=g('inicioObra');
+  });
+}
+
+// ══ FILTROS ══
+function getFornecedoresProjeto(p){if(!p.detalhes)return[];return Object.values(p.detalhes).map(d=>d.fornecedor).filter(f=>f&&f!=='—');}
+function aplicarFiltros(){
+  const ano=document.getElementById('filtroAno').value;
+  const seg=document.getElementById('filtroSegmento').value;
+  const doninho=document.getElementById('filtroDoninho').value;
+  const status=document.getElementById('filtroStatus').value;
+  const etapa=document.getElementById('filtroEtapa').value;
+  const forn=document.getElementById('filtroFornecedor').value;
+  const busca=document.getElementById('filtroBusca').value.toLowerCase();
+  projetosFiltrados=projetos.filter(p=>{
+    const anoPosse=extrairAno(p.possePrimeiro);
+    if(ano&&String(anoPosse)!==ano)return false;
+    if(seg&&p.segmento!==seg)return false;
+    if(doninho&&p.doninho!==doninho)return false;
+    if(status&&p.statusExecucao!==status)return false;
+    if(etapa&&!(p.detalhes&&p.detalhes[etapa]))return false;
+    if(forn&&!getFornecedoresProjeto(p).includes(forn))return false;
+    if(busca&&!p.terreno.toLowerCase().includes(busca)&&!p.bairro.toLowerCase().includes(busca))return false;
+    return true;
+  });
+  document.getElementById('kpiTotal').textContent=projetosFiltrados.length;
+  document.getElementById('kpiAndamento').textContent=projetosFiltrados.filter(p=>p.statusExecucao==='Em andamento').length;
+  document.getElementById('kpiAIniciar').textContent=projetosFiltrados.filter(p=>p.statusExecucao==='A Iniciar').length;
+  document.getElementById('kpiFinalizado').textContent=projetosFiltrados.filter(p=>p.statusExecucao==='Finalizado').length;
+  document.getElementById('kpiFull').textContent=projetosFiltrados.filter(p=>p.segmento==='Full').length;
+  renderGantt(projetosFiltrados);
+  renderTabela(projetosFiltrados);
+}
+function limparFiltros(){['filtroAno','filtroSegmento','filtroDoninho','filtroStatus','filtroEtapa','filtroFornecedor','filtroBusca'].forEach(id=>document.getElementById(id).value='');aplicarFiltros();}
+
+// ══ SALVAR TUDO ══
+function salvarTudo(){
+  if(!modoEdicao)return;
   coletarEdicoes();
-  // Salvar datas e fornecedores dos tópicos
-  projetos.forEach(p => {
-    ['Demolição','PDV','Pré Obra','Vizinhos'].forEach(t => {
-      const chave = normalizarChave(t);
-      const ini = document.getElementById(`di-${p.id}-${chave}`);
-      const fim = document.getElementById(`df-${p.id}-${chave}`);
-      const forn = document.getElementById(`forn-${p.id}-${chave}`);
-      if (!p.detalhes[t]) return;
-      if (ini) p.detalhes[t].dataInicio = ini.value || '—';
-      if (fim) p.detalhes[t].dataFim    = fim.value || '—';
-      if (forn) p.detalhes[t].fornecedor = forn.value || '—';
+  projetos.forEach(p=>{
+    ['Demolição','PDV','Pré Obra'].forEach(t=>{
+      const chave=normalizarChave(t);
+      const ini=document.getElementById(`di-${p.id}-${chave}`);
+      const fim=document.getElementById(`df-${p.id}-${chave}`);
+      const forn=document.getElementById(`forn-${p.id}-${chave}`);
+      if(!p.detalhes[t])return;
+      if(ini)p.detalhes[t].dataInicio=ini.value||'—';
+      if(fim)p.detalhes[t].dataFim=fim.value||'—';
+      if(forn)p.detalhes[t].fornecedor=forn.value||'—';
     });
   });
   salvarProjetos();
   renderGantt(projetosFiltrados);
-  const toast = document.getElementById('saveToast');
-  toast.classList.remove('show'); void toast.offsetWidth; toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2600);
+  const toast=document.getElementById('saveToast');
+  toast.classList.remove('show');void toast.offsetWidth;toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),2600);
 }
 
-// ══════════════════════════════════════════════════════
-// HELPERS
-// ══════════════════════════════════════════════════════
-const mesesLabel = ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ","JAN","FEV","MAR","ABR"];
-const anos2      = [2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2026,2027,2027,2027,2027];
-const MES_MAP    = {};
-anos2.forEach((a,i) => { MES_MAP[`${mesesLabel[i]}-${a}`] = i; });
-const HOJE_MES = 7;
-let zoomLevel  = 1;
-const COL_W    = 70;
-let projetos   = carregarProjetos();
-let projetosFiltrados = [...projetos];
-
-function normalizarChave(t) { return t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-').toLowerCase(); }
-
-function extrairAno(str) {
-  if (!str || str === '—') return null;
-  const p = str.split('/');
-  if (p.length === 3) return parseInt(p[2]);
-  return null;
-}
-
-function dataParaGanttIdx(str) {
-  if (!str || str === '—') return null;
-  const p = str.split('/');
-  if (p.length !== 3) return null;
-  const labels = ["JAN","FEV","MAR","ABR","MAI","JUN","JUL","AGO","SET","OUT","NOV","DEZ"];
-  const key = `${labels[parseInt(p[1])-1]}-${parseInt(p[2])}`;
-  return MES_MAP[key] !== undefined ? MES_MAP[key] : null;
-}
-
-function calcDiasDemo(ini, fim) {
-  if (!ini || !fim || ini === '—' || fim === '—') return '—';
-  const parse = s => { const p=s.split('/'); return new Date(p[2],p[1]-1,p[0]); };
-  try { const d = Math.round((parse(fim)-parse(ini))/86400000); return d>=0?`${d}d`:'—'; } catch(e) { return '—'; }
-}
-
-function farolDot(f) {
-  const map = {g:'farol-g',a:'farol-a',r:'farol-r'};
-  return `<span class="farol ${map[f]||'farol-vazio'}"></span>`;
-}
-function statusTag(s) {
-  const map = {'A Iniciar':'a-iniciar','Em andamento':'em-andamento','Finalizado':'finalizado'};
-  return `<span class="tag-status tag-${map[s]||'a-iniciar'}">${s||'—'}</span>`;
-}
-function inp(id, val, ph) {
-  return `<input class="cell-edit" id="${id}" value="${(val||'').replace(/"/g,'&quot;')}" placeholder="${ph||''}" onchange="autoSave()" />`;
-}
-function sel(id, val, opts) {
-  return `<select class="cell-select" id="${id}" onchange="autoSave()">${opts.map(o=>`<option value="${o}" ${o===val?'selected':''}>${o}</option>`).join('')}</select>`;
-}
-function autoSave() {
-  if (!modoEdicao) return;
-  coletarEdicoes();
-  salvarProjetos();
-  // Recalcular ano na linha
-  projetos.forEach(p => {
-    const anoEl = document.getElementById(`ano-calc-${p.id}`);
-    if (anoEl) anoEl.textContent = extrairAno(p.possePrimeiro) || '—';
-  });
-}
-
-function coletarEdicoes() {
-  projetos.forEach(p => {
-    const g = campo => { const e=document.getElementById(`edit-${p.id}-${campo}`); return e?e.value:p[campo]; };
-    p.terreno          = g('terreno');
-    p.bairro           = g('bairro');
-    p.segmento         = g('segmento');
-    p.doninho          = g('doninho');
-    p.statusExecucao   = g('statusExecucao');
-    p.possePrimeiro    = g('possePrimeiro');
-    p.posseUltimo      = g('posseUltimo');
-    p.inicioDemolicao  = g('inicioDemolicao');
-    p.terminoDemolicao = g('terminoDemolicao');
-    p.inicioPDV        = g('inicioPDV');
-    p.finalizacaoPDV   = g('finalizacaoPDV');
-    p.meeting          = g('meeting');
-    p.desmobPDV        = g('desmobPDV');
-    p.inicioPreObra    = g('inicioPreObra');
-    p.inicioObra       = g('inicioObra');
-  });
-}
-
-// ══════════════════════════════════════════════════════
-// FILTROS E KPIs
-// ══════════════════════════════════════════════════════
-function getFornecedoresProjeto(p) {
-  if (!p.detalhes) return [];
-  return Object.values(p.detalhes).map(d => d.fornecedor).filter(f => f && f !== '—');
-}
-
-function aplicarFiltros() {
-  const ano      = document.getElementById('filtroAno').value;
-  const seg      = document.getElementById('filtroSegmento').value;
-  const doninho  = document.getElementById('filtroDoninho').value;
-  const status   = document.getElementById('filtroStatus').value;
-  const etapa    = document.getElementById('filtroEtapa').value;
-  const forn     = document.getElementById('filtroFornecedor').value;
-  const busca    = document.getElementById('filtroBusca').value.toLowerCase();
-
-  projetosFiltrados = projetos.filter(p => {
-    const anoPosse = extrairAno(p.possePrimeiro);
-    if (ano    && String(anoPosse) !== ano)              return false;
-    if (seg    && p.segmento !== seg)                    return false;
-    if (doninho && p.doninho !== doninho)                return false;
-    if (status && p.statusExecucao !== status)           return false;
-    if (etapa  && !(p.detalhes && p.detalhes[etapa]))   return false;
-    if (forn   && !getFornecedoresProjeto(p).includes(forn)) return false;
-    if (busca  && !p.terreno.toLowerCase().includes(busca)
-               && !p.bairro.toLowerCase().includes(busca)) return false;
-    return true;
-  });
-
-  document.getElementById('kpiTotal').textContent      = projetosFiltrados.length;
-  document.getElementById('kpiAndamento').textContent  = projetosFiltrados.filter(p=>p.statusExecucao==='Em andamento').length;
-  document.getElementById('kpiAIniciar').textContent   = projetosFiltrados.filter(p=>p.statusExecucao==='A Iniciar').length;
-  document.getElementById('kpiFinalizado').textContent = projetosFiltrados.filter(p=>p.statusExecucao==='Finalizado').length;
-  document.getElementById('kpiFull').textContent       = projetosFiltrados.filter(p=>p.segmento==='Full').length;
-  renderGantt(projetosFiltrados);
-  renderTabela(projetosFiltrados);
-}
-
-function limparFiltros() {
-  ['filtroAno','filtroSegmento','filtroDoninho','filtroStatus','filtroEtapa','filtroFornecedor','filtroBusca']
-    .forEach(id => document.getElementById(id).value = '');
-  aplicarFiltros();
-}
-
-// ══════════════════════════════════════════════════════
-// GANTT
-// ══════════════════════════════════════════════════════
-function renderGantt(lista) {
-  const container = document.getElementById('ganttContainer');
-  const w = COL_W * zoomLevel;
-  const totalW = w * mesesLabel.length + 220;
-  let html = `<table style="width:${totalW}px;border-collapse:collapse;table-layout:fixed;"><thead><tr>
+// ══ GANTT ══
+function renderGantt(lista){
+  const container=document.getElementById('ganttContainer');
+  const w=COL_W*zoomLevel;
+  const totalW=w*mesesLabel.length+220;
+  let html=`<table style="width:${totalW}px;border-collapse:collapse;table-layout:fixed;"><thead><tr>
     <th style="background:rgba(0,0,0,0.12);color:rgba(255,255,255,0.85);font-size:11px;padding:8px 10px;text-align:left;width:220px;border-right:1px solid rgba(255,255,255,0.1);">PROJETO</th>`;
-  mesesLabel.forEach((m,i) => {
-    const isH = i===HOJE_MES;
-    html += `<th style="background:${isH?'rgba(229,57,53,0.25)':'rgba(0,0,0,0.1)'};color:${isH?'#ffd7d2':'rgba(255,255,255,0.85)'};font-size:10px;padding:6px 2px;text-align:center;width:${w}px;border-right:1px solid rgba(255,255,255,0.08);white-space:pre-line;line-height:1.2;">${m}\n${anos2[i]}</th>`;
+  mesesLabel.forEach((m,i)=>{
+    const isH=i===HOJE_MES;
+    html+=`<th style="background:${isH?'rgba(229,57,53,0.25)':'rgba(0,0,0,0.1)'};color:${isH?'#ffd7d2':'rgba(255,255,255,0.85)'};font-size:10px;padding:6px 2px;text-align:center;width:${w}px;border-right:1px solid rgba(255,255,255,0.08);white-space:pre-line;line-height:1.2;">${m}\n${anos2[i]}</th>`;
   });
-  html += '</tr></thead><tbody>';
-
-  lista.forEach(p => {
-    const faixas = [
-      { cor:'#4caf50', ini:dataParaGanttIdx(p.inicioDemolicao), fim:dataParaGanttIdx(p.terminoDemolicao) },
-      { cor:'#4d7399', ini:dataParaGanttIdx(p.inicioPDV),        fim:dataParaGanttIdx(p.finalizacaoPDV) },
-      { cor:'#f5a623', ini:dataParaGanttIdx(p.inicioPreObra),    fim:dataParaGanttIdx(p.inicioObra) }
+  html+='</tr></thead><tbody>';
+  lista.forEach(p=>{
+    const faixas=[
+      {cor:'#4caf50',ini:dataParaGanttIdx(p.inicioDemolicao),fim:dataParaGanttIdx(p.terminoDemolicao)},
+      {cor:'#4d7399',ini:dataParaGanttIdx(p.inicioPDV),fim:dataParaGanttIdx(p.finalizacaoPDV)},
+      {cor:'#f5a623',ini:dataParaGanttIdx(p.inicioPreObra),fim:dataParaGanttIdx(p.inicioObra)}
     ];
-    const nomeCell = `<td rowspan="3" style="background:#e7dccd;padding:8px 10px;border-bottom:3px solid rgba(255,255,255,0.3);width:220px;border-right:1px solid rgba(255,255,255,0.1);vertical-align:middle;">
+    const nomeCell=`<td rowspan="3" style="background:#e7dccd;padding:8px 10px;border-bottom:3px solid rgba(255,255,255,0.3);width:220px;border-right:1px solid rgba(255,255,255,0.1);vertical-align:middle;">
       <div style="font-size:13px;font-weight:700;color:var(--text-dark);">${p.terreno}</div>
       <div style="font-size:11px;color:var(--text-light);">${p.bairro}</div>
       <div style="margin-top:4px;">${statusTag(p.statusExecucao)}</div>
     </td>`;
-    faixas.forEach((f,fi) => {
-      html += `<tr>`;
-      if (fi===0) html += nomeCell;
-      const isLast = fi===2;
-      mesesLabel.forEach((_,i) => {
-        const isH = i===HOJE_MES;
-        let barHTML = '';
-        if (f.ini!==null && f.fim!==null && i>=f.ini && i<=f.fim) {
-          const isStart=i===f.ini, isEnd=i===f.fim;
-          const radius = isStart&&isEnd?'6px':isStart?'6px 0 0 6px':isEnd?'0 6px 6px 0':'0';
-          barHTML = `<div style="position:absolute;top:50%;transform:translateY(-50%);height:10px;background:${f.cor};border-radius:${radius};left:${isStart?3:0}px;right:${isEnd?3:0}px;opacity:0.9;"></div>`;
+    faixas.forEach((f,fi)=>{
+      html+=`<tr>`;
+      if(fi===0)html+=nomeCell;
+      const isLast=fi===2;
+      mesesLabel.forEach((_,i)=>{
+        const isH=i===HOJE_MES;
+        let barHTML='';
+        if(f.ini!==null&&f.fim!==null&&i>=f.ini&&i<=f.fim){
+          const isStart=i===f.ini,isEnd=i===f.fim;
+          const radius=isStart&&isEnd?'6px':isStart?'6px 0 0 6px':isEnd?'0 6px 6px 0':'0';
+          barHTML=`<div style="position:absolute;top:50%;transform:translateY(-50%);height:10px;background:${f.cor};border-radius:${radius};left:${isStart?3:0}px;right:${isEnd?3:0}px;opacity:0.9;"></div>`;
         }
-        const hojeBar = isH?`<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e53935;z-index:5;opacity:0.7;"></div>`:'';
-        const bg = isH?'rgba(229,57,53,0.04)':(fi%2===0?'var(--white)':'#f9f5ef');
-        html += `<td style="background:${bg};border-bottom:${isLast?'2px solid rgba(0,0,0,0.06)':'1px solid rgba(0,0,0,0.03)'};border-right:1px solid rgba(0,0,0,0.04);position:relative;height:20px;width:${w}px;padding:0;">${barHTML}${hojeBar}</td>`;
+        const hojeBar=isH?`<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;background:#e53935;z-index:5;opacity:0.7;"></div>`:'';
+        const bg=isH?'rgba(229,57,53,0.04)':(fi%2===0?'var(--white)':'#f9f5ef');
+        html+=`<td style="background:${bg};border-bottom:${isLast?'2px solid rgba(0,0,0,0.06)':'1px solid rgba(0,0,0,0.03)'};border-right:1px solid rgba(0,0,0,0.04);position:relative;height:20px;width:${w}px;padding:0;">${barHTML}${hojeBar}</td>`;
       });
-      html += '</tr>';
+      html+='</tr>';
     });
   });
-  html += '</tbody></table>';
-  container.innerHTML = html;
+  html+='</tbody></table>';
+  container.innerHTML=html;
 }
-function zoomGantt(dir) { zoomLevel=Math.max(0.5,Math.min(2.5,zoomLevel+dir*0.2)); renderGantt(projetosFiltrados); }
-function irParaHoje() { document.getElementById('ganttScroll').scrollLeft = 220+HOJE_MES*COL_W*zoomLevel-300; }
+function zoomGantt(dir){zoomLevel=Math.max(0.5,Math.min(2.5,zoomLevel+dir*0.2));renderGantt(projetosFiltrados);}
+function irParaHoje(){document.getElementById('ganttScroll').scrollLeft=220+HOJE_MES*COL_W*zoomLevel-300;}
 
-// ══════════════════════════════════════════════════════
-// ADICIONAR / DELETAR
-// ══════════════════════════════════════════════════════
-function adicionarProjeto() {
-  if (!modoEdicao) return;
-  const novoId = projetos.length>0?Math.max(...projetos.map(p=>p.id))+1:1;
-  projetos.push({
-    id:novoId, terreno:"Novo Terreno", bairro:"Bairro", segmento:"Padrão",
-    doninho:"Denis Pimentel", statusExecucao:"A Iniciar",
-    possePrimeiro:"—", posseUltimo:"—",
-    inicioDemolicao:"—", terminoDemolicao:"—", inicioPDV:"—", finalizacaoPDV:"—",
-    meeting:"—", desmobPDV:"—", inicioPreObra:"—", inicioObra:"—",
-    detalhes:criarModeloDetalhes()
-  });
+// ══ ADICIONAR / DELETAR PROJETO ══
+function adicionarProjeto(){
+  if(!modoEdicao)return;
+  const novoId=projetos.length>0?Math.max(...projetos.map(p=>p.id))+1:1;
+  projetos.push({id:novoId,terreno:"Novo Terreno",bairro:"Bairro",segmento:"Padrão",doninho:"Denis Pimentel",statusExecucao:"A Iniciar",possePrimeiro:"—",posseUltimo:"—",inicioDemolicao:"—",terminoDemolicao:"—",inicioPDV:"—",finalizacaoPDV:"—",meeting:"—",desmobPDV:"—",inicioPreObra:"—",inicioObra:"—",detalhes:criarModeloDetalhes()});
   projetosFiltrados=[...projetos];
   aplicarFiltros();
-  setTimeout(()=>{ const el=document.getElementById(`btn-${novoId}`); if(el) el.closest('tr').scrollIntoView({behavior:'smooth',block:'center'}); },100);
 }
-function deletarProjeto(id) {
-  if (!modoEdicao) return;
-  if (!confirm('Remover este projeto?')) return;
-  projetos=projetos.filter(p=>p.id!==id);
-  projetosFiltrados=projetosFiltrados.filter(p=>p.id!==id);
-  aplicarFiltros();
+function deletarProjeto(id){if(!modoEdicao)return;if(!confirm('Remover este projeto?'))return;projetos=projetos.filter(p=>p.id!==id);projetosFiltrados=projetosFiltrados.filter(p=>p.id!==id);aplicarFiltros();}
+
+// ══ VIZINHOS ══
+function adicionarVizinho(pid){
+  if(!modoEdicao)return;
+  const p=projetos.find(x=>x.id===pid);
+  if(!p||!p.detalhes['Vizinhos'])return;
+  if(!p.detalhes['Vizinhos'].vizinhos)p.detalhes['Vizinhos'].vizinhos=[];
+  const nome=prompt('Nome / endereço do vizinho:','Vizinho '+(p.detalhes['Vizinhos'].vizinhos.length+1));
+  if(!nome)return;
+  p.detalhes['Vizinhos'].vizinhos.push(criarVizinho(nome));
+  salvarProjetos();
+  // Re-render detalhe
+  const chave=normalizarChave('Vizinhos');
+  const cont=document.getElementById(`topico-${pid}-${chave}`);
+  if(cont){
+    cont.querySelector('.vizinhos-wrapper').innerHTML=renderVizinhosInner(p);
+    if(modoEdicao)aplicarModoEdicao();
+  }
+}
+function deletarVizinho(pid,vid){
+  if(!modoEdicao)return;
+  const p=projetos.find(x=>x.id===pid);
+  if(!p||!p.detalhes['Vizinhos'])return;
+  p.detalhes['Vizinhos'].vizinhos=p.detalhes['Vizinhos'].vizinhos.filter(v=>v.id!==vid);
+  salvarProjetos();
+  const chave=normalizarChave('Vizinhos');
+  const cont=document.getElementById(`topico-${pid}-${chave}`);
+  if(cont){cont.querySelector('.vizinhos-wrapper').innerHTML=renderVizinhosInner(p);if(modoEdicao)aplicarModoEdicao();}
+}
+function toggleVizinho(uid){
+  const el=document.getElementById('vz-'+uid),icon=document.getElementById('vz-icon-'+uid);
+  const open=el.classList.contains('open');
+  el.classList.toggle('open',!open);icon.textContent=open?'+':'−';
 }
 
-// ══════════════════════════════════════════════════════
-// SUBPASTA
-// ══════════════════════════════════════════════════════
-function toggleSubpasta(uid) {
-  const el=document.getElementById('sub-'+uid), icon=document.getElementById('sub-icon-'+uid);
-  const open=el.classList.contains('open');
-  el.classList.toggle('open',!open); icon.textContent=open?'+':'−';
+function renderVizinhosInner(p) {
+  const vizinhos=(p.detalhes['Vizinhos']&&p.detalhes['Vizinhos'].vizinhos)||[];
+  const addCls=modoEdicao?'unlocked':'';
+  let html=`<button class="btn-add-vizinho ${addCls}" onclick="adicionarVizinho(${p.id})">＋ Adicionar Vizinho</button>`;
+  vizinhos.forEach(v=>{
+    const uid=`${p.id}-${v.id}`;
+    const delCls=modoEdicao?'unlocked':'';
+    const infoCls=modoEdicao?'unlocked':'';
+    const statusOpts=STATUS_OPTS.map(o=>`<option value="${o}" ${o===v.status?'selected':''}>${o||'—'}</option>`).join('');
+    html+=`<div class="vizinho-box">
+      <div class="vizinho-header" onclick="toggleVizinho('${uid}')">
+        <div class="vizinho-header-left">
+          <button class="btn-del-vizinho ${delCls}" onclick="event.stopPropagation();deletarVizinho(${p.id},${v.id})" title="Remover vizinho">✕</button>
+          <div class="vizinho-nome">${v.nome}</div>
+        </div>
+        <div class="vizinho-toggle" id="vz-icon-${uid}">+</div>
+      </div>
+      <div class="vizinho-conteudo" id="vz-${uid}">
+        <div class="vizinho-inner">
+          <!-- INFO BOX -->
+          <div class="vizinho-info-box">
+            <div class="vizinho-info-titulo">Dados do Vizinho</div>
+            <div class="vizinho-info-field">
+              <div class="vizinho-info-label">Endereço</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.endereco||''}" placeholder="Endereço completo..." onchange="atualizarVizinho(${p.id},${v.id},'endereco',this.value)" />
+            </div>
+            <div class="vizinho-info-field">
+              <div class="vizinho-info-label">Status</div>
+              <select class="vizinho-info-select ${infoCls}" onchange="atualizarVizinho(${p.id},${v.id},'status',this.value)">${statusOpts}</select>
+            </div>
+            <div class="vizinho-info-field">
+              <div class="vizinho-info-label">Vencimento</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.vencimento||''}" placeholder="dd/mm/aaaa" onchange="atualizarVizinho(${p.id},${v.id},'vencimento',this.value)" />
+            </div>
+            <div class="vizinho-info-field">
+              <div class="vizinho-info-label">Data Limite</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.dataLimite||''}" placeholder="dd/mm/aaaa" onchange="atualizarVizinho(${p.id},${v.id},'dataLimite',this.value)" />
+            </div>
+            <div class="vizinho-info-field">
+              <div class="vizinho-info-label">E-mail</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.email||''}" placeholder="email@..." onchange="atualizarVizinho(${p.id},${v.id},'email',this.value)" />
+            </div>
+            <div class="vizinho-info-field">
+              <div class="vizinho-info-label">Telefone</div>
+              <input class="vizinho-info-input ${infoCls}" value="${v.telefone||''}" placeholder="(11) 9..." onchange="atualizarVizinho(${p.id},${v.id},'telefone',this.value)" />
+            </div>
+            <div class="vizinho-info-field">
+              <div class="vizinho-info-label">Observações</div>
+              <textarea class="vizinho-info-textarea ${infoCls}" placeholder="Observações..." onchange="atualizarVizinho(${p.id},${v.id},'observacoes',this.value)">${v.observacoes||''}</textarea>
+            </div>
+          </div>
+          <!-- CHECKLIST -->
+          <div class="vizinho-checklist">
+            <div class="vizinho-check-header">
+              <div>Etapa</div><div>Farol</div><div>Status</div><div>Data Limite</div><div>Observação</div>
+            </div>
+            ${v.itens.map((item,idx)=>{
+              const iuid=`${uid}-${idx}`;
+              const sOpts=STATUS_OPTS.map(o=>`<option value="${o}" ${o===item.statusLinha?'selected':''}>${o||'—'}</option>`).join('');
+              const sCls=modoEdicao?'unlocked':'';
+              return `<div class="vizinho-check-linha">
+                <div>${item.assunto}</div>
+                <div>${farolDot(item.farol)}</div>
+                <div><select class="linha-status-sel ${sCls}" onchange="atualizarVizinhoItem(${p.id},${v.id},${idx},'statusLinha',this.value)">${sOpts}</select></div>
+                <div><input class="linha-obs ${sCls}" value="${item.dataLimite||''}" placeholder="dd/mm/aaaa" onchange="atualizarVizinhoItem(${p.id},${v.id},${idx},'dataLimite',this.value)" /></div>
+                <div><input class="linha-obs ${sCls}" value="${(item.obs||'').replace(/"/g,'&quot;')}" placeholder="Observação..." onchange="atualizarVizinhoItem(${p.id},${v.id},${idx},'obs',this.value)" /></div>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  });
+  return html;
 }
-function renderSubpasta(item, uid) {
+
+function atualizarVizinho(pid,vid,campo,valor){
+  const p=projetos.find(x=>x.id===pid);if(!p)return;
+  const v=p.detalhes['Vizinhos'].vizinhos.find(x=>x.id===vid);if(!v)return;
+  v[campo]=valor;
+  if(campo==='nome'){const el=document.querySelector(`[data-vz-nome="${pid}-${vid}"]`);if(el)el.textContent=valor;}
+  salvarProjetos();
+}
+function atualizarVizinhoItem(pid,vid,idx,campo,valor){
+  const p=projetos.find(x=>x.id===pid);if(!p)return;
+  const v=p.detalhes['Vizinhos'].vizinhos.find(x=>x.id===vid);if(!v)return;
+  v.itens[idx][campo]=valor;
+  salvarProjetos();
+}
+
+// ══ SUBPASTAS ══
+function toggleSubpasta(uid){const el=document.getElementById('sub-'+uid),icon=document.getElementById('sub-icon-'+uid);const open=el.classList.contains('open');el.classList.toggle('open',!open);icon.textContent=open?'+':'−';}
+function renderSubpasta(item,uid){
+  const sCls=modoEdicao?'unlocked':'';
   return `<div class="subpasta-box">
     <div class="subpasta-header" onclick="toggleSubpasta('${uid}')">
       <div class="subpasta-titulo">${item.assunto}</div>
       <div class="subpasta-toggle" id="sub-icon-${uid}">+</div>
     </div>
     <div class="subpasta-conteudo" id="sub-${uid}">
-      <div class="subpasta-col-header"><div>Assunto</div><div>Farol</div><div>Venc.</div><div>Data limite</div><div>Status</div><div></div></div>
-      ${(item.itens||[]).map(si=>`<div class="subpasta-linha">
-        <div>${si.assunto}</div>
-        <div>${farolDot(si.farol)}</div>
-        <div>${si.farolVenc?farolDot(si.farolVencCor||'a'):'—'}</div>
-        <div>${si.dataLimite||'—'}</div>
-        <div>${si.status||'—'}</div>
-        <div></div>
-      </div>`).join('')}
+      <div class="subpasta-col-header"><div>Assunto</div><div>Farol</div><div>Status</div><div>Data Limite</div><div>Observação</div></div>
+      ${(item.itens||[]).map((si,idx)=>{
+        const iuid=uid+'-'+idx;
+        const sOpts=STATUS_OPTS.map(o=>`<option value="${o}" ${o===(si.statusLinha||'')?'selected':''}>${o||'—'}</option>`).join('');
+        return `<div class="subpasta-linha">
+          <div>${si.assunto}</div>
+          <div>${farolDot(si.farol)}</div>
+          <div><select class="linha-status-sel ${sCls}" id="ls-${iuid}" onchange="autoSave()">${sOpts}</select></div>
+          <div><input class="linha-obs ${sCls}" id="lo-dl-${iuid}" value="${si.dataLimite||''}" placeholder="dd/mm/aaaa" onchange="autoSave()" /></div>
+          <div><input class="linha-obs ${sCls}" id="lo-${iuid}" value="${(si.obs||'').replace(/"/g,'&quot;')}" placeholder="Observação..." onchange="autoSave()" /></div>
+        </div>`;
+      }).join('')}
     </div>
   </div>`;
 }
 
-// ══════════════════════════════════════════════════════
-// TÓPICOS
-// ══════════════════════════════════════════════════════
-function toggleTopico(pid, topico) {
-  const chave=normalizarChave(topico);
-  const el=document.getElementById('topico-'+pid+'-'+chave), icon=document.getElementById('toggle-icon-'+pid+'-'+chave);
-  const open=el.classList.contains('open');
-  el.classList.toggle('open',!open); icon.textContent=open?'+':'−';
+// ══ TÓPICOS ══
+function toggleTopico(pid,topico){const chave=normalizarChave(topico);const el=document.getElementById('topico-'+pid+'-'+chave),icon=document.getElementById('toggle-icon-'+pid+'-'+chave);const open=el.classList.contains('open');el.classList.toggle('open',!open);icon.textContent=open?'+':'−';}
+
+function renderFornecedorSelect(pid,chave,topico,valorAtual){
+  const lista=FORNECEDORES[topico]||['—'];
+  const opts=lista.map(f=>`<option value="${f}" ${f===valorAtual?'selected':''}>${f}</option>`).join('');
+  const cls=modoEdicao?'unlocked':'';
+  return `<div class="topico-fornecedor"><span>Fornecedor:</span><select id="forn-${pid}-${chave}" class="${cls}" onchange="autoSave()">${opts}</select></div>`;
 }
-function renderFornecedorSelect(pid, chave, topico, valorAtual) {
-  const lista = FORNECEDORES[topico] || ['—'];
-  const opts = lista.map(f=>`<option value="${f}" ${f===valorAtual?'selected':''}>${f}</option>`).join('');
-  const cls = modoEdicao ? 'unlocked' : '';
-  return `<div class="topico-fornecedor">
-    <span>Fornecedor:</span>
-    <select id="forn-${pid}-${chave}" class="${cls}" onchange="autoSave()">${opts}</select>
-  </div>`;
-}
-function renderTopicosProjeto(p) {
-  return ["Demolição","PDV","Pré Obra","Vizinhos"].map(topico => {
-    const bloco = p.detalhes && p.detalhes[topico];
-    const itens = bloco ? bloco.itens : [];
-    const chave = normalizarChave(topico);
-    const ini   = bloco ? (bloco.dataInicio==='—'?'':bloco.dataInicio) : '';
-    const fim   = bloco ? (bloco.dataFim==='—'?'':bloco.dataFim) : '';
-    const forn  = bloco ? (bloco.fornecedor||'—') : '—';
-    const cls   = modoEdicao ? 'unlocked' : '';
+
+function renderTopicosProjeto(p){
+  return ["Demolição","PDV","Pré Obra","Vizinhos"].map(topico=>{
+    const bloco=p.detalhes&&p.detalhes[topico];
+    const chave=normalizarChave(topico);
+    const ini=bloco?(bloco.dataInicio==='—'?'':bloco.dataInicio):'';
+    const fim=bloco?(bloco.dataFim==='—'?'':bloco.dataFim):'';
+    const forn=bloco?(bloco.fornecedor||'—'):'—';
+    const cls=modoEdicao?'unlocked':'';
+    const sCls=modoEdicao?'unlocked':'';
+
+    let conteudoInterno='';
+    if(topico==='Vizinhos'){
+      conteudoInterno=`<div class="vizinhos-wrapper">${renderVizinhosInner(p)}</div>`;
+    } else {
+      const itens=(bloco&&bloco.itens)||[];
+      conteudoInterno=`
+        <div class="topico-col-header"><div>Assunto</div><div>Farol</div><div>Status</div><div>Data Limite</div><div>Observação</div></div>
+        ${itens.map((item,idx)=>{
+          if(item.isSubpasta) return renderSubpasta(item,`${p.id}-${chave}-${idx}`);
+          const iuid=`${p.id}-${chave}-${idx}`;
+          const sOpts=STATUS_OPTS.map(o=>`<option value="${o}" ${o===(item.statusLinha||'')?'selected':''}>${o||'—'}</option>`).join('');
+          return `<div class="topico-linha">
+            <div>${item.assunto}</div>
+            <div>${farolDot(item.farol)}</div>
+            <div><select class="linha-status-sel ${sCls}" id="ls-${iuid}" onchange="autoSave()">${sOpts}</select></div>
+            <div><input class="linha-obs ${sCls}" id="lo-dl-${iuid}" value="${item.dataLimite||''}" placeholder="dd/mm/aaaa" onchange="autoSave()" /></div>
+            <div><input class="linha-obs ${sCls}" id="lo-${iuid}" value="${(item.obs||'').replace(/"/g,'&quot;')}" placeholder="Observação..." onchange="autoSave()" /></div>
+          </div>`;
+        }).join('')}`;
+    }
+
     return `<div class="topico-box">
       <div class="topico-header" onclick="toggleTopico(${p.id},'${topico}')">
         <div class="topico-titulo">${topico}</div>
         <div class="topico-toggle" id="toggle-icon-${p.id}-${chave}">+</div>
       </div>
       <div class="topico-conteudo" id="topico-${p.id}-${chave}">
+        ${topico!=='Vizinhos'?`
         <div class="topico-datas">
           <span>Início:</span>
           <input id="di-${p.id}-${chave}" class="${cls}" value="${ini}" placeholder="dd/mm/aaaa" onchange="autoSave()" />
           <span>→ Fim:</span>
           <input id="df-${p.id}-${chave}" class="${cls}" value="${fim}" placeholder="dd/mm/aaaa" onchange="autoSave()" />
         </div>
-        ${renderFornecedorSelect(p.id, chave, topico, forn)}
-        <div class="topico-col-header"><div>Assunto</div><div>Farol</div><div>Venc.</div><div>Data limite</div><div>Status / observação</div><div></div></div>
-        ${itens.map((item,idx) => item.isSubpasta
-          ? renderSubpasta(item, `${p.id}-${chave}-${idx}`)
-          : `<div class="topico-linha">
-              <div>${item.assunto}</div>
-              <div>${farolDot(item.farol)}</div>
-              <div>${item.farolVenc?farolDot(item.farolVencCor||'a'):'—'}</div>
-              <div>${item.dataLimite||'—'}</div>
-              <div>${item.status||'—'}</div>
-              <div></div>
-            </div>`
-        ).join('')}
+        ${renderFornecedorSelect(p.id,chave,topico,forn)}`:''}
+        ${conteudoInterno}
       </div>
     </div>`;
   }).join('');
 }
 
-// ══════════════════════════════════════════════════════
-// TABELA
-// ══════════════════════════════════════════════════════
-function renderTabela(lista) {
-  document.getElementById('tbodyProjetos').innerHTML = lista.map(p => {
-    const dias = calcDiasDemo(p.inicioDemolicao, p.terminoDemolicao);
-    const ano  = extrairAno(p.possePrimeiro) || '—';
-    const delCls = modoEdicao ? 'unlocked' : '';
+// ══ TABELA ══
+function renderTabela(lista){
+  document.getElementById('tbodyProjetos').innerHTML=lista.map(p=>{
+    const dias=calcDiasDemo(p.inicioDemolicao,p.terminoDemolicao);
+    const ano=extrairAno(p.possePrimeiro)||'—';
+    const delCls=modoEdicao?'unlocked':'';
     return `
     <tr>
       <td><button class="expand-btn" id="btn-${p.id}" onclick="toggleDetalhe(${p.id})">+</button></td>
       <td><button class="btn-del-row ${delCls}" onclick="deletarProjeto(${p.id})" title="Remover">✕</button></td>
-      <td>${inp(`edit-${p.id}-terreno`,          p.terreno,         'Terreno')}</td>
-      <td>${inp(`edit-${p.id}-bairro`,            p.bairro,          'Bairro')}</td>
-      <td>${sel(`edit-${p.id}-segmento`,          p.segmento,        ['Padrão','Full'])}</td>
-      <td>${sel(`edit-${p.id}-doninho`,           p.doninho,         ['Denis Pimentel','Giulia Oliveira','Akemi Yoshikawa'])}</td>
-      <td>${sel(`edit-${p.id}-statusExecucao`,    p.statusExecucao,  ['A Iniciar','Em andamento','Finalizado'])}</td>
+      <td>${inp(`edit-${p.id}-terreno`,p.terreno,'Terreno')}</td>
+      <td>${inp(`edit-${p.id}-bairro`,p.bairro,'Bairro')}</td>
+      <td>${sel(`edit-${p.id}-segmento`,p.segmento,['Padrão','Full'])}</td>
+      <td>${sel(`edit-${p.id}-doninho`,p.doninho,['Denis Pimentel','Giulia Oliveira','Akemi Yoshikawa'])}</td>
+      <td>${sel(`edit-${p.id}-statusExecucao`,p.statusExecucao,['A Iniciar','Em andamento','Finalizado'])}</td>
       <td><span class="cell-calc" id="ano-calc-${p.id}">${ano}</span></td>
-      <td>${inp(`edit-${p.id}-possePrimeiro`,     p.possePrimeiro,   'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-posseUltimo`,       p.posseUltimo,     'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-inicioDemolicao`,   p.inicioDemolicao, 'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-terminoDemolicao`,  p.terminoDemolicao,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-possePrimeiro`,p.possePrimeiro,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-posseUltimo`,p.posseUltimo,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-inicioDemolicao`,p.inicioDemolicao,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-terminoDemolicao`,p.terminoDemolicao,'dd/mm/aaaa')}</td>
       <td><span class="cell-calc" id="dias-${p.id}">${dias}</span></td>
-      <td>${inp(`edit-${p.id}-inicioPDV`,         p.inicioPDV,       'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-finalizacaoPDV`,    p.finalizacaoPDV,  'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-meeting`,           p.meeting,         'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-desmobPDV`,         p.desmobPDV,       'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-inicioPreObra`,     p.inicioPreObra,   'dd/mm/aaaa')}</td>
-      <td>${inp(`edit-${p.id}-inicioObra`,        p.inicioObra,      'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-inicioPDV`,p.inicioPDV,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-finalizacaoPDV`,p.finalizacaoPDV,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-meeting`,p.meeting,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-desmobPDV`,p.desmobPDV,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-inicioPreObra`,p.inicioPreObra,'dd/mm/aaaa')}</td>
+      <td>${inp(`edit-${p.id}-inicioObra`,p.inicioObra,'dd/mm/aaaa')}</td>
     </tr>
     <tr class="detail-row" id="detail-${p.id}">
       <td colspan="19" style="padding:0;">
@@ -932,41 +1040,36 @@ function renderTabela(lista) {
     </tr>`;
   }).join('');
 
-  // Listener para recalcular dias e ano ao editar
-  lista.forEach(p => {
-    ['inicioDemolicao','terminoDemolicao'].forEach(campo => {
-      const el = document.getElementById(`edit-${p.id}-${campo}`);
-      if (el) el.addEventListener('change', () => {
-        const ini = document.getElementById(`edit-${p.id}-inicioDemolicao`).value;
-        const fim = document.getElementById(`edit-${p.id}-terminoDemolicao`).value;
-        const span = document.getElementById(`dias-${p.id}`);
-        if (span) span.textContent = calcDiasDemo(ini, fim);
+  lista.forEach(p=>{
+    ['inicioDemolicao','terminoDemolicao'].forEach(campo=>{
+      const el=document.getElementById(`edit-${p.id}-${campo}`);
+      if(el)el.addEventListener('change',()=>{
+        const ini=document.getElementById(`edit-${p.id}-inicioDemolicao`).value;
+        const fim=document.getElementById(`edit-${p.id}-terminoDemolicao`).value;
+        const span=document.getElementById(`dias-${p.id}`);
+        if(span)span.textContent=calcDiasDemo(ini,fim);
       });
     });
-    const elPosse = document.getElementById(`edit-${p.id}-possePrimeiro`);
-    if (elPosse) elPosse.addEventListener('change', () => {
-      const anoEl = document.getElementById(`ano-calc-${p.id}`);
-      if (anoEl) anoEl.textContent = extrairAno(elPosse.value) || '—';
+    const elPosse=document.getElementById(`edit-${p.id}-possePrimeiro`);
+    if(elPosse)elPosse.addEventListener('change',()=>{
+      const anoEl=document.getElementById(`ano-calc-${p.id}`);
+      if(anoEl)anoEl.textContent=extrairAno(elPosse.value)||'—';
     });
   });
-
-  // Aplicar estado de edição aos novos elementos
-  if (modoEdicao) aplicarModoEdicao();
+  if(modoEdicao)aplicarModoEdicao();
 }
 
-function toggleDetalhe(id) {
-  const row=document.getElementById('detail-'+id), btn=document.getElementById('btn-'+id);
+function toggleDetalhe(id){
+  const row=document.getElementById('detail-'+id),btn=document.getElementById('btn-'+id);
   const isOpen=row.classList.contains('open');
-  row.classList.toggle('open',!isOpen); btn.classList.toggle('open',!isOpen);
+  row.classList.toggle('open',!isOpen);btn.classList.toggle('open',!isOpen);
   btn.textContent=isOpen?'+':'−';
 }
 
-// ══════════════════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════════════════
-document.getElementById('dataAtual').textContent = new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
+// ══ INIT ══
+document.getElementById('dataAtual').textContent=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
 aplicarFiltros();
-setTimeout(irParaHoje, 300);
+setTimeout(irParaHoje,300);
 </script>
 </body>
 </html>
